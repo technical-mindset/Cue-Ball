@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="meta">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Central Donation Admin</title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/images/icon2.png'">
+        <!-- Custom CSS -->
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/login.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/custom.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/style.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-datepicker.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/dataTables.bootstrap4.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/responsive.dataTables.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-tagsinput.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-datepicker.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/switchery.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/dropify.min.css?v='+${buildVersion}" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+        <!--   Select To Js and Css     -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- all scripts are here -->
+        <script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/js/jquery.min.js?v='+${buildVersion}"></script>
+    </head>
+
+</html>

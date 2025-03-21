@@ -1,0 +1,69 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="viewAllDetail" class="widget" id="viewAllDetail">
+    <section class="list__section">
+        <div id="main-wrapper">
+            <!-- Page wrapper  -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <div class="row page-titles">
+                        <div class="col-md-5 align-self-center">
+                            <h4 class="text-themecolor">List</h4>
+                        </div>
+                        <div class="col-md-7 align-self-center text-end">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <ol class="breadcrumb justify-content-end">
+                                    <li class="breadcrumb-item"><a th:href="@{/dashboard}">Home</a></li>
+                                    <li class="breadcrumb-item active" th:href="@{/roomCategory/viewAll}">List</li>
+
+                                </ol>
+                                <a th:href="@{/roomCategory/addUpdate}" class="btn btn-info d-none d-lg-block m-l-15 text-white"><i
+                                        class="ti-plus"></i> Add</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- Start Page Content -->
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- table responsive -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Table Users </h4>
+<!--                                    <h6 class="card-subtitle">Data table example</h6>-->
+                                    <div class="table-responsive m-t-40">
+                                        <table class="table table-striped" id="detailTable">
+                                            <thead>
+                                            <tr>
+                                                <th>Edit</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Enable</th>
+<!--                                                <th>Description</th>-->
+
+
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="data : ${dataList}">
+                                                <td><a th:href="@{|addUpdate/?id=${data.getId()}|}"><i class="ti-pencil"></i></a></td>
+                                                <td th:text="${data.id}">1</td>
+                                                <td th:text="${data.name}"></td>
+                                                <td th:text="${data.enable}"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div th:replace="common/ajaxPaging::ajaxPaging"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End PAge Content -->
+                </div>
+            </div>
+            <!-- Page wrapper  -->
+        </div>
+    </section>
+</div>

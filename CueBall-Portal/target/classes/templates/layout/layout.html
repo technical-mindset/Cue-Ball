@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">-->
+<html th:with="buildVersion='v4'" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+    <head th:replace='layout/meta::meta'>
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+
+    </head>
+    <body class="skin-green">
+
+        <header th:replace='~{layout/header::#navBarSec}'></header>
+        <section th:replace='~{layout/sidebar::#sideBarId}'></section>
+        <div th:replace="${content}"></div>
+        <footer th:replace='~{layout/footer::#footerSec}'></footer>
+
+    </body>
+</html>

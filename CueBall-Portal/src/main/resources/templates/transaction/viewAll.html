@@ -1,0 +1,45 @@
+<div xmlns:th="" th:replace="layout/layout::layout(~{::section})">
+    <section id="main" class="clearfix">
+        <div id="main-content">
+            <div class="outer-width3">
+                <div class="row-fluid">
+                    <div class="span12 widget" id="middle-portion">
+                        <section class="list__section">
+                            <div id="main-wrapper">
+                                <!-- Page wrapper  -->
+                                <div class="page-wrapper">
+                                    <div class="container-fluid">
+                                        <!-- Bread crumb and right sidebar toggle -->
+                                        <div class="row page-titles">
+                                            <div class="col-md-5 align-self-center">
+                                                <h4 class="text-themecolor">List</h4>
+                                            </div>
+                                            <div class="col-md-7 align-self-center text-end">
+                                                <div class="d-flex justify-content-end align-items-center">
+                                                    <ol class="breadcrumb justify-content-end">
+                                                        <li class="breadcrumb-item"><a th:href="@{/dashboard}">Home</a></li>
+                                                        <li class="breadcrumb-item active"  th:href="@{/transaction/viewAll}">List</li>
+
+                                                    </ol>
+                                                    <a onclick="excelExport()" class="btn btn-info d-none d-lg-block m-l-15 text-white"><i
+                                                            class="ti-plus"></i> Report</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Bread crumb and right sidebar toggle -->
+                                        <div th:replace='transaction/transactionAllFilters::transactionAllFilters'></div>
+                                        <div th:replace='transaction/viewAllDetail::viewAllDetail'></div>
+                                    </div>
+                                </div>
+                                <!-- Page wrapper  -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:replace="common/confirmBox::confirmBox"></script>
+    </section>
+</div>
+
+

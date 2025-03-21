@@ -1,0 +1,41 @@
+
+<div  xmlns:th="http://www.thymeleaf.org" th:fragment="ListLanguageFilter">
+    <label class="col-12 col-form-label">Select Language</label>
+    <!--    <div class="col-12">-->
+    <!--        <select  class="form-control " id="langCode" th:onchange="onchangeLanguage()"></select>-->
+    <select class="form-select col-12" th:id="langCode" th:for="langCode" th:onchange="|page(${pageNumber},${pageSize})|"></select>
+    <!--    </div>-->
+
+
+    <script  th:inline="javascript">
+
+        function getLanguages(){
+            var languageUrl = /*[[${languageUrl} ]]*/ '';
+            var userLanguageUrl = [[${userLanguageUrl}]];
+            var userLang = [[${userLang}]];
+            var separatedLang = userLang.split(', ');
+            let permLangUrl=userLanguageUrl+"?langCode="+separatedLang;
+            // ajax call for language
+            $.getJSON(permLangUrl, function (data) {
+                $.each(data.data, function (index, data) {
+                    if(index==0){
+                        $('#langCode').append('<option value="NaN" selected>Choose...</option>');
+                    }
+                    $('#langCode').append('<option value="' + data.langCode + '">' + data.language + '</option>');
+                });
+            });
+
+        }
+
+
+
+        $(document).ready(function () {
+            getLanguages();
+        });
+
+    </script>
+
+
+</div>
+
+

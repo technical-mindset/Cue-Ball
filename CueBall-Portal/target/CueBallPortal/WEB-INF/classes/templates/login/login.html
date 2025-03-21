@@ -1,0 +1,54 @@
+<!doctype html>
+<html th:with="buildVersion='v3'" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Central Donation Admin</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/images/icon2.png'">
+
+    <!-- Bootstrap CSS -->
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/login.css?v='+${buildVersion}" rel="stylesheet">
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/style.min.css?v='+${buildVersion}" rel="stylesheet">
+</head>
+<body>
+<section class="login__section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 login-box mx-auto pt-4">
+                <div class="col-lg-12 login-key">
+                    <i class="ti-lock" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    ADMIN PANEL
+                </div>
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <label class="form-control-label">USERNAME</label>
+                                <input type="text"  class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" id="password" class="form-control" name="password" required>
+                            </div>
+
+                            <div class="col-lg-12 loginbttm text-center pb-3">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    Login
+                                </button>
+<!--                                <a th:href="@{/dashboard}" class="btn btn-outline-primary">LOGIN</a>-->
+                            </div>
+                        </form>
+                    </div>
+                    <div th:if="${param.error}" class="error_message">
+                        <p class="text-danger text-capitalize m-0">Invalid username and password.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+</body>
+</html>

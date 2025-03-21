@@ -1,0 +1,17 @@
+com/cueballdb/model/BaseEntity.class
+com/cueballdb/model/Localization.class
+com/cueballdb/model/Bank.class
+com/cueballdb/model/SubscriptionProfile.class
+com/cueballdb/model/User.class
+com/cueballdb/repository/GameCustomRepositoryImpl.class
+com/cueballdb/model/Campaign.class
+com/cueballdb/model/Role.class
+com/cueballdb/repository/GameRepository.class
+com/cueballdb/repository/UserRepository.class
+com/cueballdb/CueBallPortal.class
+com/cueballdb/repository/RoleRepository.class
+com/cueballdb/repository/RoomCategoryCustomRepositoryImpl.class
+com/cueballdb/model/Transaction.class
+com/cueballdb/model/OperatingUnit.class
+com/cueballdb/model/Currency.class
+com/cueballdb/repository/GameCustomRepository.class

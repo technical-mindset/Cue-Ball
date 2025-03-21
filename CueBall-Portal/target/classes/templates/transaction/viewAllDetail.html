@@ -1,0 +1,82 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="viewAllDetail" class="widget" id="viewAllDetail">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-12">
+            <!-- table responsive -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Table Transaction</h4>
+                    <!--                                    <h6 class="card-subtitle">Data table example</h6>-->
+                    <div class="table-responsive m-t-40">
+                        <table class="table table-striped" id="detailTable">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Bank Name</th>
+                                <th>Currency</th>
+                                <th>Actual Amount</th>
+                                <th>Exchange Rate</th>
+                                <th>Converted Amount</th>
+                                <th>Total Amount</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Order Id</th>
+                                <th>Campaign Title</th>
+                                <th>Operating Unit Title</th>
+
+                                <th>Marketing Source</th>
+                                <th>Advertisement</th>
+                                <th>Country</th>
+                                <th>Bank Transaction Id</th>
+                                <th>Bank Transaction Status</th>
+                                <th>Bank Description</th>
+                                <th>Bank Response Code</th>
+
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="data : ${dataList}">
+                                <td th:text="${data.getId()}"></td>
+                                <td th:text="${#dates.format(new java.util.Date(data.getCreatedDate()), 'dd-MM-yyyy HH:mm:ss')}"></td>
+                                <td th:text="${data.name}"></td>
+                                <td th:text="${data.getType()}"></td>
+                                <td th:text="${data.successIndicator}"></td>
+                                <td th:text="${data.bankName}"></td>
+                                <td th:text="${data.isoCurrencyCode}"></td>
+                                <td th:text="${data.actualAmount != null ? (data.actualAmount == 0 ? '0' : (data.actualAmount < 1 ? #numbers.formatDecimal(data.actualAmount, 2, 2) : (data.actualAmount < 10 ? '0' + #numbers.formatDecimal(data.actualAmount, 0, 0) : #numbers.formatDecimal(data.actualAmount, 0, 0)))) : 'N/A'}"></td>
+                                <!--                            <td th:text="${data.actualAmount != null ? #numbers.formatDecimal(data.actualAmount, 2, 0) : 'N/A'}"></td>-->
+                                <td th:text="${data.exchangeRate != null ? #numbers.formatDecimal(data.exchangeRate, 2, 2) : 'N/A'}"></td>
+                                <td th:text="${data.convertedAmount != null && (data.bankName.toLowerCase() != 'stripesdk' || data.bankName.toLowerCase() != 'paypal') ? #numbers.formatDecimal(data.convertedAmount, 2, 2) : 'N/A'}"></td>
+                                <!--                                <td th:text="${data.withTaxAmount}"></td>-->
+                                <td th:text="${data.withTaxAmount != null ? #numbers.formatDecimal(data.withTaxAmount, 2, 0) : 'N/A'}"></td>
+                                <td th:text="${data.contact}"></td>
+                                <td th:text="${data.email}"></td>
+                                <td th:text="${data.orderId}"></td>
+                                <td th:text="${data.campaignTitle}"></td>
+                                <td th:text="${data.operatingUnitTitle}"></td>
+
+
+                                <td th:text="${data.marketingSource}"></td>
+                                <td th:text="${data.advertisement}"></td>
+                                <td th:text="${data.countryCode}"></td>
+                                <td th:text="${data.bankTransactionId}"></td>
+                                <td th:text="${data.bankTransactionStatus}"></td>
+                                <td th:text="${data.bankDescription}"></td>
+                                <td th:text="${data.bankResponseCode}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:replace="common/ajaxPaging::ajaxPaging"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End PAge Content -->
+</div>

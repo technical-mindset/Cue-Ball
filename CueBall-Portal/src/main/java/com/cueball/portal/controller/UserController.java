@@ -1,0 +1,64 @@
+package com.cueball.portal.controller;
+
+
+import com.cueball.portal.dto.UserDTO;
+import com.cueball.portal.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+
+@RestController
+@RequestMapping(value = "/users")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN')")
+public class UserController {
+
+
+    @Autowired
+    UserService service;
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserDTO create(@RequestBody UserDTO dto) {
+        return service.save(dto);
+    }
+
+
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public UserDTO getById(@PathVariable("id")int id){
+        return service.findById(id);
+    }
+
+
+    @Transactional
+    @GetMapping(value = "/addUpdate")
+    public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
+        return service.getView(id, redirectAttributes);
+    }
+
+    @Transactional
+    @PostMapping(value = "/addUpdate")
+    public ModelAndView addUpdate(
+            @ModelAttribute("dto") @Valid UserDTO userDTO,
+            BindingResult result,
+            RedirectAttributes redirectAttributes
+    ) {
+        return service.addUpdate(userDTO, result ,redirectAttributes);
+    }
+
+    @GetMapping(value = "/viewAll")
+    public ModelAndView findAllView(
+            @RequestParam(value = "ps",required = false ) Integer pageSize,
+            @RequestParam(value = "pn",required = false ) Integer pageNumber,
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax
+    ) {
+        return service.findFindAllView(pageSize,pageNumber,ajax);
+    }
+}

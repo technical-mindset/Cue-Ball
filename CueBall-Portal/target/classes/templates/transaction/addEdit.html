@@ -1,0 +1,140 @@
+<div xmlns:th="" th:replace="layout/layout::layout(~{::section})">
+
+
+    <section class="addPage__section">
+        <div id="main-wrapper">
+            <!-- Page wrapper  -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <div class="row page-titles">
+                        <div class="col-md-5 align-self-center">
+                            <h4 class="text-themecolor">Add more</h4>
+                        </div>
+                        <div class="col-md-7 align-self-center text-end">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <ol class="breadcrumb justify-content-end">
+                                    <li class="breadcrumb-item"><a th:href="@{/dashboard}">Home</a></li>
+                                    <li class="breadcrumb-item"><a th:href="@{/transaction/viewAll}">List</a></li>
+                                    <li class="breadcrumb-item active" >Add more</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bread crumb and right sidebar toggle -->
+                    <!-- Start Page Content -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Book Form</h4>
+                                    <form class="form-horizontal row"  th:object="${dto}" method="post" th:action="@{/book/addUpdate}">
+
+                                        <input  th:field="*{id}" type="hidden">
+
+                                        <div class="form-group col-6">
+                                            <label class="control-label required-field" for="title">Title</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="title" placeholder="Enter Title"  th:field="*{title}" />
+                                                <div th:each="err : ${#fields.errors('title')}"
+                                                     th:text="${err}" class="error text-danger"/>
+                                            </div>
+                                        </div>
+
+                                        <!--    This is for load of language-->
+                                        <div class="col-6">
+                                            <div th:replace="common/language::language"></div>
+                                        </div>
+
+
+                                        <!--    This is for load of events-->
+                                        <div class="col-6">
+                                            <div th:replace="common/events::events"></div>
+                                        </div>
+
+                                        <!-- readUrl-->
+                                        <div class="form-group col-6">
+                                            <label class="control-label">Read Url</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="readUrl" placeholder="Enter Read Url" th:field="*{readUrl}"/>
+<!--                                                <div th:each="err : ${#fields.errors('readUrl')}" th:text="${err}" class="error text-danger"/>-->
+                                            </div>
+                                        </div>
+
+                                        <!-- downloadUrl-->
+                                        <div class="form-group col-6">
+                                            <label class="control-label required-field">Download Url</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="downloadUrl"
+                                                       placeholder="Enter Download Url" th:field="*{downloadUrl}"/>
+                                                <div th:each="err : ${#fields.errors('downloadUrl')}"
+                                                     th:text="${err}" class="error text-danger"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- targetUrl-->
+                                        <div class="form-group col-6">
+                                            <label class="control-label required-field">Target Url</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="targetUrl"
+                                                       placeholder="Enter Target Url" th:field="*{targetUrl}"/>
+                                                <div th:each="err : ${#fields.errors('targetUrl')}"
+                                                     th:text="${err}" class="error text-danger"/>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- imagePath-->
+                                        <div class="form-group col-6">
+                                            <label class="control-label required-field">Image Path</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="imagePath"
+                                                       placeholder="Enter Image Path" th:field="*{imagePath}"/>
+                                                <div th:each="err : ${#fields.errors('imagePath')}"
+                                                     th:text="${err}" class="error text-danger"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- Image Alt-->
+                                        <div class="form-group col-6">
+                                            <label class="control-label required-field">Image Alt</label>
+                                            <div class="col-12">
+                                                <input type="text" class="form-control" id="imageAlt"
+                                                       placeholder="Enter Image Alt" th:field="*{imageAlt}"/>
+                                                <div th:each="err : ${#fields.errors('imageAlt')}"
+                                                     th:text="${err}" class="error text-danger"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <div class="col-2">
+                                                <label>Enable</label>
+                                                <div class="form-check form-switch px-0">
+                                                    <input type="checkbox" class="js-switch" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked/>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <input type="hidden" class="form-control" th:field="*{createdDate}"/>
+                                        <!--<input type="hidden"  class="form-control" name="createdBy" value="1" />-->
+                                       <!-- <input type="hidden"  class="form-control" name="modifiedBy" value="1" />-->
+                                        <div class="form-group">
+                                            <div >
+                                                <button class="btn btn-primary text-white" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End PAge Content -->
+                </div>
+            </div>
+            <!-- Page wrapper  -->
+        </div>
+    </section>
+</div>
