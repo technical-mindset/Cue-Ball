@@ -21,10 +21,6 @@ public class Inventory extends BaseEntity {
     @Column(name = "variant_id")
     private Integer variantId;
 
-    @ManyToOne
-    @JoinColumn(name = "variant_id", insertable = false, updatable = false)
-    private Variant variant;
-
     private int quantity;
 
     private double price;

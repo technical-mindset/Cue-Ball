@@ -20,8 +20,8 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
         StringBuilder where = new StringBuilder(" WHERE ");
         StringBuilder beforeWhere = new StringBuilder();
 
-        /**  Adding joins on Variant */
-        beforeWhere.append(" JOIN inventory.variant AS v ");
+//        /**  Adding joins on Variant */
+//        beforeWhere.append(" JOIN inventory.variant AS v ");
 
         if(search != null && !search.equals("NaN")) {
             where.append(" (inventory.name like :search OR inventoryCategory.name LIKE :search) AND ");
@@ -30,26 +30,26 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
 
         if(enable != null){
             if(enable == 1) {
-                where.append(" inventory.enable = :enable AND ");
+                where.append(" enable = :enable AND ");
                 parameters.put("enable", true);
 
             } else if (enable == 2){
-                where.append(" inventory.enable = :enable AND ");
+                where.append(" enable = :enable AND ");
                 parameters.put("enable", false);
             }
         }
 
         if (variantId != null && variantId > 0) {
-            where.append(" v.id = :variantId AND ");
-            parameters.put("variantId", variantId);
+            where.append(" variantId = :variantid AND ");
+            parameters.put("variantid", variantId);
         }
 
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY inventory.id, inventory.name ");
+        where.append(" GROUP BY id, name ");
 
-        return getMaxResults(beforeWhere.toString() + where + " ORDER BY inventory.id DESC ", parameters,pageNumber,pageSize,count);
+        return getMaxResults(beforeWhere.toString() + where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }
 }
 

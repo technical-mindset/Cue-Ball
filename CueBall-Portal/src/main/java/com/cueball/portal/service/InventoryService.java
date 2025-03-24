@@ -48,6 +48,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         Variant variant = this.variantRepository.findById(dto.getVariantId()).get();
         dto.setVariantName(variant.getName());
 
+
         dto.setCreatedDate(entity.getCreatedDate().getTime());
         dto.setModifyDate(entity.getModifyDate().getTime());
         return dto;
@@ -61,6 +62,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         InventoryCategory inventoryCategory = this.categoryRepository.findById(dto.getInventoryCategoryId()).get();
         entity.setInventoryCategory(inventoryCategory);
+
 
         if (dto.getId() > 0) {
             entity.setModifyDate(new Date ( System.currentTimeMillis()));
