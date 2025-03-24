@@ -109,7 +109,7 @@
 					<requiresUnpack>
 						<dependency>
                             <groupId>com.cueballdb</groupId>
-                            <artifactId>CentralDonationDB</artifactId>
+                            <artifactId>CueBallDB</artifactId>
 						</dependency>
 					</requiresUnpack>
                 </configuration>
