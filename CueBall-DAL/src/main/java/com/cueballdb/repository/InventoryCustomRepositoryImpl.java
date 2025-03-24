@@ -19,8 +19,8 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
         Map<String, Object> parameters = new HashMap<String, Object>();
         StringBuilder where = new StringBuilder(" WHERE ");
         StringBuilder beforeWhere = new StringBuilder();
-//
-//        /**  Adding joins on Variant */
+
+        /**  Adding joins on Variant */
         beforeWhere.append(" JOIN inventory.variant AS v ");
 
         if(search != null && !search.equals("NaN")) {
