@@ -7,5 +7,5 @@ import com.cueballdb.model.InventoryCategory;
 import java.util.List;
 
 public interface InventoryCustomRepository {
-    List<Inventory> findAllByFilters(String search, Integer enable, Integer pageNumber, Integer pageSize, long[] count);
+    List<Inventory> findAllByFilters(String search, Integer enable, Integer variantId, Integer pageNumber, Integer pageSize, long[] count);
 }

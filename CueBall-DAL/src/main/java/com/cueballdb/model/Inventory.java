@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Setter
 @Getter
@@ -21,7 +18,12 @@ public class Inventory extends BaseEntity {
 
     private String name;
 
-    private String variant;
+    @Column(name = "variant_id")
+    private Integer variantId;
+
+    @ManyToOne
+    @JoinColumn(name = "variant_id", insertable = false, updatable = false)
+    private Variant variant;
 
     private int quantity;
 

@@ -88,6 +88,7 @@
             var bank = $('#bank').length ? parseInt($('#bank').find(":selected").val()) : null;
             var successIndicator = $('#successIndicator').length ? parseInt($('#successIndicator').find(":selected").val()) : 0;
             var advertisement = $('#advertisement').length ? parseInt($('#advertisement').find(":selected").val()) : null;
+            var genericObject = $('#variant').length ? parseInt($('#variant').find(":selected").val()) : null;
             var isEnable = parseInt($('#isEnable').find(":selected").val()) || 0;
 
             var serializedData = {
@@ -98,6 +99,7 @@
                 bank: bank,
                 successIndicator: successIndicator,
                 advertisement: advertisement,
+                variant: genericObject,
                 search: search,
                 enable: isEnable,
             };

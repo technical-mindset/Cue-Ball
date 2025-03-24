@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 
@@ -27,6 +28,9 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
     @Autowired
     private InventoryCategoryRepository categoryRepository;
 
+    @Autowired
+    private VariantRepository variantRepository;
+
     public InventoryService(InventoryRepository repository) {
         super(repository);
     }
@@ -36,11 +40,13 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         InventoryDTO dto = new InventoryDTO();
         BeanUtils.copyProperties(entity, dto);
 
-
         /** Due to Mapping, Inventory-Category Id set into dto from entity's Inventory-Category's object  */
         dto.setInventoryCategoryId(entity.getInventoryCategory().getId());
-
         dto.setInventoryCategoryName(entity.getInventoryCategory().getName());
+
+        /** Retrieving Variant's name  */
+        Variant variant = this.variantRepository.findById(dto.getVariantId()).get();
+        dto.setVariantName(variant.getName());
 
         dto.setCreatedDate(entity.getCreatedDate().getTime());
         dto.setModifyDate(entity.getModifyDate().getTime());
@@ -67,8 +73,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
     }
 
 
-
-    public ModelAndView findFindAllView(String search ,Integer enable,Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView findFindAllView(String search ,Integer enable, Integer variantId, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_VIEW_ALL);
 
         if(pageSize == null || pageSize <= 0 ) {
@@ -79,18 +84,26 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         }
 
         long []count = {0};
-        List<Inventory> lists = repository.findAllByFilters(search, enable,(pageNumber-1)*pageSize, pageSize, count);
+        List<Inventory> lists = repository.findAllByFilters(search, enable, variantId, (pageNumber-1)*pageSize, pageSize, count);
         List<InventoryDTO> DTOs = lists
                 .stream()
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
+        List<Variant> variants = this.variantRepository.findAllByEnableTrue();
+
+
         if (ajax) {
             mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_VIEW_ALL_DETAIL);
         }
 
+        /**  Passing Obj and ObjectName for generic filters population while searching  */
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
         mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
+        mav.addObject(Constants.GENERIC_OBJ1,"variant");
+        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
+        mav.addObject(Constants.EXTRA_FILTERS,true);
+        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
@@ -105,8 +118,10 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrue();
 
+        List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
-        mav.addObject("variants", variants());
+
+        mav.addObject("variants", variantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
@@ -132,8 +147,9 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrue();
 
+        List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
-        mav.addObject("variants", variants());
+        mav.addObject("variants", variantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
@@ -153,12 +169,6 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         mav = new ModelAndView("redirect:/inventory/viewAll");
         return mav;
-    }
-
-
-    private List variants(){
-        return List.of("500ml", "150ml", "100ml", "Small", "Half-Roll", "Medium", "Large");
-
     }
 }
 

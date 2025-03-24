@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d62b26fc-87d7-439a-912d-4a6712a46d03" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/model/Variant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/VariantCustomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/VariantCustomRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/VariantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/controller/VariantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/dto/VariantDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/service/VariantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common/GenericAllFilters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/variant/addEdit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/variant/viewAll.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/variant/viewAllDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/model/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/model/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/InventoryCustomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/InventoryCustomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/InventoryCustomRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository/InventoryCustomRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/CueBallDB-exec.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/CueBallDB-exec.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/CueBallDB.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/CueBallDB.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/model/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/model/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/model/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/model/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/repository/InventoryCustomRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/repository/InventoryCustomRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/repository/InventoryCustomRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/classes/com/cueballdb/repository/InventoryCustomRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-DAL/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-DAL/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/dto/InventoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/dto/InventoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/java/com/cueball/portal/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common/ajaxPaging.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common/ajaxPaging.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common/viewAllFilters.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common/viewAllFilters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/inventory/addEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/inventory/addEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/inventory/viewAllDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/inventory/viewAllDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/layout/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/layout/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal.war.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/controller/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/controller/Dashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/service/BaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/service/BaseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/utils/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/com/cueball/portal/utils/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/dashboard/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/meta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/layout/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/users/addEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/classes/templates/users/addEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/lib/CueBallDB-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/CueBallPortal/WEB-INF/lib/CueBallDB-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/application-asad.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/controller/InventoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/controller/InventoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/dto/InventoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/dto/InventoryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/service/InventoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/service/InventoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/utils/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/com/cueball/portal/utils/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/common/ajaxPaging.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/common/ajaxPaging.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/common/viewAllFilters.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/common/viewAllFilters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/inventory/addEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/inventory/addEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/inventory/viewAllDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/inventory/viewAllDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/layout/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/classes/templates/layout/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CueBall-Portal/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../CueBall-Portal/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2uNg84OVbtIBLnAEjH39Nc066UT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CueBallPortal.executor": "Run",
+    "Maven.CueBallDB [CueBallDB,clean,install].executor": "Run",
+    "Maven.CueBallDB [CueBallDB,install:install].executor": "Run",
+    "Maven.CueBallDB [clean].executor": "Run",
+    "Maven.CueBallDB [install].executor": "Run",
+    "Maven.CueBallPortal [clean].executor": "Run",
+    "Maven.CueBallPortal [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/asadz/Desktop/Current Directory/Projects/Spring Boot/Cue-Ball/CueBall-DAL",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "promo.javascript"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/common" />
+      <recent name="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/inventory_category" />
+      <recent name="$PROJECT_DIR$/../../CueBall-DAL/src/main/java/com/cueballdb/repository" />
+      <recent name="$PROJECT_DIR$/../../CueBall-Portal/src/main/resources/templates/room" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cueball.portal.controller" />
+      <recent name="com.cueball.portal.service" />
+      <recent name="com.cueball.portal.dto" />
+      <recent name="com.cueballdb.repository" />
+      <recent name="com.cueballdb.model" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn CueBallDB clean install" />
+      <command value="mvn CueBallDB install:install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="CueBallPortal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cueball.portal.CueBallPortal" />
+      <module name="CueBallPortal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cueball.portal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CueBallPortal" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CueBallPortal" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CueBallPortal" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d62b26fc-87d7-439a-912d-4a6712a46d03" name="Changes" comment="" />
+      <created>1742094282620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742094282620</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="executable:az" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

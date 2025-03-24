@@ -24,13 +24,13 @@
 
                 <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="col-lg-4 col-md-4 col-4 text-center ">
                     <div class="card dashboard_card_custom">
-                        <a th:href="@{/legalentity/viewAll}">
+                        <a th:href="@{/room/viewAll}">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->
                                     <div class="col p-r-0">
-                                        <h2 class="m-0"> Legal Entity </h2>
-                                        <h2 class="m-0" th:text="${legalEntityCount}"></h2>
+                                        <h2 class="m-0"> Rooms </h2>
+                                        <h2 class="m-0" th:text="${roomCount}"></h2>
                                     </div>
                                 </div>
                             </div>
@@ -40,46 +40,13 @@
 
                 <div class="col-lg-4 col-md-4 col-4 text-center ">
                     <div class="card dashboard_card_custom">
-                        <a th:href="@{/operatingunit/viewAll}">
+                        <a th:href="@{/inventory/viewAll}">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->
                                     <div class="col p-r-0">
-                                        <h2 class="m-0"> Operating Unit </h2>
-                                        <h2 class="m-0" th:text="${operatingUnitCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/campaign/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Campaign </h2>
-                                        <h2 class="m-0" th:text="${campaignCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/currency/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Currency </h2>
-                                        <h2 class="m-0" th:text="${currencyCount}"></h2>
+                                        <h2 class="m-0"> Inventory </h2>
+                                        <h2 class="m-0" th:text="${inventoryCount}"></h2>
                                     </div>
                                 </div>
                             </div>
@@ -90,37 +57,70 @@
 
                 <div class="col-lg-4 col-md-4 col-4 text-center ">
                     <div class="card dashboard_card_custom">
-                        <a th:href="@{/bank/viewAll}">
+                        <a th:href="@{/game/viewAll}">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->
                                     <div class="col p-r-0">
-                                        <h2 class="m-0"> Bank </h2>
-                                        <h2 class="m-0" th:text="${bankCount}"></h2>
+                                        <h2 class="m-0"> Games </h2>
+                                        <h2 class="m-0" th:text="${gameCount}"></h2>
                                     </div>
                                 </div>
                             </div>
-
                         </a>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/transaction/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Transaction </h2>
-                                        <h2 class="m-0" th:text="${transactionCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
+<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
+<!--                    <div class="card dashboard_card_custom">-->
+<!--                        <a th:href="@{/currency/viewAll}">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="row p-t-10 p-b-10">-->
+<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
+<!--                                    <div class="col p-r-0">-->
+<!--                                        <h2 class="m-0"> Currency </h2>-->
+<!--                                        <h2 class="m-0" th:text="${currencyCount}"></h2>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
-                        </a>
-                    </div>
-                </div>
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
+<!--                    <div class="card dashboard_card_custom">-->
+<!--                        <a th:href="@{/bank/viewAll}">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="row p-t-10 p-b-10">-->
+<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
+<!--                                    <div class="col p-r-0">-->
+<!--                                        <h2 class="m-0"> Bank </h2>-->
+<!--                                        <h2 class="m-0" th:text="${bankCount}"></h2>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
+<!--                    <div class="card dashboard_card_custom">-->
+<!--                        <a th:href="@{/transaction/viewAll}">-->
+<!--                            <div class="card-body">-->
+<!--                                <div class="row p-t-10 p-b-10">-->
+<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
+<!--                                    <div class="col p-r-0">-->
+<!--                                        <h2 class="m-0"> Transaction </h2>-->
+<!--                                        <h2 class="m-0" th:text="${transactionCount}"></h2>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!-- Column -->
             </div>
             <!-- PAge Content -->

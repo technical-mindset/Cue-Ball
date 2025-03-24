@@ -53,6 +53,15 @@ public interface Constants {
     String RA_BASE_SERVICE_TAG = RA_BASE_URL;
 
     /**
+     * For Extra Filters Slice
+     */
+    String EXTRA_FILTERS = "extraFilters";
+    String GENERIC_FILTER_LIST = "objectList";
+    String GENERIC_OBJECT_NAME1 = "objectName";
+    String GENERIC_OBJ1 = "obj";
+
+
+    /**
      * For Language
      */
     String LANGUAGE_SERVICE = "/do/language/all";
@@ -142,6 +151,13 @@ public interface Constants {
     String RA_PAGE_INVENTORY_CATEGORY_ADD_EDIT = "inventory_category/addEdit";
     String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL = "inventory_category/viewAll";
     String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL_DETAIL = "inventory_category/viewAllDetail";
+
+    /**
+      Variant URLs
+     */
+    String RA_PAGE_VARIANT_ADD_EDIT = "variant/addEdit";
+    String RA_PAGE_VARIANT_VIEW_ALL = "variant/viewAll";
+    String RA_PAGE_VARIANT_VIEW_ALL_DETAIL = "variant/viewAllDetail";
 
     /**
      Game URLs

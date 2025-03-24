@@ -17,84 +17,112 @@
                     </li>
 
                     <!--       Legal Entity Portion     -->
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="ti-package"></i>
-                            <span class="hide-menu">Legal Entity</span>
-                        </a>
+<!--                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'active' : ''">-->
+<!--                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">-->
+<!--                            <i class="ti-package"></i>-->
+<!--                            <span class="hide-menu">Legal Entity</span>-->
+<!--                        </a>-->
 
-                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'in' : ''">
-                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
-                                   th:href="@{/legalentity/addUpdate}">Add</a></li>
-                            <li><a th:href="@{/legalentity/viewAll}">View</a></li>
-                        </ul>
-                    </li>
+<!--                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true} ? 'in' : ''">-->
+<!--                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'legalentity') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"-->
+<!--                                   th:href="@{/legalentity/addUpdate}">Add</a></li>-->
+<!--                            <li><a th:href="@{/legalentity/viewAll}">View</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
 
-                    <!--       Operating Unit Portion     -->
-                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'operatingunit') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'operatingunit') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="ti-layers"></i>
-                            <span class="hide-menu">Operating Unit</span>
-                        </a>
-
-                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'operatingunit') == true} ? 'in' : ''">
-                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'operatingunit') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
-                                   th:href="@{/operatingunit/addUpdate}">Add</a></li>
-                            <li><a th:href="@{/operatingunit/viewAll}">View</a></li>
-                        </ul>
-                    </li>
-
-                    <!--       Campaigns Portion     -->
-                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'campaign') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'campaign') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                    <!--       Game Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="ti-announcement"></i>
-                            <span class="hide-menu">Campaign</span>
+                            <span class="hide-menu">Games</span>
                         </a>
 
-                        <ul aria-expanded="false" class="collapse"  th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'campaign') == true} ? 'in' : ''">
-                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'campaign') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
-                                   th:href="@{/campaign/addUpdate}">Add</a></li>
-                            <li><a th:href="@{/campaign/viewAll}">View</a></li>
+                        <ul aria-expanded="false" class="collapse"  th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'in' : ''">
+                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'game') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/game/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/game/viewAll}">View</a></li>
+                        </ul>
+                    </li>
+
+                    <!--       Room Category Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="ti-layers"></i>
+                            <span class="hide-menu">Room Category</span>
+                        </a>
+
+                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'in' : ''">
+                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/roomCategory/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/roomCategory/viewAll}">View</a></li>
+                        </ul>
+                    </li>
+
+                    <!--       Room Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'room') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'room') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="ti-layers"></i>
+                            <span class="hide-menu">Room</span>
+                        </a>
+
+                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'room') == true} ? 'in' : ''">
+                            <li><a th:class="${#strings.contains(#httpServletRequest.requestURI, 'room') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/room/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/room/viewAll}">View</a></li>
                         </ul>
                     </li>
 
                     <!--       Transactions Portion     -->
-                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="ti-receipt"></i>
-                            <span class="hide-menu">Transaction</span>
+<!--                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'active' : ''">-->
+<!--                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">-->
+<!--                            <i class="ti-receipt"></i>-->
+<!--                            <span class="hide-menu">Transaction</span>-->
+<!--                        </a>-->
+<!--                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'in' : ''">-->
+<!--                            <li><a th:href="@{/transaction/viewAll}">View</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!--                           Inventory Category Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="ti-money"></i>
+                            <span class="hide-menu">Inventory Category</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'transaction') == true} ? 'in' : ''">
-                            <li><a th:href="@{/transaction/viewAll}">View</a></li>
+                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'in' : ''">
+                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/inventoryCategory/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/inventoryCategory/viewAll}">View</a></li>
                         </ul>
                     </li>
 
-                    <!--       Currency Portion     -->
-                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'currency') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'currency') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+
+                    <!--                           Inventory Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'inventory') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventory') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="ti-money"></i>
-                            <span class="hide-menu">Currency</span>
+                            <span class="hide-menu">Inventory</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'currency') == true} ? 'in' : ''">
-                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'currency') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
-                                   th:href="@{/currency/addUpdate}">Add</a></li>
-                            <li><a th:href="@{/currency/viewAll}">View</a></li>
+                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventory') == true} ? 'in' : ''">
+                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'inventory') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/inventory/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/inventory/viewAll}">View</a></li>
                         </ul>
                     </li>
 
                     <!--       Bank Portion     -->
-                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="ti-home"></i>
-                            <span class="hide-menu">Bank</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'in' : ''">
+<!--                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''">-->
+<!--                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">-->
+<!--                            <i class="ti-home"></i>-->
+<!--                            <span class="hide-menu">Bank</span>-->
+<!--                        </a>-->
+<!--                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'in' : ''">-->
 
-                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
-                                   th:href="@{/bank/addUpdate}">Add</a></li>
-                            <li><a th:href="@{/bank/viewAll}">View</a></li>
-                        </ul>
-                    </li>
+<!--                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"-->
+<!--                                   th:href="@{/bank/addUpdate}">Add</a></li>-->
+<!--                            <li><a th:href="@{/bank/viewAll}">View</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
 
                     <!--       Localization Portion     -->
 <!--                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'localization') == true} ? 'active' : ''">-->

@@ -78,11 +78,11 @@
                                         <div class="form-group col-6">
                                             <label  class="control-label col-sm-4 required-field" >Variant</label>
                                             <div class="col-12">
-                                                <select  class="form-control"  th:field="*{variant}">
-                                                    <option th:value="0" th:selected="${variant == null}">Choose...</option>
-                                                    <option th:each="v : ${variants}" th:value="${v}" th:text="${v}"></option>
+                                                <select  class="form-control"  th:field="*{variantId}">
+                                                    <option th:value="0" th:selected="${variantId == null}">Choose...</option>
+                                                    <option th:each="variant : ${variants}" th:value="${variant.id}" th:text="${variant.name}"></option>
                                                 </select>
-                                                <div th:each="err : ${#fields.errors('variant')}" th:text="${err}" class="error text-danger"/>
+                                                <div th:each="err : ${#fields.errors('variantId')}" th:text="${err}" class="error text-danger"/>
                                             </div>
                                         </div>
 

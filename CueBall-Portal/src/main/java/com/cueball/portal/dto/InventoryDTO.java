@@ -18,7 +18,9 @@ public class InventoryDTO extends BaseDTO {
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String name;
 
-    private String variant;
+    private String variantName;
+
+    private Integer variantId;
 
     private int quantity;
 

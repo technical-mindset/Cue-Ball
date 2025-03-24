@@ -110,19 +110,19 @@
                         </ul>
                     </li>
 
-                    <!--       Bank Portion     -->
-<!--                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''">-->
-<!--                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">-->
-<!--                            <i class="ti-home"></i>-->
-<!--                            <span class="hide-menu">Bank</span>-->
-<!--                        </a>-->
-<!--                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true} ? 'in' : ''">-->
+                    <!--       Variant Portion     -->
+                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'active' : ''" class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="ti-home"></i>
+                            <span class="hide-menu">Variant</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'in' : ''">
 
-<!--                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'bank') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"-->
-<!--                                   th:href="@{/bank/addUpdate}">Add</a></li>-->
-<!--                            <li><a th:href="@{/bank/viewAll}">View</a></li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
+                            <li><a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:class="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true && (param.id != null && param.id != '' && param.id != undefined) } ? 'active' : ''"
+                                   th:href="@{/variant/addUpdate}">Add</a></li>
+                            <li><a th:href="@{/variant/viewAll}">View</a></li>
+                        </ul>
+                    </li>
 
                     <!--       Localization Portion     -->
 <!--                    <li th:class="${#strings.contains(#httpServletRequest.requestURI, 'localization') == true} ? 'active' : ''">-->

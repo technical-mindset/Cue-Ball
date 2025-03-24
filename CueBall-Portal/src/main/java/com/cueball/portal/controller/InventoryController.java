@@ -2,9 +2,7 @@
 package com.cueball.portal.controller;
 
 
-import com.cueball.portal.dto.InventoryCategoryDTO;
 import com.cueball.portal.dto.InventoryDTO;
-import com.cueball.portal.service.InventoryCategoryService;
 import com.cueball.portal.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -52,10 +50,11 @@ public class InventoryController {
     public ModelAndView findAllView(
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
+            @RequestParam(value = "variant",required = false, defaultValue = "0") Integer variantId,
             @RequestParam(value = "ps",required = false ) Integer pageSize,
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
-        return service.findFindAllView(search,enable,pageSize,pageNumber,ajax);
+        return service.findFindAllView(search, enable, variantId, pageSize, pageNumber, ajax);
     }
 
 }

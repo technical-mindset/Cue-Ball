@@ -2,9 +2,10 @@
     <!--Getting language for filter-->
     <div class="form-group row">
         <!--    This is for load of language-->
-<!--        <div class="col-4">-->
-<!--            <div th:replace="common/ListLanguageFilter::ListLanguageFilter"></div>-->
-<!--        </div>-->
+        <div th:if="${extraFilters}" class="col-4">
+            <div th:replace="common/GenericAllFilters::GenericAllFilters"></div>
+        </div>
+
         <div class="col-4">
             <label for="example-month-input2" class="col-12 col-form-label">Select Enable</label>
             <select class="form-select col-12" id="example-month-input2" th:id="isEnable" th:for="isEnable" th:onchange="|page(${pageNumber},${pageSize})|">
@@ -14,7 +15,7 @@
             </select>
         </div>
         <div class="col-4">
-            <label for="example-month-input2" class="col-12 col-form-label" >Select Search</label>
+            <label for="example-month-input2" class="col-12 col-form-label" > Search Here</label>
             <input type="text" class="form-control" th:id="search" placeholder="Enter Search" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|"  />
         </div>
 
