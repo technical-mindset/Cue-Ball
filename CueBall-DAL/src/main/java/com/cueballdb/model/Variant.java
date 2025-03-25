@@ -21,7 +21,7 @@ public class Variant extends BaseEntity {
 
     private String name;
 
-    @Column(name = "delete")
+    @Column(name = "deleted")
     private boolean delete;
 
 }
