@@ -15,11 +15,11 @@ public abstract class BaseDTO {
 
     private int createdBy;
 
-    private int modifiedBy;
+    private int modifyBy;
 
 
-    private long createdDate;
+    private long createdAt;
 
 
-    private long modifyDate;
+    private long modifiedAt;
 }

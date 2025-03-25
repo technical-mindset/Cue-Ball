@@ -17,17 +17,17 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "created_by")
     private int createdBy;
 
-    @Column(name = "modified_by")
-    private int modifiedBy;
+    @Column(name = "modify_by")
+    private int modifyBy;
 
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
-    private Date createdDate;
+    private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_at")
-    private Date modifyDate;
+    private Date modifiedAt;
 
     @Column(name = "enable")
     private boolean enable;

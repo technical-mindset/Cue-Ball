@@ -13,9 +13,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public MyUserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
+    public MyUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         User user = userRepository.findByUsername(username);
+
+
+        System.out.println(":::::::::::::::::::::: " + user.getCreatedBy());
+        System.out.println(":::::::::::::::::::::: " + user.getCreatedBy());
+        System.out.println(":::::::::::::::::::::: " + user.getCreatedBy());
+        System.out.println(":::::::::::::::::::::: " + user.getCreatedBy());
+        System.out.println(":::::::::::::::::::::: " + user.getCreatedBy());
+
+
+        System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+        System.out.println(":::::::::::::::::::::: " + user.getModifyBy());
+
 
         if (user == null) {
             throw new UsernameNotFoundException("Could not find user");

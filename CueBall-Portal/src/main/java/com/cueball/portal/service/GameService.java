@@ -2,12 +2,9 @@ package com.cueball.portal.service;
 
 
 import com.cueball.portal.dto.GameDTO;
-import com.cueball.portal.dto.RoomCategoryDTO;
 import com.cueball.portal.utils.Constants;
 import com.cueballdb.model.Game;
-import com.cueballdb.model.RoomCategory;
 import com.cueballdb.repository.GameRepository;
-import com.cueballdb.repository.RoomCategoryRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -100,7 +97,7 @@ public class GameService extends BaseService<Game, GameDTO, GameRepository> {
         GameDTO dto = new GameDTO();
         BeanUtils.copyProperties(entity, dto);
 
-        dto.setCreatedDate(entity.getCreatedDate().getTime());
+        dto.setCreatedAt(entity.getCreatedAt().getTime());
         return dto;
     }
 
@@ -110,11 +107,11 @@ public class GameService extends BaseService<Game, GameDTO, GameRepository> {
         BeanUtils.copyProperties(dto, entity);
 
         if (dto.getId() > 0) {
-            entity.setModifyDate(new Date( System.currentTimeMillis()));
-            entity.setCreatedDate(new Date(dto.getCreatedDate()));
+            entity.setModifiedAt(new Date( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date(dto.getCreatedAt()));
         } else {
-            entity.setCreatedDate(new Date ( System.currentTimeMillis()));
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date ( System.currentTimeMillis()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
         }
         return entity;
     }

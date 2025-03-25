@@ -2,7 +2,6 @@ package com.cueball.portal.service;
 
 
 import com.cueball.portal.dto.InventoryDTO;
-import com.cueball.portal.dto.RoomDTO;
 import com.cueball.portal.utils.Constants;
 import com.cueballdb.model.*;
 import com.cueballdb.repository.*;
@@ -14,10 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 
@@ -49,8 +46,8 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         dto.setVariantName(variant.getName());
 
 
-        dto.setCreatedDate(entity.getCreatedDate().getTime());
-        dto.setModifyDate(entity.getModifyDate().getTime());
+        dto.setCreatedAt(entity.getCreatedAt().getTime());
+        dto.setModifiedAt(entity.getModifiedAt().getTime());
         return dto;
     }
 
@@ -65,11 +62,11 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
 
         if (dto.getId() > 0) {
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
-            entity.setCreatedDate(new Date (dto.getCreatedDate()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date (dto.getCreatedAt()));
         } else {
-            entity.setCreatedDate(new Date ( System.currentTimeMillis()));
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date ( System.currentTimeMillis()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
         }
         return entity;
     }

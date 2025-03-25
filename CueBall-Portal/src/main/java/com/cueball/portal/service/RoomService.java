@@ -1,7 +1,6 @@
 package com.cueball.portal.service;
 
 
-import com.cueball.portal.dto.OperatingUnitDTO;
 import com.cueball.portal.dto.RoomDTO;
 import com.cueball.portal.utils.Constants;
 import com.cueballdb.model.Game;
@@ -51,8 +50,8 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
 
         dto.setGameIds(games);
         dto.setRoomCategoryName(entity.getRoomCategory().getName());
-        dto.setCreatedDate(entity.getCreatedDate().getTime());
-        dto.setModifyDate(entity.getModifyDate().getTime());
+        dto.setCreatedAt(entity.getCreatedAt().getTime());
+        dto.setModifiedAt(entity.getModifiedAt().getTime());
         return dto;
     }
 
@@ -81,11 +80,11 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
         entity.setCharges(totalCharges);
 
         if (dto.getId() > 0) {
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
-            entity.setCreatedDate(new Date (dto.getCreatedDate()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date (dto.getCreatedAt()));
         } else {
-            entity.setCreatedDate(new Date ( System.currentTimeMillis()));
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date ( System.currentTimeMillis()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
         }
         return entity;
     }

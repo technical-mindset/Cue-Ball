@@ -97,7 +97,7 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
         RoomCategoryDTO dto = new RoomCategoryDTO();
         BeanUtils.copyProperties(entity, dto);
 
-        dto.setCreatedDate(entity.getCreatedDate().getTime());
+        dto.setCreatedAt(entity.getCreatedAt().getTime());
         return dto;
     }
 
@@ -107,11 +107,11 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
         BeanUtils.copyProperties(dto, entity);
 
         if (dto.getId() > 0) {
-            entity.setModifyDate(new Date( System.currentTimeMillis()));
-            entity.setCreatedDate(new Date(dto.getCreatedDate()));
+            entity.setModifiedAt(new Date( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date(dto.getCreatedAt()));
         } else {
-            entity.setCreatedDate(new Date ( System.currentTimeMillis()));
-            entity.setModifyDate(new Date ( System.currentTimeMillis()));
+            entity.setCreatedAt(new Date ( System.currentTimeMillis()));
+            entity.setModifiedAt(new Date ( System.currentTimeMillis()));
         }
         return entity;
     }

@@ -54,7 +54,7 @@ public abstract class BaseService<E, D extends BaseDTO, R extends JpaRepository<
         int userId =getUserId();
 
         dto.setCreatedBy (userId);
-        dto.setModifiedBy (userId);
+        dto.setModifyBy(userId);
 
 
         var e = mapDtoToEntity(dto);
