@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">-->
-<html th:with="buildVersion='v4'" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<html th:with="buildVersion='v4'" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
     <head th:replace='layout/meta::meta'>
         <style>
@@ -10,12 +9,33 @@
         </style>
 
     </head>
-    <body class="skin-green">
+    <body class="body" >
+        <div id="wrapper">
+            <div id="page" class="">
+                <div class="layout-wrap">
+                    <div id="preload" class="preload-container">
+                        <div class="preloading">
+                            <span></span>
+                        </div>
+                    </div>
+                    <section th:replace='~{layout/sidebar::#sideBarId}'></section>
+                    <div class="section-content-right">
+                        <header th:replace='~{layout/header::#navBarSec}'></header>
+                        <div class="main-content">
+                            <div class="main-content-inner">
+                                <div class="main-content-wrap">
+                                    <div th:replace="${content}"></div>
+                                </div>
+                            </div>
+                            <footer th:replace='~{layout/footer::#footerSec}'></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <header th:replace='~{layout/header::#navBarSec}'></header>
-        <section th:replace='~{layout/sidebar::#sideBarId}'></section>
-        <div th:replace="${content}"></div>
-        <footer th:replace='~{layout/footer::#footerSec}'></footer>
+
+
 
     </body>
 </html>

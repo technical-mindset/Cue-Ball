@@ -1,421 +1,823 @@
-<!------------------ Topbar header ------------------>
-<header class="topbar" id="navBarSec" xmlns:th="http://www.w3.org/1999/xhtml"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
-    <section class="topbar">
-        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-            <!-- Logo -->
-            <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/dashboard}">
-                    <!-- Logo icon -->
-                    <b>
-                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                        <!-- Dark Logo icon -->
-                        <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/images/logo-icon.png'" alt="homepage" class="dark-logo">
-                        <!-- Light Logo icon -->
-                        <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/images/cue_ball_50x50.png'" alt="homepage" class="light-logo">
-                    </b>
-                    <!--End Logo icon -->
-                    <span class="hidden-xs" style=""><span class="font-bold" style="">CueBall Admin</span>
-                    </span>
-                </a>
+<!-- header-dashboard -->
+<div class="header-dashboard" id="navBarSec" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div class="wrap">
+        <div class="header-left">
+            <a th:href="@{/dashboard}">
+                <img class="" id="logo_header_mobile" alt="" th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/logo/logo.png'" th:data-light="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/logo/logo.png'" th:data-dark="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/logo/logo-dark.png'" data-width="154px" data-height="52px" th:data-retina="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/logo/logo@2x.png'">
+            </a>
+            <div class="button-show-hide">
+                <i class="icon-menu-left"></i>
             </div>
-            <!-- Logo -->
-            <div class="navbar-collapse">
-                <!-- toggle and nav items -->
-                <ul class="navbar-nav me-auto">
-                    <!-- This is  -->
-                    <li class="nav-item">
-                        <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
-                           href="javascript:void(0)">
-                            <i class="ti-menu"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
-                           href="javascript:void(0)">
-                            <i class="icon-menu ti-menu"></i>
-                        </a>
-                    </li>
-                    <!-- Search -->
-                    <!-- <li class="nav-item">
-                        <form class="app-search d-none d-md-block d-lg-block">
-                            <input type="text" class="form-control" placeholder="Search & enter">
-                        </form>
-                    </li> -->
-                </ul>
-                <!-- User profile and search -->
-                <ul class="navbar-nav my-lg-0">
-                    <!-- Comment -->
-                    <!--                    <li class="nav-item dropdown">-->
-                    <!--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-bs-toggle="dropdown"-->
-                    <!--                           aria-haspopup="true" aria-expanded="false">-->
-                    <!--                            <i class="ti-email"></i>-->
-                    <!--                            <div class="notify">-->
-                    <!--                                <span class="heartbit"></span>-->
-                    <!--                                <span class="point"></span>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                        <div class="dropdown-menu dropdown-menu-end mailbox animated bounceInDown">-->
-                    <!--                            <ul>-->
-                    <!--                                <li>-->
-                    <!--                                    <div class="drop-title">Notifications</div>-->
-                    <!--                                </li>-->
-                    <!--                                <li>-->
-                    <!--                                    <div class="message-center ps ps&#45;&#45;theme_default"-->
-                    <!--                                         data-ps-id="41ce1b2a-78db-f170-730e-8d9ac04f05ee">-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="btn btn-danger btn-circle text-white">-->
-                    <!--                                                <i class="fa fa-link"></i>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Luanch Admin</h5>-->
-                    <!--                                                <span class="mail-desc">Just see the my new admin!</span>-->
-                    <!--                                                <span class="time">9:30 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="btn btn-success btn-circle text-white">-->
-                    <!--                                                <i class="ti-calendar"></i>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Event today</h5>-->
-                    <!--                                                <span class="mail-desc">Just a reminder that you have campaign</span>-->
-                    <!--                                                <span class="time">9:10 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="btn btn-info btn-circle text-white">-->
-                    <!--                                                <i class="ti-settings"></i>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Settings</h5>-->
-                    <!--                                                <span class="mail-desc">You can customize this template as you want-->
-                    <!--                                                </span>-->
-                    <!--                                                <span class="time">9:08 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="btn btn-primary btn-circle">-->
-                    <!--                                                <i class="ti-user"></i>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Pavan kumar</h5>-->
-                    <!--                                                <span class="mail-desc">Just see the my admin!</span>-->
-                    <!--                                                <span class="time">9:02 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">-->
-                    <!--                                            <div class="ps__scrollbar-x" tabindex="0"-->
-                    <!--                                                 style="left: 0px; width: 0px;"></div>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">-->
-                    <!--                                            <div class="ps__scrollbar-y" tabindex="0"-->
-                    <!--                                                 style="top: 0px; height: 0px;"></div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </li>-->
-                    <!--                                <li>-->
-                    <!--                                    <a class="nav-link text-center link" href="javascript:void(0);">-->
-                    <!--                                        <strong>Check all notifications</strong>-->
-                    <!--                                        <i class="fa fa-angle-right"></i>-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div>-->
-                    <!--                    </li>-->
-                    <!-- Comment -->
-                    <!-- Messages -->
-                    <!--                    <li class="nav-item dropdown">-->
-                    <!--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"-->
-                    <!--                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                    <!--                            <i class="icon-note"></i>-->
-                    <!--                            <div class="notify">-->
-                    <!--                                <span class="heartbit"></span>-->
-                    <!--                                <span class="point"></span>-->
-                    <!--                            </div>-->
-                    <!--                        </a>-->
-                    <!--                        <div class="dropdown-menu mailbox dropdown-menu-end animated bounceInDown" aria-labelledby="2">-->
-                    <!--                            <ul>-->
-                    <!--                                <li>-->
-                    <!--                                    <div class="drop-title">You have 4 new messages</div>-->
-                    <!--                                </li>-->
-                    <!--                                <li>-->
-                    <!--                                    <div class="message-center ps ps&#45;&#45;theme_default"-->
-                    <!--                                         data-ps-id="7456f8ef-b89c-fc85-51be-c284a0d8f9e3">-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="user-img">-->
-                    <!--                                                <img src="../assets/images/users/1.jpg" alt="user" class="img-circle">-->
-                    <!--                                                <span class="profile-status online pull-right"></span>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Pavan kumar</h5>-->
-                    <!--                                                <span class="mail-desc">Just see the my admin!</span>-->
-                    <!--                                                <span class="time">9:30 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="user-img">-->
-                    <!--                                                <img src="../assets/images/users/2.jpg" alt="user" class="img-circle">-->
-                    <!--                                                <span class="profile-status busy pull-right"></span>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Sonu Nigam</h5>-->
-                    <!--                                                <span class="mail-desc">I've sung a song! See you at</span>-->
-                    <!--                                                <span class="time">9:10 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="user-img">-->
-                    <!--                                                <img src="../assets/images/users/3.jpg" alt="user" class="img-circle">-->
-                    <!--                                                <span class="profile-status away pull-right"></span>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Arijit Sinh</h5>-->
-                    <!--                                                <span class="mail-desc">I am a singer!</span>-->
-                    <!--                                                <span class="time">9:08 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        &lt;!&ndash; Message &ndash;&gt;-->
-                    <!--                                        <a href="javascript:void(0)">-->
-                    <!--                                            <div class="user-img">-->
-                    <!--                                                <img src="../assets/images/users/4.jpg" alt="user" class="img-circle">-->
-                    <!--                                                <span class="profile-status offline pull-right"></span>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="mail-contnet">-->
-                    <!--                                                <h5>Pavan kumar</h5>-->
-                    <!--                                                <span class="mail-desc">Just see the my admin!</span>-->
-                    <!--                                                <span class="time">9:02 AM</span>-->
-                    <!--                                            </div>-->
-                    <!--                                        </a>-->
-                    <!--                                        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">-->
-                    <!--                                            <div class="ps__scrollbar-x" tabindex="0"-->
-                    <!--                                                 style="left: 0px; width: 0px;"></div>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">-->
-                    <!--                                            <div class="ps__scrollbar-y" tabindex="0"-->
-                    <!--                                                 style="top: 0px; height: 0px;"></div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </li>-->
-                    <!--                                <li>-->
-                    <!--                                    <a class="nav-link text-center link" href="javascript:void(0);">-->
-                    <!--                                        <strong>See all e-Mails</strong>-->
-                    <!--                                        <i class="fa fa-angle-right"></i>-->
-                    <!--                                    </a>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div>-->
-                    <!--                    </li>-->
-                    <!-- Messages -->
-                    <!-- mega menu -->
-                    <!--                    <li class="nav-item dropdown mega-dropdown">-->
-                    <!--                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-bs-toggle="dropdown"-->
-                    <!--                           aria-haspopup="true" aria-expanded="false">-->
-                    <!--                            <i class="ti-layout-width-default"></i>-->
-                    <!--                        </a>-->
-                    <!--                        <div class="dropdown-menu animated bounceInDown">-->
-                    <!--                            <ul class="mega-dropdown-menu row">-->
-                    <!--                                <li class="col-lg-3 col-xlg-2 m-b-30">-->
-                    <!--                                    <h4 class="m-b-20">CAROUSEL</h4>-->
-                    <!--                                    &lt;!&ndash; CAROUSEL &ndash;&gt;-->
-                    <!--                                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">-->
-                    <!--                                        <div class="carousel-inner" role="listbox">-->
-                    <!--                                            <div class="carousel-item active">-->
-                    <!--                                                <div class="container">-->
-                    <!--                                                    <img class="d-block img-fluid" src="/assets/images/big/img1.jpg"-->
-                    <!--                                                         alt="First slide">-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="carousel-item">-->
-                    <!--                                                <div class="container">-->
-                    <!--                                                    <img class="d-block img-fluid" src="/assets/images/big/img2.jpg"-->
-                    <!--                                                         alt="Second slide">-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div class="carousel-item">-->
-                    <!--                                                <div class="container">-->
-                    <!--                                                    <img class="d-block img-fluid" src="/assets/images/big/img3.jpg"-->
-                    <!--                                                         alt="Third slide">-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"-->
-                    <!--                                           data-bs-slide="prev">-->
-                    <!--                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-                    <!--                                            <span class="sr-only">Previous</span>-->
-                    <!--                                        </a>-->
-                    <!--                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"-->
-                    <!--                                           data-bs-slide="next">-->
-                    <!--                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-                    <!--                                            <span class="sr-only">Next</span>-->
-                    <!--                                        </a>-->
-                    <!--                                    </div>-->
-                    <!--                                    &lt;!&ndash; CAROUSEL &ndash;&gt;-->
-                    <!--                                </li>-->
-                    <!--                                <li class="col-lg-3 m-b-30">-->
-                    <!--                                    <h4 class="m-b-20">ACCORDION</h4>-->
-                    <!--                                    <div class="accordion" id="accordionExample">-->
-                    <!--                                        <div class="card m-b-0">-->
-                    <!--                                            <div class="card-header bg-white p-0" id="headingOne">-->
-                    <!--                                                <h5 class="mb-0">-->
-                    <!--                                                    <button class="btn btn-link" type="button" data-bs-toggle="collapse"-->
-                    <!--                                                            data-bs-target="#collapseOne" aria-expanded="true"-->
-                    <!--                                                            aria-controls="collapseOne">-->
-                    <!--                                                        Collapsible Group Item #1-->
-                    <!--                                                    </button>-->
-                    <!--                                                </h5>-->
-                    <!--                                            </div>-->
-
-                    <!--                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"-->
-                    <!--                                                 data-parent="#accordionExample">-->
-                    <!--                                                <div class="card-body">-->
-                    <!--                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="card m-b-0">-->
-                    <!--                                            <div class="card-header bg-white p-0" id="headingTwo">-->
-                    <!--                                                <h5 class="mb-0">-->
-                    <!--                                                    <button class="btn btn-link collapsed" type="button"-->
-                    <!--                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"-->
-                    <!--                                                            aria-expanded="false" aria-controls="collapseTwo">-->
-                    <!--                                                        Collapsible Group Item #2-->
-                    <!--                                                    </button>-->
-                    <!--                                                </h5>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
-                    <!--                                                 data-parent="#accordionExample">-->
-                    <!--                                                <div class="card-body">-->
-                    <!--                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="card m-b-0">-->
-                    <!--                                            <div class="card-header bg-white p-0" id="headingThree">-->
-                    <!--                                                <h5 class="mb-0">-->
-                    <!--                                                    <button class="btn btn-link collapsed" type="button"-->
-                    <!--                                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"-->
-                    <!--                                                            aria-expanded="false" aria-controls="collapseThree">-->
-                    <!--                                                        Collapsible Group Item #3-->
-                    <!--                                                    </button>-->
-                    <!--                                                </h5>-->
-                    <!--                                            </div>-->
-                    <!--                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"-->
-                    <!--                                                 data-parent="#accordionExample">-->
-                    <!--                                                <div class="card-body">-->
-                    <!--                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.-->
-                    <!--                                                </div>-->
-                    <!--                                            </div>-->
-                    <!--                                        </div>-->
-                    <!--                                    </div>-->
-                    <!--                                </li>-->
-                    <!--                                <li class="col-lg-3  m-b-30">-->
-                    <!--                                    <h4 class="m-b-20">CONTACT US</h4>-->
-                    <!--                                    &lt;!&ndash; Contact &ndash;&gt;-->
-                    <!--                                    <form>-->
-                    <!--                                        <div class="form-group">-->
-                    <!--                                            <input type="text" class="form-control" id="exampleInputname1"-->
-                    <!--                                                   placeholder="Enter Name">-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="form-group">-->
-                    <!--                                            <input type="email" class="form-control" placeholder="Enter email">-->
-                    <!--                                        </div>-->
-                    <!--                                        <div class="form-group">-->
-                    <!--                                            <textarea class="form-control" id="exampleTextarea" rows="3"-->
-                    <!--                                                      placeholder="Message"></textarea>-->
-                    <!--                                        </div>-->
-                    <!--                                        <button type="submit" class="btn btn-info text-white">Submit</button>-->
-                    <!--                                    </form>-->
-                    <!--                                </li>-->
-                    <!--                                <li class="col-lg-3 col-xlg-4 m-b-30">-->
-                    <!--                                    <h4 class="m-b-20">List style</h4>-->
-                    <!--                                    &lt;!&ndash; List style &ndash;&gt;-->
-                    <!--                                    <ul class="list-style-none">-->
-                    <!--                                        <li>-->
-                    <!--                                            <a href="javascript:void(0)">-->
-                    <!--                                                <i class="fa fa-check text-success"></i>-->
-                    <!--                                                You can give link-->
-                    <!--                                            </a>-->
-                    <!--                                        </li>-->
-                    <!--                                        <li>-->
-                    <!--                                            <a href="javascript:void(0)">-->
-                    <!--                                                <i class="fa fa-check text-success"></i>-->
-                    <!--                                                Give link-->
-                    <!--                                            </a>-->
-                    <!--                                        </li>-->
-                    <!--                                        <li>-->
-                    <!--                                            <a href="javascript:void(0)">-->
-                    <!--                                                <i class="fa fa-check text-success"></i>-->
-                    <!--                                                Another Give link-->
-                    <!--                                            </a>-->
-                    <!--                                        </li>-->
-                    <!--                                        <li>-->
-                    <!--                                            <a href="javascript:void(0)">-->
-                    <!--                                                <i class="fa fa-check text-success"></i>-->
-                    <!--                                                Forth link-->
-                    <!--                                            </a>-->
-                    <!--                                        </li>-->
-                    <!--                                        <li>-->
-                    <!--                                            <a href="javascript:void(0)">-->
-                    <!--                                                <i class="fa fa-check text-success"></i>-->
-                    <!--                                                Another fifth link-->
-                    <!--                                            </a>-->
-                    <!--                                        </li>-->
-                    <!--                                    </ul>-->
-                    <!--                                </li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div>-->
-                    <!--                    </li>-->
-                    <!-- mega menu -->
-                    <!-- User Profile -->
-                    <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <!--                            <img src="/assets/images/users/1.jpg" alt="user" class="">-->
-                            <span style="  font-size: 20px;">      <i class="ti-user"></i>     </span>
-                           <span class="hidden-md-down">
-                           <span sec:authentication="principal.username">
-                           </span>&nbsp;<i class="ti-angle-down"></i>
+<!--            <form class="form-search flex-grow">-->
+<!--                <fieldset class="name">-->
+<!--                    <input type="text" placeholder="Search here..." class="show-search" name="name" tabindex="2" value="" aria-required="true" required="">-->
+<!--                </fieldset>-->
+<!--                <div class="button-submit">-->
+<!--                    <button class="" type="submit"><i class="icon-search"></i></button>-->
+<!--                </div>-->
+<!--                <div class="box-content-search" id="box-content-search">-->
+<!--                    <ul class="mb-24">-->
+<!--                        <li class="mb-14">-->
+<!--                            <div class="body-title">Top selling product</div>-->
+<!--                        </li>-->
+<!--                        <li class="mb-14">-->
+<!--                            <div class="divider"></div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <ul>-->
+<!--                                <li class="product-item gap14 mb-10">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/17.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Dog Food Rachael Ray Nutrish®</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="mb-10">-->
+<!--                                    <div class="divider"></div>-->
+<!--                                </li>-->
+<!--                                <li class="product-item gap14 mb-10">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/18.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Natural Dog Food Healthy Dog Food</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="mb-10">-->
+<!--                                    <div class="divider"></div>-->
+<!--                                </li>-->
+<!--                                <li class="product-item gap14">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/19.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Freshpet Healthy Dog Food and Cat</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <ul class="">-->
+<!--                        <li class="mb-14">-->
+<!--                            <div class="body-title">Order product</div>-->
+<!--                        </li>-->
+<!--                        <li class="mb-14">-->
+<!--                            <div class="divider"></div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <ul>-->
+<!--                                <li class="product-item gap14 mb-10">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/20.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Sojos Crunchy Natural Grain Free...</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="mb-10">-->
+<!--                                    <div class="divider"></div>-->
+<!--                                </li>-->
+<!--                                <li class="product-item gap14 mb-10">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/21.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Kristin Watson</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="mb-10">-->
+<!--                                    <div class="divider"></div>-->
+<!--                                </li>-->
+<!--                                <li class="product-item gap14 mb-10">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/22.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Mega Pumpkin Bone</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="mb-10">-->
+<!--                                    <div class="divider"></div>-->
+<!--                                </li>-->
+<!--                                <li class="product-item gap14">-->
+<!--                                    <div class="image no-bg">-->
+<!--                                        <img src="images/products/23.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="flex items-center justify-between gap20 flex-grow">-->
+<!--                                        <div class="name">-->
+<!--                                            <a href="product-list.html" class="body-text">Mega Pumpkin Bone</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </form>-->
+        </div>
+        <div class="header-grid">
+<!--            <div class="header-item country">-->
+<!--                <select class="image-select no-text">-->
+<!--                    <option data-thumbnail="images/country/1.png">ENG</option>-->
+<!--                    <option data-thumbnail="images/country/9.png">VIE</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="header-item button-dark-light">
+                <i class="icon-moon"></i>
+            </div>
+<!--            <div class="popup-wrap noti type-header">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        <span class="header-item">-->
+<!--                            <span class="text-tiny">1</span>-->
+<!--                            <i class="icon-bell"></i>-->
+<!--                        </span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton1" >-->
+<!--                        <li>-->
+<!--                            <h6>Message</h6>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="noti-item w-full wg-user active">-->
+<!--                                <div class="image">-->
+<!--                                    <img src="images/avatar/user-11.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="flex-grow">-->
+<!--                                    <div class="flex items-center justify-between">-->
+<!--                                        <a href="#" class="body-title">Cameron Williamson</a>-->
+<!--                                        <div class="time">10:13 PM</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-tiny">Hello?</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="noti-item w-full wg-user active">-->
+<!--                                <div class="image">-->
+<!--                                    <img src="images/avatar/user-12.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="flex-grow">-->
+<!--                                    <div class="flex items-center justify-between">-->
+<!--                                        <a href="#" class="body-title">Ralph Edwards</a>-->
+<!--                                        <div class="time">10:13 PM</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-tiny">Are you there?  interested i this...</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="noti-item w-full wg-user active">-->
+<!--                                <div class="image">-->
+<!--                                    <img src="images/avatar/user-13.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="flex-grow">-->
+<!--                                    <div class="flex items-center justify-between">-->
+<!--                                        <a href="#" class="body-title">Eleanor Pena</a>-->
+<!--                                        <div class="time">10:13 PM</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-tiny">Interested in this loads?</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="noti-item w-full wg-user active">-->
+<!--                                <div class="image">-->
+<!--                                    <img src="images/avatar/user-11.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="flex-grow">-->
+<!--                                    <div class="flex items-center justify-between">-->
+<!--                                        <a href="#" class="body-title">Jane Cooper</a>-->
+<!--                                        <div class="time">10:13 PM</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-tiny">Okay...Do we have a deal?</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li><a href="#" class="tf-button w-full">View all</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="popup-wrap message type-header">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        <span class="header-item">-->
+<!--                            <span class="text-tiny">1</span>-->
+<!--                            <i class="icon-message-square"></i>-->
+<!--                        </span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton2" >-->
+<!--                        <li>-->
+<!--                            <h6>Notifications</h6>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="message-item item-1">-->
+<!--                                <div class="image">-->
+<!--                                    <i class="icon-noti-1"></i>-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <div class="body-title-2">Discount available</div>-->
+<!--                                    <div class="text-tiny">Morbi sapien massa, ultricies at rhoncus at, ullamcorper nec diam</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="message-item item-2">-->
+<!--                                <div class="image">-->
+<!--                                    <i class="icon-noti-2"></i>-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <div class="body-title-2">Account has been verified</div>-->
+<!--                                    <div class="text-tiny">Mauris libero ex, iaculis vitae rhoncus et</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="message-item item-3">-->
+<!--                                <div class="image">-->
+<!--                                    <i class="icon-noti-3"></i>-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <div class="body-title-2">Order shipped successfully</div>-->
+<!--                                    <div class="text-tiny">Integer aliquam eros nec sollicitudin sollicitudin</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="message-item item-4">-->
+<!--                                <div class="image">-->
+<!--                                    <i class="icon-noti-4"></i>-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <div class="body-title-2">Order pending: <span>ID 305830</span></div>-->
+<!--                                    <div class="text-tiny">Ultricies at rhoncus at ullamcorper</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li><a href="#" class="tf-button w-full">View all</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="header-item button-zoom-maximize">
+                <div class="">
+                    <i class="icon-maximize"></i>
+                </div>
+            </div>
+<!--            <div class="popup-wrap apps type-header">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        <span class="header-item">-->
+<!--                            <i class="icon-grid"></i>-->
+<!--                        </span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton4" >-->
+<!--                        <li>-->
+<!--                            <h6>Related apps</h6>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <ul class="list-apps">-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-1.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Photoshop</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-2.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">illustrator</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-3.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Sheets</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-4.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Gmail</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-5.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Messenger</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-6.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Youtube</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-7.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Flaticon</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-8.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">Instagram</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="item">-->
+<!--                                    <div class="image">-->
+<!--                                        <img src="images/apps/item-9.png" alt="">-->
+<!--                                    </div>-->
+<!--                                    <a href="#">-->
+<!--                                        <div class="text-tiny">PDF</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li><a href="#" class="tf-button w-full">View all app</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="popup-wrap user type-header">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="header-user wg-user">
+                            <span class="image">
+                                <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/avatar/user-1.png'"  alt="">
                             </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end animated flipInY">
-                            <!-- text-->
-                            <!--                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>-->
-                            <!-- text-->
-                            <!--                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>-->
-                            <!-- text-->
-                            <!--                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>-->
-                            <!-- text-->
-                            <!--                            <div class="dropdown-divider"></div>-->
-                            <!-- text-->
-                            <!--                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>-->
-                            <!-- text-->
-                            <!--                            <div class="dropdown-divider"></div>-->
-                            <!-- text-->
-                          <a th:href="@{/logout}" class="dropdown-item">
-                                <i class="ti-user"></i>
-                                Logout
+                            <span class="flex flex-column">
+                                <span class="body-title mb-2">User</span>
+                                <span class="text-tiny">Admin</span>
+                            </span>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton3" >
+                        <li>
+                            <a  th:href="@{/logout}" class="user-item">
+                                <div class="icon">
+                                    <i class="icon-log-out"></i>
+                                </div>
+                                <div class="body-title-2">Log out</div>
                             </a>
-                            <!-- text-->
-                        </div>
-                    </li>
-                    <!-- User Profile -->
-                    <li class="nav-item right-side-toggle">
-                        <a class="nav-link  waves-effect waves-light" href="javascript:void(0)">
-                            <i class="ti-settings"></i>
-                        </a>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-    </section>
-</header>
-<!------------------ Topbar header ------------------>
+        </div>
+    </div>
+</div>
+<!-- /header-dashboard -->
+
+
+
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Topbar header &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--<header class="topbar" id="navBarSec" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+
+<!--    <section class="topbar">-->
+<!--        <nav class="navbar top-navbar navbar-expand-md navbar-dark">-->
+<!--            &lt;!&ndash; Logo &ndash;&gt;-->
+<!--            <div class="navbar-header">-->
+<!--                <a class="navbar-brand" th:href="@{/dashboard}">-->
+<!--                    &lt;!&ndash; Logo icon &ndash;&gt;-->
+<!--                    <b>-->
+<!--                        &lt;!&ndash;You can put here icon as well // <i class="wi wi-sunset"></i> //&ndash;&gt;-->
+<!--                        &lt;!&ndash; Dark Logo icon &ndash;&gt;-->
+<!--                        <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/images/logo-icon.png'" alt="homepage" class="dark-logo">-->
+<!--                        &lt;!&ndash; Light Logo icon &ndash;&gt;-->
+<!--                        <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/images/cue_ball_50x50.png'" alt="homepage" class="light-logo">-->
+<!--                    </b>-->
+<!--                    &lt;!&ndash;End Logo icon &ndash;&gt;-->
+<!--                    <span class="hidden-xs" style=""><span class="font-bold" style="">CueBall Admin</span>-->
+<!--                    </span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Logo &ndash;&gt;-->
+<!--            <div class="navbar-collapse">-->
+<!--                &lt;!&ndash; toggle and nav items &ndash;&gt;-->
+<!--                <ul class="navbar-nav me-auto">-->
+<!--                    &lt;!&ndash; This is  &ndash;&gt;-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"-->
+<!--                           href="javascript:void(0)">-->
+<!--                            <i class="ti-menu"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"-->
+<!--                           href="javascript:void(0)">-->
+<!--                            <i class="icon-menu ti-menu"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash; Search &ndash;&gt;-->
+<!--                    &lt;!&ndash; <li class="nav-item">-->
+<!--                        <form class="app-search d-none d-md-block d-lg-block">-->
+<!--                            <input type="text" class="form-control" placeholder="Search & enter">-->
+<!--                        </form>-->
+<!--                    </li> &ndash;&gt;-->
+<!--                </ul>-->
+<!--                &lt;!&ndash; User profile and search &ndash;&gt;-->
+<!--                <ul class="navbar-nav my-lg-0">-->
+<!--                    &lt;!&ndash; Comment &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <li class="nav-item dropdown">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-bs-toggle="dropdown"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                           aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <i class="ti-email"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <div class="notify">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <span class="heartbit"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <span class="point"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="dropdown-menu dropdown-menu-end mailbox animated bounceInDown">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div class="drop-title">Notifications</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div class="message-center ps ps&#45;&#45;theme_default"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                         data-ps-id="41ce1b2a-78db-f170-730e-8d9ac04f05ee">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="btn btn-danger btn-circle text-white">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-link"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Luanch Admin</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">Just see the my new admin!</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:30 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="btn btn-success btn-circle text-white">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="ti-calendar"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Event today</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">Just a reminder that you have campaign</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:10 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="btn btn-info btn-circle text-white">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="ti-settings"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Settings</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">You can customize this template as you want&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:08 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="btn btn-primary btn-circle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="ti-user"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Pavan kumar</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">Just see the my admin!</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:02 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="ps__scrollbar-x" tabindex="0"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 style="left: 0px; width: 0px;"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="ps__scrollbar-y" tabindex="0"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 style="top: 0px; height: 0px;"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <a class="nav-link text-center link" href="javascript:void(0);">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <strong>Check all notifications</strong>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <i class="fa fa-angle-right"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash; Comment &ndash;&gt;-->
+<!--                    &lt;!&ndash; Messages &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <li class="nav-item dropdown">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <i class="icon-note"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <div class="notify">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <span class="heartbit"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <span class="point"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="dropdown-menu mailbox dropdown-menu-end animated bounceInDown" aria-labelledby="2">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div class="drop-title">You have 4 new messages</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div class="message-center ps ps&#45;&#45;theme_default"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                         data-ps-id="7456f8ef-b89c-fc85-51be-c284a0d8f9e3">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="user-img">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <img src="../assets/images/users/1.jpg" alt="user" class="img-circle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="profile-status online pull-right"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Pavan kumar</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">Just see the my admin!</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:30 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="user-img">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <img src="../assets/images/users/2.jpg" alt="user" class="img-circle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="profile-status busy pull-right"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Sonu Nigam</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">I've sung a song! See you at</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:10 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="user-img">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <img src="../assets/images/users/3.jpg" alt="user" class="img-circle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="profile-status away pull-right"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Arijit Sinh</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">I am a singer!</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:08 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        &lt;!&ndash; Message &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="user-img">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <img src="../assets/images/users/4.jpg" alt="user" class="img-circle">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="profile-status offline pull-right"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="mail-contnet">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5>Pavan kumar</h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="mail-desc">Just see the my admin!</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <span class="time">9:02 AM</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="ps__scrollbar-x" tabindex="0"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 style="left: 0px; width: 0px;"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="ps__scrollbar-y" tabindex="0"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 style="top: 0px; height: 0px;"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <a class="nav-link text-center link" href="javascript:void(0);">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <strong>See all e-Mails</strong>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <i class="fa fa-angle-right"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash; Messages &ndash;&gt;-->
+<!--                    &lt;!&ndash; mega menu &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <li class="nav-item dropdown mega-dropdown">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-bs-toggle="dropdown"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                           aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <i class="ti-layout-width-default"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="dropdown-menu animated bounceInDown">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <ul class="mega-dropdown-menu row">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="col-lg-3 col-xlg-2 m-b-30">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <h4 class="m-b-20">CAROUSEL</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    &lt;!&ndash; CAROUSEL &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="carousel-inner" role="listbox">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="carousel-item active">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="container">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <img class="d-block img-fluid" src="/assets/images/big/img1.jpg"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                         alt="First slide">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="carousel-item">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="container">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <img class="d-block img-fluid" src="/assets/images/big/img2.jpg"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                         alt="Second slide">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="carousel-item">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="container">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <img class="d-block img-fluid" src="/assets/images/big/img3.jpg"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                         alt="Third slide">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                           data-bs-slide="prev">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <span class="sr-only">Previous</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                           data-bs-slide="next">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <span class="sr-only">Next</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    &lt;!&ndash; CAROUSEL &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="col-lg-3 m-b-30">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <h4 class="m-b-20">ACCORDION</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <div class="accordion" id="accordionExample">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="card m-b-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="card-header bg-white p-0" id="headingOne">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5 class="mb-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <button class="btn btn-link" type="button" data-bs-toggle="collapse"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            data-bs-target="#collapseOne" aria-expanded="true"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            aria-controls="collapseOne">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        Collapsible Group Item #1&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 data-parent="#accordionExample">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="card-body">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="card m-b-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="card-header bg-white p-0" id="headingTwo">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5 class="mb-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <button class="btn btn-link collapsed" type="button"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            aria-expanded="false" aria-controls="collapseTwo">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        Collapsible Group Item #2&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 data-parent="#accordionExample">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="card-body">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="card m-b-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="card-header bg-white p-0" id="headingThree">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <h5 class="mb-0">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <button class="btn btn-link collapsed" type="button"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            aria-expanded="false" aria-controls="collapseThree">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        Collapsible Group Item #3&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </h5>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                 data-parent="#accordionExample">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="card-body">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    Anim pariatur cliche reprehenderit, enim eiusmod high.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="col-lg-3  m-b-30">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <h4 class="m-b-20">CONTACT US</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    &lt;!&ndash; Contact &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <form>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="form-group">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <input type="text" class="form-control" id="exampleInputname1"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                   placeholder="Enter Name">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="form-group">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <input type="email" class="form-control" placeholder="Enter email">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div class="form-group">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <textarea class="form-control" id="exampleTextarea" rows="3"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                      placeholder="Message"></textarea>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <button type="submit" class="btn btn-info text-white">Submit</button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </form>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <li class="col-lg-3 col-xlg-4 m-b-30">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <h4 class="m-b-20">List style</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    &lt;!&ndash; List style &ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <ul class="list-style-none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-check text-success"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                You can give link&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-check text-success"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                Give link&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-check text-success"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                Another Give link&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-check text-success"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                Forth link&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <a href="javascript:void(0)">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <i class="fa fa-check text-success"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                Another fifth link&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </ul>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--                    &lt;!&ndash; mega menu &ndash;&gt;-->
+<!--                    &lt;!&ndash; User Profile &ndash;&gt;-->
+<!--                    <li class="nav-item dropdown u-pro">-->
+<!--                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""-->
+<!--                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            &lt;!&ndash;                            <img src="/assets/images/users/1.jpg" alt="user" class="">&ndash;&gt;-->
+<!--                            <span style="  font-size: 20px;">      <i class="ti-user"></i>     </span>-->
+<!--                           <span class="hidden-md-down">-->
+<!--                           <span sec:authentication="principal.username">-->
+<!--                           </span>&nbsp;<i class="ti-angle-down"></i>-->
+<!--                            </span>-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu dropdown-menu-end animated flipInY">-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                          <a th:href="@{/logout}" class="dropdown-item">-->
+<!--                                <i class="ti-user"></i>-->
+<!--                                Logout-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; text&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash; User Profile &ndash;&gt;-->
+<!--                    <li class="nav-item right-side-toggle">-->
+<!--                        <a class="nav-link  waves-effect waves-light" href="javascript:void(0)">-->
+<!--                            <i class="ti-settings"></i>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </section>-->
+<!--</header>-->
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Topbar header &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+

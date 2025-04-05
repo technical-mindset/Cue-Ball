@@ -141,16 +141,16 @@ public interface Constants {
     /**
       Room Category URLs
      */
-    String RA_PAGE_ROOM_CATEGORY_ADD_EDIT = "room_category/addEdit";
-    String RA_PAGE_ROOM_CATEGORY_VIEW_ALL = "room_category/viewAll";
-    String RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL = "room_category/viewAllDetail";
+    String RA_PAGE_ROOM_CATEGORY_ADD_EDIT = "roomCategory/addEdit";
+    String RA_PAGE_ROOM_CATEGORY_VIEW_ALL = "roomCategory/viewAll";
+    String RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL = "roomCategory/viewAllDetail";
 
     /**
       Room Category URLs
      */
-    String RA_PAGE_INVENTORY_CATEGORY_ADD_EDIT = "inventory_category/addEdit";
-    String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL = "inventory_category/viewAll";
-    String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL_DETAIL = "inventory_category/viewAllDetail";
+    String RA_PAGE_INVENTORY_CATEGORY_ADD_EDIT = "inventoryCategory/addEdit";
+    String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL = "inventoryCategory/viewAll";
+    String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL_DETAIL = "inventoryCategory/viewAllDetail";
 
     /**
       Variant URLs

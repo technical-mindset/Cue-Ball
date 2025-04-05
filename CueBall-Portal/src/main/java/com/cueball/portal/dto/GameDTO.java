@@ -19,7 +19,8 @@ public class GameDTO extends BaseDTO {
     @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
     private String title;
 
-    @Min(value = 1, message = "Charges must be at least 1")    private Double charges;
+    @Min(value = 1, message = "Charges must be at least 1")
+    private Double charges;
 
     @Min(value = 1, message = "Players must be at least 1")
     private Integer maxPlayers;

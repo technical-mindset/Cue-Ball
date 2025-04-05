@@ -17,6 +17,9 @@ public interface GameRepository extends JpaRepository<Game, Integer>, GameCustom
     @Query(value = "SELECT * FROM `game` AS g WHERE FIND_IN_SET(g.id, :gameIds) > 0", nativeQuery = true)
     List<Game> findAllByIds(@Param("gameIds") String gameIds);
 
+//    List<Game> findAllByEnableTrue();
+
+    @Query("SELECT g FROM Game g where g.enable=1 ORDER BY g.id DESC")
     List<Game> findAllByEnableTrue();
 
     long count();

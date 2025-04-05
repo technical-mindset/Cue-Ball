@@ -26,7 +26,7 @@
                                 <td><a th:href="@{|addUpdate/?id=${data.getId()}|}"><i class="ti-pencil"></i></a></td>
                                 <td th:text="${data.getTitle()}"></td>
                                 <td th:text="${#strings.abbreviate(data.getDescription(),50)}"></td>
-                                <td th:text="${#dates.format(new java.util.Date(data.getCreatedDate()), 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                <td th:text="${#dates.format(new java.util.Date(data.getCreatedAt()), 'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td th:text="${data.enable}"></td>
                             </tr>
                             </tbody>

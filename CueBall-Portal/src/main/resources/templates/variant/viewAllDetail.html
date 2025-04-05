@@ -1,40 +1,40 @@
-<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:fragment="viewAllDetail"
-     class="widget" id="viewAllDetail">
-    <!-- Start Page Content -->
-    <div class="row">
-        <div class="col-12">
-            <!-- table responsive -->
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Table Variant</h4>
-                    <div class="table-responsive m-t-40">
-                        <table class="table table-striped" id="detailTable">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Edit</th>
-                                <th>Name</th>
-                                <th>Enable</th>
-                                <th sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')">Delete</th>
-                            </thead>
-                            <tbody>
-
-
-                            <tr th:each="data : ${dataList}">
-                                <td th:text="${data.id}"></td>
-                                <td><a th:href="@{|/variant/addUpdate/?id=${data.getId()}|}"><i class="ti-pencil"></i></a></td>
-                                <td th:text="${data.name}"></td>
-                                <td th:text="${data.enable}"></td>
-                                <td sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:text="${data.delete}"></td>
-                            </tr>
-
-                            </tbody>
-                        </table>
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:fragment="viewAllDetail"  id="viewAllDetail">
+    <div class="wg-table table-all-attribute">
+        <ul class="table-title flex gap20 mb-14">
+            <li>
+                <div class="body-title">ID</div>
+            </li>
+            <li>
+                <div class="body-title">Name</div>
+            </li>
+            <li>
+                <div class="body-title">Enable</div>
+            </li>
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')">
+                <div class="body-title">Delete</div>
+            </li>
+            <li>
+                <div class="body-title">Action</div>
+            </li>
+        </ul>
+        <ul class="flex flex-column">
+            <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
+                <div class="body-text" th:text="${data.getId()}"></div>
+                <div class="body-text" th:text="${data.name}"></div>
+                <div class="body-text" th:text="${data.enable}"></div>
+                <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="body-text" th:text="${data.delete}"></div>
+                <div class="body-text">
+                    <div class="list-icon-function">
+                        <a th:href="@{|addUpdate/?id=${data.getId()}|}">
+                            <div class="item edit">
+                                <i class="icon-edit-3"></i>
+                            </div>
+                        </a>
                     </div>
-                    <div th:replace="common/ajaxPaging::ajaxPaging"></div>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
-    <!-- End PAge Content -->
+    <div class="divider"></div>
+    <div th:replace="common/ajaxPaging::ajaxPaging"></div>
 </div>

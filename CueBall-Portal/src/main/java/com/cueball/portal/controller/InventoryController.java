@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/inventory")
+@RequestMapping("/inventories")
 public class InventoryController {
 
     @Autowired

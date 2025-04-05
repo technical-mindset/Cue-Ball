@@ -1,92 +1,41 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
     <section class="addPage__section">
-        <div id="main-wrapper">
-            <!-- Page wrapper  -->
-            <div class="page-wrapper">
-                <div class="container-fluid">
-                    <!-- Bread crumb and right sidebar toggle -->
-                    <div class="row page-titles">
-                        <div class="col-md-5 align-self-center">
-                            <h4 class="text-themecolor">Add more</h4>
-                        </div>
-                        <div class="col-md-7 align-self-center text-end">
-                            <div class="d-flex justify-content-end align-items-center">
-                                <ol class="breadcrumb justify-content-end">
-                                    <li class="breadcrumb-item"><a th:href="@{/dashboard}">Home</a></li>
-                                    <li class="breadcrumb-item"><a th:href="@{/variant/viewAll}">List</a></li>
-                                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="breadcrumb-item active" th:href="@{/variant/addUpdate}">Add</li>
-
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Bread crumb and right sidebar toggle -->
-                    <!-- Start Page Content -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Variant Form</h4>
-                                    <form class="form-horizontal row"  th:object="${dto}" method="post" th:action="@{/variant/addUpdate}">
-
-                                        <input  th:field="*{id}" type="hidden">
-
-                                        <div class="form-group col-6">
-                                            <label class="control-label required-field" for="name">Name</label>
-                                            <div class="col-12">
-                                                <input type="text" class="form-control" id="name" placeholder="Enter Name"  th:field="*{name}" />
-                                                <div th:each="err : ${#fields.errors('name')}"
-                                                     th:text="${err}" class="error text-danger"/>
-                                            </div>
-                                        </div>
-
-
-                                        <!--  Enable / Disable  -->
-                                        <div class="form-group col-6">
-                                            <div class="col-2">
-                                                <label>Enable</label>
-                                                <div class="form-check form-switch px-0">
-                                                    <input type="checkbox" class="js-switch" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked/>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!--  Delete  -->
-                                        <div class="form-group col-6">
-                                            <div class="col-2">
-                                                <label>Delete</label>
-                                                <div class="form-check form-switch px-0">
-                                                    <input type="checkbox" class="js-switch" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{delete}" checked/>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                                        <input type="hidden" class="form-control" th:field="*{createdDate}"/>
-
-                                        <div class="form-group">
-                                            <div >
-                                                <button id="btn-submit" class="btn btn-primary text-white" type="submit">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- End PAge Content -->
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Add Variant</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny"><a th:href="@{/variant/viewAll}">List</a></div></li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')"><i class="icon-chevron-right"></i></li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="active" th:href="@{/variant/addUpdate}">Add</li>
+            </ul>
+        </div>
+        <form class="form-add-product" th:object="${dto}" method="post" th:action="@{/variant/addUpdate}">
+            <div class="wg-box">
+                <input  th:field="*{id}" type="hidden">
+                <div class="row">
+                    <fieldset class="variantName col-md-6">
+                        <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Name"  th:field="*{name}" />
+                        <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                    <fieldset class="variantDelete col-md-3">
+                        <div class="body-title mb-10">Delete</div>
+                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{delete}" checked>
+<!--                        <div style="list-style: none" th:each="err : ${#fields.errors('delete')}" th:text="${err}" class="error text-danger"/>-->
+                    </fieldset>
+                    <fieldset class="variantEnable col-md-3">
+                        <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
+                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
+                        <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+                <input type="hidden" class="form-control" th:field="*{createdAt}"/>
+                <div class="">
+                    <button class="tf-button w208" type="submit">Save</button>
                 </div>
             </div>
-            <!-- Page wrapper  -->
-        </div>
+
+        </form>
     </section>
 </div>
-
-<script xmlns:th="http://www.thymeleaf.org" th:inline="javascript">
-
-</script>

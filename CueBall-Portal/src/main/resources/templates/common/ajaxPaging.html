@@ -1,67 +1,32 @@
 <div xmlns:th="" th:fragment="ajaxPaging">
 
+    <div class="flex items-center justify-between flex-wrap gap10" th:if="${totalPages > 0}">
+        <div class="text-tiny" th:text="'Showing ' + ${pageNumber} +' to '+${totalPages} + ' in ' +${totalPages} + ' records' ">Showing 10 to 16 in 16 records</div>
 
-    <nav aria-label="Pagination" th:if="${totalPages > 0}">
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <!--                Showing+' ' + ${pageNumber} + ' - ' +-->
-                <div class="dataTables_info"
-                     th:text="${pageNumber} +' of '+${totalPages}">
-                </div>
-            </div>
+        <th:block th:with="startPage=${(pageNumber - 2 > 0) ? (pageNumber - 2) : 1}, endPage=${(pageNumber + 2 < totalPages) ? (pageNumber + 2) : totalPages}">
 
 
+            <ul class="wg-pagination">
 
-            <!-- Calculate start and end page numbers based on current page -->
-            <th:block th:with="startPage=${(pageNumber - 2 > 0) ? (pageNumber - 2) : 1}, endPage=${(pageNumber + 2 < totalPages) ? (pageNumber + 2) : totalPages}">
+                <li th:if="${pageNumber == 1}" class="active disabled"><a class="page-link" href="javascript:;" ><i class="icon-chevron-left"></i></a></li>
+                <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(1,' + ${pageSize} + ')'"><i class="icon-chevron-left"></i></a></li>
+<!--                <li th:if="${pageNumber == 1}" class="page-item disabled"><a class="page-link" href="javascript:;">Previous</a></li>-->
+<!--                <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + (${pageNumber - 1}) + ',' + ${pageSize} + ')'">Previous</a></li>-->
 
+                <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                    <li th:if="${page == pageNumber}" class="active disabled"><a class="page-link" href="javascript:;" th:text="${page}"></a></li>
+                    <li th:unless="${page == pageNumber}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${page}  + ',' + ${pageSize} + ')'" th:text="${page}"></a></li>
+                </th:block>
 
-                <div class="col-sm-12 col-md-6">
-                    <div class="dataTables_info">
-                        <ul class="pagination">
+                <li th:if="${pageNumber >= totalPages}" class="active disabled"><a class="page-link" href="javascript:;" title="Next"><i class="icon-chevron-right"></i></a></li>
+                <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${pageNumber + 1}   + ',' + ${pageSize} + ')'"> <i class="icon-chevron-right"></i></a></li>
+<!--                <li th:if="${pageNumber >= totalPages}" class="page-item disabled"><a class="page-link" href="javascript:;">Last</a></li>-->
+<!--                <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${totalPages}  + ',' + ${pageSize} + ')'">Last</a></li>-->
 
-                            <li th:if="${pageNumber == 1}" class="page-item disabled"><a class="page-link" href="javascript:;" >First</a></li>
-                            <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(1,' + ${pageSize} + ')'">First</a>
-                            </li>
-                            <li th:if="${pageNumber == 1}" class="page-item disabled"><a class="page-link" href="javascript:;">Previous</a></li>
-                            <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + (${pageNumber - 1}) + ',' + ${pageSize} + ')'">Previous</a></li>
+            </ul>
 
-                            <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-                                <li th:if="${page == pageNumber}" class="page-item disabled"><a class="page-link" href="javascript:;" th:text="${page}"></a></li>
-                                <li th:unless="${page == pageNumber}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${page}  + ',' + ${pageSize} + ')'" th:text="${page}"></a></li>
-                            </th:block>
-
-                            <li th:if="${pageNumber >= totalPages}" class="page-item disabled"><a class="page-link" href="javascript:;" title="Next">Next</a></li>
-                            <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${pageNumber + 1}   + ',' + ${pageSize} + ')'"> Next</a></li>
-                            <li th:if="${pageNumber >= totalPages}" class="page-item disabled"><a class="page-link" href="javascript:;">Last</a></li>
-                            <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${totalPages}  + ',' + ${pageSize} + ')'">Last</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-
-            </th:block>
-
-
-
-
-            <div class="col-sm-12 col-md-3">
-                <div class="dataTables_length" id="editable-datatable_length">
-                    <label>Show
-                        <select name="editable-datatable_length" aria-controls="editable-datatable" id="pager-change" th:disabled="${totalCount <= 10}">
-                            <option th:selected="${pageSize==10}" value="10" >10</option>
-                            <option  th:selected="${pageSize==25}" value="25">25</option>
-                            <option  th:selected="${pageSize==50}" value="50">50</option>
-                            <option  th:selected="${pageSize==100}" value="100">100</option>
-                        </select>
-                        entries
-                    </label>
-                </div>
-            </div>
-
-
-        </div>
-    </nav>
+        </th:block>
+    </div>
 
 
     <script th:inline="javascript">

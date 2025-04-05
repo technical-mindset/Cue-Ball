@@ -1,0 +1,36 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="layout/layout::layout(~{::section})">
+    <section class="addPage__section">
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Add Inventory Category</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny"><a th:href="@{/inventoryCategory/viewAll}">List</a></div></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li class="active" th:href="@{/inventoryCategory/addUpdate}">Add</li>
+            </ul>
+        </div>
+        <form class="form-add-product" th:object="${dto}" method="post" th:action="@{/inventoryCategory/addUpdate}">
+            <div class="wg-box">
+                <input  th:field="*{id}" type="hidden">
+                <div class="gap22 cols">
+                    <fieldset class="name">
+                        <div class="body-title mb-10">Category Name <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Category Name" tabindex="0"  th:field="*{name}">
+                        <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+                <fieldset class="enable">
+                    <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
+                    <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
+                    <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
+                </fieldset>
+                <input type="hidden" class="form-control" th:field="*{createdAt}"/>
+                <div class="">
+                    <button class="tf-button w208" type="submit">Save</button>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</div>

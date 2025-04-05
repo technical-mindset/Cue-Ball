@@ -1,17 +1,35 @@
 <div xmlns:th="" th:replace="layout/layout::layout(~{::section})">
 
-    <section id="main" class="clearfix">
-
-        <div id="main-content">
-            <div class="outer-width3">
-                <div class="row-fluid">
-                    <div class="span12 widget" id="middle-portion">
-                        <div th:replace='users/viewAllDetail::viewAllDetail'></div>
-                    </div>
-                </div>
-            </div>
+    <section>
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Users</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny">List</div></li>
+            </ul>
         </div>
-
+        <div class="wg-box">
+            <div class="flex items-center justify-between gap10 flex-wrap">
+                <div class="col-md-12 wg-filter justify-between">
+                    <div class="show">
+                        <div class="text-tiny">Showing</div>
+                        <div class="select">
+                            <select name="editable-datatable_length" aria-controls="editable-datatable" id="pager-change" th:disabled="${totalCount <= 10}">
+                                <option th:selected="${pageSize==10}" value="10" >10</option>
+                                <option  th:selected="${pageSize==25}" value="25">25</option>
+                                <option  th:selected="${pageSize==50}" value="50">50</option>
+                                <option  th:selected="${pageSize==100}" value="100">100</option>
+                            </select>
+                        </div>
+                        <div class="text-tiny">entries</div>
+                    </div>
+                    <a  th:href="@{/users/addUpdate}" class="tf-button style-1 w208"><i class="icon-plus"></i>New</a>
+                </div>
+                <div th:replace='common/viewAllFilters::viewAllFilters'></div>
+            </div>
+            <div th:replace='users/viewAllDetail::viewAllDetail'></div>
+        </div>
         <script th:replace="common/confirmBox::confirmBox"></script>
     </section>
 

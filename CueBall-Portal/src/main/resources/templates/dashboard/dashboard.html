@@ -1,132 +1,75 @@
 <div xmlns:th="*" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
-<section class="dash__board">
-    <!-- Page wrapper  -->
-    <div class="page-wrapper">
-        <!-- Container fluid  -->
-        <div class="container-fluid">
-            <!-- Bread crumb and right sidebar toggle -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Dashboard</h4>
-                </div>
-                <div class="col-md-7 align-self-center text-end">
-                    <div class="d-flex justify-content-end align-items-center">
-                        <ol class="breadcrumb justify-content-end">
-<!--                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>-->
-                        </ol>
+    <section>
+        <div class="tf-section-4 mb-30">
+            <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="wg-chart-default">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap14">
+                        <div class="image type-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#22C55E"/>
+                            </svg>
+                            <i class="icon-layers"></i>
+                        </div>
+                        <div>
+                            <div class="body-text mb-2">Total Rooms</div>
+                            <h4 th:text="${roomCount}"></h4>
+                        </div>
                     </div>
+<!--                    <div class="box-icon-trending up">-->
+<!--                        <i class="icon-trending-up"></i>-->
+<!--                        <div class="body-title number">1.56%</div>-->
+<!--                    </div>-->
+                </div>
+                <div class="wrap-chart">
+                    <div id="line-chart-1"></div>
                 </div>
             </div>
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- Page Content -->
-            <div class="row ">
-                <!-- Column -->
-
-                <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/room/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Rooms </h2>
-                                        <h2 class="m-0" th:text="${roomCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+            <div class="wg-chart-default">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap14">
+                        <div class="image type-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#FF5200"/>
+                            </svg>
+                            <i class="icon-noti-3"></i>
+                        </div>
+                        <div>
+                            <div class="body-text mb-2">Total Inventory</div>
+                            <h4 th:text="${inventoryCount}"></h4>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/inventory/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Inventory </h2>
-                                        <h2 class="m-0" th:text="${inventoryCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-4 text-center ">
-                    <div class="card dashboard_card_custom">
-                        <a th:href="@{/game/viewAll}">
-                            <div class="card-body">
-                                <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
-                                    <div class="col p-r-0">
-                                        <h2 class="m-0"> Games </h2>
-                                        <h2 class="m-0" th:text="${gameCount}"></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
-<!--                    <div class="card dashboard_card_custom">-->
-<!--                        <a th:href="@{/currency/viewAll}">-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="row p-t-10 p-b-10">-->
-<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
-<!--                                    <div class="col p-r-0">-->
-<!--                                        <h2 class="m-0"> Currency </h2>-->
-<!--                                        <h2 class="m-0" th:text="${currencyCount}"></h2>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </a>-->
+<!--                    <div class="box-icon-trending down">-->
+<!--                        <i class="icon-trending-down"></i>-->
+<!--                        <div class="body-title number">1.56%</div>-->
 <!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
-<!--                    <div class="card dashboard_card_custom">-->
-<!--                        <a th:href="@{/bank/viewAll}">-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="row p-t-10 p-b-10">-->
-<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
-<!--                                    <div class="col p-r-0">-->
-<!--                                        <h2 class="m-0"> Bank </h2>-->
-<!--                                        <h2 class="m-0" th:text="${bankCount}"></h2>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="col-lg-4 col-md-4 col-4 text-center ">-->
-<!--                    <div class="card dashboard_card_custom">-->
-<!--                        <a th:href="@{/transaction/viewAll}">-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="row p-t-10 p-b-10">-->
-<!--                                    &lt;!&ndash; Column &ndash;&gt;-->
-<!--                                    <div class="col p-r-0">-->
-<!--                                        <h2 class="m-0"> Transaction </h2>-->
-<!--                                        <h2 class="m-0" th:text="${transactionCount}"></h2>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <!-- Column -->
+                </div>
+                <div class="wrap-chart">
+                    <div id="line-chart-2"></div>
+                </div>
             </div>
-            <!-- PAge Content -->
+            <div class="wg-chart-default">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap14">
+                        <div class="image type-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#2377FC"/>
+                            </svg>
+                            <i class="icon-github"></i>
+                        </div>
+                        <div>
+                            <div class="body-text mb-2">Total Games</div>
+                            <h4 th:text="${gameCount}"></h4>
+                        </div>
+                    </div>
+<!--                    <div class="box-icon-trending up">-->
+<!--                        <i class="icon-trending-up"></i>-->
+<!--                        <div class="body-title number">1.56%</div>-->
+<!--                    </div>-->
+                </div>
+                <div class="wrap-chart">
+                    <div id="line-chart-4"></div>
+                </div>
+            </div>
         </div>
-        <!-- Container fluid  -->
-    </div>
-    <!-- Page wrapper  -->
-</section>
+    </section>
 </div>

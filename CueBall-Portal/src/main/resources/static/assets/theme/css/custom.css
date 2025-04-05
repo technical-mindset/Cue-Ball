@@ -1,0 +1,94 @@
+.required-field::after {
+    content: "*";
+    color: red
+}
+
+.form-control {
+    border: 1px solid #919191 !important;
+    color: #212529;
+    min-height: 38px;
+    display: block !important
+}
+
+select .lt {
+    text-align: center
+}
+
+/*span.select2.select2-container.select2-container--default {*/
+/*    border: 1px solid #e9ecef !important;*/
+/*    border-radius: .25rem*/
+/*}*/
+
+.select2 span.select2-selection.select2-selection--multiple {
+    padding: 1.2rem .75rem;
+    border: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    /* padding: 14px 22px; */
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    background-color: transparent;
+    border: 1px solid #324055;
+    border-radius: 12px;
+    color: #94A3B8;
+    margin-bottom: 0px;
+    position: relative;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -ms-appearance: none;
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: block !important;
+}
+
+.select2 span.select2-selection.select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    color: #2275fc !important;
+    padding: 2px 2px 2px 25px !important;
+    background: rgba(35, 119, 252, 0.1) !important;
+    border: 1px solid #2273f7 !important;
+    margin-top: 0 !important;
+    font-size: 12px !important;
+}
+
+.select2 span.select2-selection.select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove {
+    font-size: 1.2em !important;
+    top: 2px !important;
+    margin-left: 0 !important;
+    border-right: 1px solid #226fe0 !important;
+    color: #ff687dc7 !important;
+}
+.select2 span.select2-selection.select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove:hover {
+    background-color: transparent !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+    display: none !important;
+}
+span.select2-container.select2-container--default.select2-container--open {
+    color: #94A3B8 !important;
+}
+
+#password {
+    -webkit-text-security: disc;
+    text-security: disc
+}
+
+.dashboard_card_custom {
+    border: 1px solid #dbe2eb !important;
+    box-shadow: 0 6px 8px rgba(4, 4, 7, .1) !important;
+    border-radius: 8px !important
+}
+
+.dashboard_card_custom a {
+    color: #000 !important
+}
+
+select#advertisement {
+    display: block !important
+}

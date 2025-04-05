@@ -43,7 +43,7 @@
                             <tbody>
                             <tr th:each="data : ${dataList}">
                                 <td th:text="${data.getId()}"></td>
-                                <td th:text="${#dates.format(new java.util.Date(data.getCreatedDate()), 'dd-MM-yyyy HH:mm:ss')}"></td>
+                                <td th:text="${#dates.format(new java.util.Date(data.getCreatedAt()), 'dd-MM-yyyy HH:mm:ss')}"></td>
                                 <td th:text="${data.name}"></td>
                                 <td th:text="${data.getType()}"></td>
                                 <td th:text="${data.successIndicator}"></td>

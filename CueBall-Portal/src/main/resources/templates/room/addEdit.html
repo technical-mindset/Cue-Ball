@@ -1,129 +1,71 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
     <section class="addPage__section">
-        <div id="main-wrapper">
-            <!-- Page wrapper  -->
-            <div class="page-wrapper">
-                <div class="container-fluid">
-                    <!-- Bread crumb and right sidebar toggle -->
-                    <div class="row page-titles">
-                        <div class="col-md-5 align-self-center">
-                            <h4 class="text-themecolor">Add more</h4>
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Add Room</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny"><a th:href="@{/rooms/viewAll}">List</a></div></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="active" th:href="@{/rooms/addUpdate}">Add</li>
+            </ul>
+        </div>
+        <form class="form-add-product" th:object="${dto}" method="post" th:action="@{/rooms/addUpdate}">
+            <div class="wg-box">
+                <input  th:field="*{id}" type="hidden">
+                <div class="gap22 cols">
+                    <fieldset class="title">
+                        <div class="body-title mb-10">Title <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Title" tabindex="0"  th:field="*{title}">
+                        <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                    <fieldset class="name">
+                        <div class="body-title mb-10">Title <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Name" tabindex="0"  th:field="*{name}">
+                        <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+                <div class="gap22 cols">
+                    <fieldset class="RoomCategory">
+                        <div class="body-title mb-10">Room Category <span class="tf-color-1">*</span></div>
+                        <div class="select">
+                            <select  th:field="*{roomCategoryId}">
+                                <option th:value="0" th:selected="${roomCategoryId == null}">Choose...</option>
+                                <option th:each="roomCategory : ${roomCategoryList}" th:value="${roomCategory.id}" th:text="${roomCategory.name}"></option>
+                            </select>
                         </div>
-                        <div class="col-md-7 align-self-center text-end">
-                            <div class="d-flex justify-content-end align-items-center">
-                                <ol class="breadcrumb justify-content-end">
-                                    <li class="breadcrumb-item"><a th:href="@{/dashboard}">Home</a></li>
-                                    <li class="breadcrumb-item"><a th:href="@{/room/viewAll}">List</a></li>
-                                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="breadcrumb-item active" th:href="@{/room/addUpdate}">Add</li>
-
-                                </ol>
-
-                            </div>
+                        <div th:each="err : ${#fields.errors('roomCategoryId')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                    <fieldset class="games">
+                        <div class="body-title mb-10">Select Games <span class="tf-color-1">*</span></div>
+                        <div class="select">
+                            <select id="game" class="js-example-basic-multiple" th:field="*{gameIds}"  multiple="multiple">
+                                <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.title}"></option>
+                            </select>
                         </div>
-                    </div>
-                    <!-- Bread crumb and right sidebar toggle -->
-
-                    <!-- Start Page Content -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Room Form</h4>
-                                    <form class="form-horizontal row"  th:object="${dto}" method="post" th:action="@{/room/addUpdate}">
-
-                                        <input  th:field="*{id}" type="hidden">
-
-                                        <!-- Title-->
-                                        <div class="form-group col-6">
-                                            <label class="control-label required-field" for="title">Title</label>
-                                            <div class="col-12">
-                                                <input type="text" class="form-control" id="title" placeholder="Enter Title"  th:field="*{title}" />
-                                                <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error text-danger"/>
-                                            </div>
-                                        </div>
-
-                                        <!-- Name-->
-                                        <div class="form-group col-6">
-                                            <label class="control-label required-field" for="name">Name</label>
-                                            <div class="col-12">
-                                                <input type="text" class="form-control" id="name" placeholder="Enter Name"  th:field="*{name}" />
-                                                <div th:each="err : ${#fields.errors('name')}"
-                                                     th:text="${err}" class="error text-danger"/>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Room Category -->
-                                        <div class="form-group col-6">
-                                            <label  class="control-label col-sm-4 required-field" >Room Category</label>
-                                            <div class="col-12">
-                                                <select  class="form-control"  th:field="*{roomCategoryId}">
-                                                    <option th:value="0" th:selected="${roomCategoryId == null}">Choose...</option>
-                                                    <option th:each="roomCategory : ${roomCategoryList}" th:value="${roomCategory.id}" th:text="${roomCategory.name}"></option>
-                                                </select>
-                                                <div th:each="err : ${#fields.errors('roomCategoryId')}" th:text="${err}" class="error text-danger"/>
-                                            </div>
-                                        </div>
-
-
-                                        <!--  Games  -->
-                                        <div class="form-group col-6">
-                                            <label  class="control-label required-field" >Select Games</label>
-                                            <div class="col-12">
-                                                <select id="game" class="js-example-basic-multiple form-control" th:field="*{gameIds}"  multiple="multiple">
-                                                    <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.title}"></option>
-                                                </select>
-                                                <div th:each="err : ${#fields.errors('gameIds')}" th:text="${err}" class="error text-danger"></div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="row">
-                                            <!-- Enable -->
-                                            <div class="form-group col-3">
-                                            <div class="col-12">
-                                                <label>Enable</label>
-                                                <div class="form-check form-switch px-0">
-                                                    <input type="checkbox" class="js-switch" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked/>
-                                                </div>
-                                                <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
-                                            </div>
-                                            </div>
-
-
-                                        </div>
-                                        <input type="hidden" class="form-control" th:field="*{createdDate}"/>
-
-                                        <div class="form-group">
-                                            <div >
-                                                <button class="btn btn-primary text-white" type="submit">Submit</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- End PAge Content -->
+                        <div th:each="err : ${#fields.errors('gameIds')}" th:text="${err}" class="error text-danger"></div>
+                    </fieldset>
+                </div>
+                <fieldset class="enable">
+                    <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
+                    <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
+                    <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
+                </fieldset>
+                <input type="hidden" class="form-control" th:field="*{createdAt}"/>
+                <div class="">
+                    <button class="tf-button w208" type="submit">Save</button>
                 </div>
             </div>
-            <!-- Page wrapper  -->
-        </div>
+
+        </form>
     </section>
 </div>
 <script xmlns:th="http://www.thymeleaf.org" th:inline="javascript">
-
     $(document).ready(function () {
-
         $('.js-example-basic-multiple').select2({
             placeholder: 'Select Games',
             allowClear:true
         });
-
         setMultiSelectValue([[${dto.gameIds}]],'.js-example-basic-multiple');
     });
 </script>

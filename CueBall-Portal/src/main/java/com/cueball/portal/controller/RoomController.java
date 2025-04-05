@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/room")
+@RequestMapping(value = "/rooms")
 @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
 public class RoomController {
 

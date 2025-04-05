@@ -175,7 +175,7 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
         String message = confirmBox(dto);
         redirectAttributes.addFlashAttribute("message", message);
 
-        mav = new ModelAndView("redirect:/room/viewAll");
+        mav = new ModelAndView("redirect:/rooms/viewAll");
         return mav;
     }
 

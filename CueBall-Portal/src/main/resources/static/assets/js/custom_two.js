@@ -1,1 +1,0 @@
-function setMultiSelectValue(r,l){if(r&&"null"!==r){if("string"==typeof r){var e=r.split(",");console.log(e),$(l).val(e)}else Array.isArray(r)?(console.log(r),$(l).val(r)):console.error("Invalid input type. Expected string or array.");$(l).trigger("change")}else console.error("Input array is null or 'null'.")}

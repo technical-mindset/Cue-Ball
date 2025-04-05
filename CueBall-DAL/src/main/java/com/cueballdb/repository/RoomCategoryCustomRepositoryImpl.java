@@ -36,7 +36,7 @@ public class RoomCategoryCustomRepositoryImpl extends AbstractPersistenceManager
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY id, name ");
+//        where.append(" GROUP BY id, name ");
 //        String finalQuery = where + " ORDER BY id DESC ";
         return getMaxResults(where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }

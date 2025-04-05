@@ -6,49 +6,107 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/images/icon2.png'">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/favicon.png'">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/favicon.png'">
 
     <!-- Bootstrap CSS -->
-    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/login.css?v='+${buildVersion}" rel="stylesheet">
-    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/style.min.css?v='+${buildVersion}" rel="stylesheet">
-</head>
-<body>
-<section class="login__section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 login-box mx-auto pt-4">
-                <div class="col-lg-12 login-key">
-                    <i class="ti-lock" aria-hidden="true"></i>
-                </div>
-                <div class="col-lg-12 login-title">
-                    ADMIN PORTAL
-                </div>
-                <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
-                        <form th:action="@{/login}" method="post">
-                            <div class="form-group">
-                                <label class="form-control-label">USERNAME</label>
-                                <input type="text"  class="form-control" id="username" name="username" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">PASSWORD</label>
-                                <input type="password" id="password" class="form-control" name="password" required>
-                            </div>
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/login.css?v='+${buildVersion}" rel="stylesheet">
 
-                            <div class="col-lg-12 loginbttm text-center pb-3">
-                                <button class="btn btn-outline-primary" type="submit">
-                                    Login
-                                </button>
-<!--                                <a th:href="@{/dashboard}" class="btn btn-outline-primary">LOGIN</a>-->
-                            </div>
-                        </form>
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/animate.min.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/animation.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/bootstrap.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/bootstrap-select.min.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+    <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/style.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+
+    <!-- Font -->
+    <link rel="stylesheet" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/font/fonts.css?v='+${buildVersion}">
+
+    <!-- Icon -->
+    <link rel="stylesheet" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/icon/style.css?v='+${buildVersion}">
+
+    <style>
+        #page{
+            background: linear-gradient(45deg, #1a5a78 50%, #1d526c 50%);
+        }
+        #page:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #0606064a;
+            backdrop-filter: blur(1px);
+            z-index: -1;
+        }
+        .log-custom-btn{
+            background: -webkit-linear-gradient(40deg, #27ef9f, #0db8de) !important;
+            border-color: #0db8de !important;
+            color: #172b35 !important;
+        }
+        .login-box{
+            background-color: #1E293B !important;
+            backdrop-filter: blur(10px) !important;
+            box-shadow: 0 3px 20px -5px #1c1c1c, 0 3px 6px #00000070 !important;
+        }
+
+        .log-footer{
+            color: #fff !important;
+        }
+    </style>
+
+</head>
+
+<body class="body">
+
+<!-- #wrapper -->
+<div id="wrapper">
+    <!-- #page -->
+    <div id="page" class="">
+        <div class="wrap-login-page">
+            <div class="flex-grow flex flex-column justify-center gap30">
+                <a href="index.html" id="site-logo-inner">
+
+                </a>
+                <div class="login-box">
+                    <div>
+                        <h3>Login to Cue Ball</h3>
+                        <div class="body-text">Enter your username & password to login</div>
                     </div>
+                    <form class="form-login flex flex-column gap24" th:action="@{/login}" method="post">
+                        <fieldset class="email">
+                            <div class="body-title mb-10">User Name <span class="tf-color-1">*</span></div>
+                            <input class="flex-grow" type="text" placeholder="Enter your User Name" id="username" name="username" tabindex="0" value="" aria-required="true" required>
+                        </fieldset>
+                        <fieldset class="password">
+                            <div class="body-title mb-10">Password <span class="tf-color-1">*</span></div>
+                            <input class="password-input" type="password" placeholder="Enter your password" id="password" name="password" tabindex="0" value="" aria-required="true" required>
+                            <span class="show-pass">
+                                    <i class="icon-eye view"></i>
+                                    <i class="icon-eye-off hide"></i>
+                                </span>
+                        </fieldset>
+                        <button type="submit" class=" log-custom-btn tf-button w-full">Login</button>
+                    </form>
                     <div th:if="${param.error}" class="error_message">
                         <p class="text-danger text-capitalize m-0">Invalid username and password.</p>
                     </div>
                 </div>
+
             </div>
+            <div class="text-tiny log-footer" th:text="${'Copyright © '+#dates.format(#dates.createNow(), 'yyyy')+' by I.T.'}"></div>
         </div>
-</section>
+    </div>
+    <!-- /#page -->
+</div>
+<!-- /#wrapper -->
+
+<!-- Javascript -->
+<script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/js/jquery.min.js?v='+${buildVersion}"></script>
+<script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/js/bootstrap.min.js?v='+${buildVersion}"></script>
+<script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/js/bootstrap-select.min.js?v='+${buildVersion}"></script>
+<script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/js/main.js?v='+${buildVersion}"></script>
+
 </body>
+
 </html>

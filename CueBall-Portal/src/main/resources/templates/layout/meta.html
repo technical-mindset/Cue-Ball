@@ -1,32 +1,39 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="meta">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Cue Ball Portal</title>
-        <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/images/icon2.png'">
+
         <!-- Custom CSS -->
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/login.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/custom.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/style.min.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-datepicker.min.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/dataTables.bootstrap4.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/responsive.dataTables.min.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-tagsinput.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/bootstrap-datepicker.min.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/switchery.min.css?v='+${buildVersion}" rel="stylesheet">
-        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/css/dropify.min.css?v='+${buildVersion}" rel="stylesheet">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/custom.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/switchery.min.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
-        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+        <!--   THEME CSS     -->
 
-        <!--   Select To Js and Css     -->
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/animate.min.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/animation.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/bootstrap.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/bootstrap-select.min.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+        <link th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/css/style.css?v='+${buildVersion}" rel="stylesheet" type="text/css">
+
+        <!-- Font -->
+        <link rel="stylesheet" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/font/fonts.css?v='+${buildVersion}">
+
+        <!-- Icon -->
+        <link rel="stylesheet" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/icon/style.css?v='+${buildVersion}">
+
+        <!--    THEME CSS    -->
+
+        <!-- Favicon icon -->
+        <link rel="shortcut icon" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/favicon.png'">
+        <link rel="apple-touch-icon-precomposed" type="image/png" sizes="16x16" th:href="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/favicon.png'">
+
+
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <!-- all scripts are here -->
-        <script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/js/jquery.min.js?v='+${buildVersion}"></script>
+        <script th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/js/jquery.min.js?v='+${buildVersion}"></script>
     </head>
 
 </html>

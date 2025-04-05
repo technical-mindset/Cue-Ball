@@ -166,7 +166,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         String message = confirmBox(dto);
         redirectAttributes.addFlashAttribute("message", message);
 
-        mav = new ModelAndView("redirect:/inventory/viewAll");
+        mav = new ModelAndView("redirect:/inventories/viewAll");
         return mav;
     }
 }
