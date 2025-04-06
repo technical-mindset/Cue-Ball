@@ -2948,31 +2948,32 @@ a:hover, a:focus {
   font-size: 20px;
 }
 
-form {
+.form-search {
   position: relative;
 }
-form.form-search .button-submit {
+.form-search .button-submit {
   position: absolute;
   top: 15px;
   right: 22px;
 }
-form.form-search .button-submit button {
+.form-search .button-submit button {
   padding: 0;
   border: 0;
   font-size: 20px;
   color: var(--Heading);
 }
-form.form-search .button-submit button i {
+.form-search .button-submit button i {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-form.form-search .button-submit button:hover i {
+.form-search .button-submit button:hover i {
   color: var(--Main);
 }
-form.form-style-1 {
+
+.form-style-1 {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2981,7 +2982,7 @@ form.form-style-1 {
   flex-direction: column;
   gap: 24px;
 }
-form.form-style-1 > * {
+.form-style-1 > * {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2991,14 +2992,15 @@ form.form-style-1 > * {
   justify-content: start;
   gap: 10px;
 }
-form.form-style-1 > * > *:first-child {
+.form-style-1 > * > *:first-child {
   width: 100%;
   max-width: 300px;
 }
-form.form-style-1 .upload-image .item.up-load {
+.form-style-1 .upload-image .item.up-load {
   min-height: 250px;
 }
-form.form-style-2 {
+
+.form-style-2 {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -3007,7 +3009,7 @@ form.form-style-2 {
   flex-direction: column;
   gap: 30px;
 }
-form.form-style-2 > * {
+.form-style-2 > * {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -3016,43 +3018,43 @@ form.form-style-2 > * {
   flex-direction: row;
   gap: 30px;
 }
-form.form-style-2 > * .left {
+.form-style-2 > * .left {
   width: 100%;
   max-width: 368px;
 }
-form .password .show-pass {
+
+.password .show-pass {
   margin-left: -43px;
   font-size: 18px;
   color: var(--Icon);
   cursor: pointer;
 }
-form .password .show-pass .view {
+.password .show-pass .view {
   display: none;
 }
-form .password .show-pass.active .hide {
+.password .show-pass.active .hide {
   display: none;
 }
-form .password .show-pass.active .view {
+.password .show-pass.active .view {
   display: inline-block;
 }
-form textarea,
-form input[type=text],
-form input[type=password],
-form input[type=datetime],
-form input[type=datetime-local],
-form input[type=date],
-form input[type=month],
-form input[type=time],
-form input[type=week],
-form input[type=number],
-form input[type=email],
-form input[type=url],
-form input[type=search],
-form input[type=tel],
-form input[type=color] {
+
+textarea,
+input[type=text],
+input[type=password],
+input[type=datetime],
+input[type=datetime-local],
+input[type=date],
+input[type=month],
+input[type=time],
+input[type=week],
+input[type=number],
+input[type=email],
+input[type=url],
+input[type=search],
+input[type=tel],
+input[type=color] {
   outline: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
   width: 100%;
   padding: 14px 22px;
@@ -3067,31 +3069,32 @@ form input[type=color] {
   overflow: hidden;
   margin-bottom: 0;
 }
-form textarea::placeholder,
-form input[type=text]::placeholder,
-form input[type=password]::placeholder,
-form input[type=datetime]::placeholder,
-form input[type=datetime-local]::placeholder,
-form input[type=date]::placeholder,
-form input[type=month]::placeholder,
-form input[type=time]::placeholder,
-form input[type=week]::placeholder,
-form input[type=number]::placeholder,
-form input[type=email]::placeholder,
-form input[type=url]::placeholder,
-form input[type=search]::placeholder,
-form input[type=tel]::placeholder,
-form input[type=color]::placeholder {
+textarea::placeholder,
+input[type=text]::placeholder,
+input[type=password]::placeholder,
+input[type=datetime]::placeholder,
+input[type=datetime-local]::placeholder,
+input[type=date]::placeholder,
+input[type=month]::placeholder,
+input[type=time]::placeholder,
+input[type=week]::placeholder,
+input[type=number]::placeholder,
+input[type=email]::placeholder,
+input[type=url]::placeholder,
+input[type=search]::placeholder,
+input[type=tel]::placeholder,
+input[type=color]::placeholder {
   font-size: 14px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   line-height: 20px;
   color: var(--Text-Holder);
 }
-form button,
-form input[type=button],
-form input[type=reset],
-form input[type=submit] {
+
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
   padding: 14px 22px;
   font-size: 14px;
   font-family: "Inter", sans-serif;
@@ -3103,22 +3106,22 @@ form input[type=submit] {
   color: var(--Heading);
   overflow: hidden;
   display: inline-block;
-  -webkit-appearance: none;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
+  appearance: none;
   transition: all 0.3s ease;
   position: relative;
 }
-form button:hover,
-form input[type=button]:hover,
-form input[type=reset]:hover,
-form input[type=submit]:hover {
+button:hover,
+input[type=button]:hover,
+input[type=reset]:hover,
+input[type=submit]:hover {
   color: var(--primary);
 }
-form textarea {
+
+textarea {
   height: 200px !important;
 }
-form .cols {
+
+.cols {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;

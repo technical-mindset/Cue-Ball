@@ -374,8 +374,8 @@
                                 <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/avatar/user-1.png'"  alt="">
                             </span>
                             <span class="flex flex-column">
-                                <span class="body-title mb-2">User</span>
-                                <span class="text-tiny">Admin</span>
+                                <span sec:authentication="principal.username" class="body-title mb-2">User</span>
+<!--                                <span class="text-tiny">Admin</span>-->
                             </span>
                         </span>
                     </button>
