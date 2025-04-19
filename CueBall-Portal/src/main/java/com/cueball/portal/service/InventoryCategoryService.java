@@ -90,7 +90,18 @@ public class InventoryCategoryService extends BaseService<InventoryCategory, Inv
     }
 
 
+    public ModelAndView tuckShopMenu() {
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_VIEW_ALL);
 
+        List<InventoryCategory> lists = this.repository.findAllByEnableTrue();
+        List<InventoryCategoryDTO> DTOs = lists
+                .stream()
+                .map(this::mapEntityToDto)
+                .collect(Collectors.toList());
+
+        mav.addObject(Constants.RA_LIST, DTOs);
+        return mav;
+    }
 
     @Override
     public InventoryCategoryDTO mapEntityToDto(InventoryCategory entity) {

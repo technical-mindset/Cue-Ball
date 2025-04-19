@@ -18,21 +18,20 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/inventoryCategory")
 public class InventoryCategoryController {
 
     @Autowired
     private InventoryCategoryService service;
 
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/inventoryCategory/{id}", method = RequestMethod.GET)
     public InventoryCategoryDTO getById(@PathVariable("id")int id){
         return service.findById(id);
     }
 
 
     @Transactional
-    @GetMapping(value = "/addUpdate")
+    @GetMapping(value = "/inventoryCategory/addUpdate")
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return service.getView(id, redirectAttributes);
@@ -40,7 +39,7 @@ public class InventoryCategoryController {
 
 
     @Transactional
-    @PostMapping(value = "/addUpdate")
+    @PostMapping(value = "/inventoryCategory/addUpdate")
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
     public ModelAndView addUpdate(@ModelAttribute("dto") @Valid InventoryCategoryDTO inventoryCategoryDTO, BindingResult result, RedirectAttributes redirectAttributes) {
         return service.addUpdate(inventoryCategoryDTO, result, redirectAttributes);
@@ -48,7 +47,7 @@ public class InventoryCategoryController {
     }
 
 
-    @GetMapping(value = "/viewAll")
+    @GetMapping(value = "/inventoryCategory/viewAll")
     public ModelAndView findAllView(
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
@@ -56,6 +55,16 @@ public class InventoryCategoryController {
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
         return service.findFindAllView(search,enable,pageSize,pageNumber,ajax);
+    }
+
+    @GetMapping(value = "/tuckShop/menu")
+    public ModelAndView tuckShopMenu(
+            @RequestParam(value = "search",required = false )String search,
+            @RequestParam(value = "enable",required = false )Integer enable,
+            @RequestParam(value = "ps",required = false ) Integer pageSize,
+            @RequestParam(value = "pn",required = false ) Integer pageNumber,
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
+        return service.tuckShopMenu();
     }
 
 }

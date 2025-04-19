@@ -1,0 +1,17 @@
+<div xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
+    <section>
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Tuck Shop</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny">Menu</div></li>
+            </ul>
+        </div>
+        <div class="wg-box">
+            <div th:replace='tuckShop/viewAllDetail::viewAllDetail'></div>
+        </div>
+    </section>
+</div>
+
+

@@ -166,6 +166,13 @@ public interface Constants {
     String RA_PAGE_GAME_VIEW_ALL = "game/viewAll";
     String RA_PAGE_GAME_VIEW_ALL_DETAIL = "game/viewAllDetail";
 
+
+    /**
+     TUCK SHOP BASE PATHS
+     */
+    String RA_PAGE_TUCK_SHOP_VIEW_ALL = "tuckShop/viewAll";
+    String RA_PAGE_TUCK_SHOP_VIEW_ALL_DETAIL = "tuckShop/viewAllDetail";
+
     /**
      Localization URLs
      */
