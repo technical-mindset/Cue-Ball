@@ -23,17 +23,17 @@ public interface Constants {
     /**
      * Base URL For Local
      */
-    String RA_BASE_URL = "http://localhost:8080";
-    String RA_COMMON_WEB_PORT = "/commonadmin";
-    String DONATION_PORT = "/CueBallPortal";
+//    String RA_BASE_URL = "http://localhost:8080";
+//    String RA_COMMON_WEB_PORT = "/commonadmin";
+//    String DONATION_PORT = "/CueBallPortal";
 
 
     /**
      * Base URL For Stage
      */
-//    String RA_BASE_URL = "https://aws-stage.dibaadm.com";
-//    String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
-//    String DONATION_PORT = "/Admin-CentralDonationAdmin";
+    String RA_BASE_URL = "https://aws-stage.dibaadm.com";
+    String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
+    String DONATION_PORT = "/CueBallPortal";
 
 
 
