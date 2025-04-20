@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
@@ -16,12 +17,14 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class GameDTO extends BaseDTO {
 
-    @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
+    @NotBlank(message = "Title " + Constants.RA_EMPTY_MESSAGE)
     private String title;
 
+    @NotNull(message = "Charges " + Constants.RA_EMPTY_MESSAGE)
     @Min(value = 1, message = "Charges must be at least 1")
     private Double charges;
 
+    @NotNull(message = "Players " + Constants.RA_EMPTY_MESSAGE)
     @Min(value = 1, message = "Players must be at least 1")
     private Integer maxPlayers;
 

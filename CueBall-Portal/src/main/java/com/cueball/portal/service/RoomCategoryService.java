@@ -73,8 +73,8 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_ADD_EDIT);
 
         /**  Fetching Room Categories against the addition / updation of room's category if exists then throws an error **/
-        RoomCategory currency = repository.findByName(roomCategoryDTO.getName());
-        if(currency != null && roomCategoryDTO.getId() != currency.getId()){
+        RoomCategory category = repository.findByName(roomCategoryDTO.getName());
+        if(category != null && roomCategoryDTO.getId() != category.getId()){
             result.rejectValue("name", "name.root", "Category code already exists!");
         }
 

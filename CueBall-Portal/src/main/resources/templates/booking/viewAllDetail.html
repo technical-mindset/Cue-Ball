@@ -1,0 +1,56 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:fragment="viewAllDetail" class="widget" id="viewAllDetail">
+    <div class="wg-table table-all-attribute">
+        <ul class="table-title flex gap20 mb-14">
+            <li>
+                <div class="body-title">ID</div>
+            </li>
+            <li>
+                <div class="body-title">Title</div>
+            </li>
+            <li>
+                <div class="body-title">Customer Name</div>
+            </li>
+            <li>
+                <div class="body-title">Room</div>
+            </li>
+            <li>
+                <div class="body-title">Time In</div>
+            </li>
+            <li>
+                <div class="body-title">Time Out</div>
+            </li>
+            <li>
+                <div class="body-title">Charges</div>
+            </li>
+            <li>
+                <div class="body-title">Created Date</div>
+            </li>
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')">
+                <div class="body-title">Action</div>
+            </li>
+        </ul>
+        <ul class="flex flex-column">
+            <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
+                <div class="body-text" th:text="${data.getId()}"></div>
+                <div class="body-text" th:text="${data.title}"></div>
+                <div class="body-text" th:text="${data.customerName}"></div>
+                <div class="body-text" th:text="${data.roomName}"></div>
+                <div class="body-text" th:text="${data.timeIn.replace('T', ' ')}"></div>
+                <div class="body-text" th:text="${data.timeOut.replace('T', ' ')}"></div>
+                <div class="body-text" th:text="${data.charges}"></div>
+                <div class="body-text" th:text="${#dates.format(new java.util.Date(data.getCreatedAt()), 'yyyy-MM-dd')}"></div>
+                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" >
+                    <div class="list-icon-function">
+                        <a th:href="@{|addUpdate/?id=${data.getId()}|}">
+                            <div class="item edit">
+                                <i class="icon-edit-3"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div th:replace="common/ajaxPaging::ajaxPaging"></div>
+</div>

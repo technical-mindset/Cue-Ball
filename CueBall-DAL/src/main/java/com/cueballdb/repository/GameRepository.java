@@ -19,7 +19,7 @@ public interface GameRepository extends JpaRepository<Game, Integer>, GameCustom
 
 //    List<Game> findAllByEnableTrue();
 
-    @Query("SELECT g FROM Game g where g.enable=1 ORDER BY g.id DESC")
+    @Query("SELECT g FROM Game g where g.enable=true ORDER BY g.id DESC")
     List<Game> findAllByEnableTrue();
 
     long count();

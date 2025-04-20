@@ -15,8 +15,8 @@
                 <input  th:field="*{id}" type="hidden">
                 <div class="gap22 cols">
                     <fieldset class="name">
-                        <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
-                        <input class="mb-10" type="text" placeholder="Enter Name" tabindex="0"  th:field="*{title}">
+                        <div class="body-title mb-10">Title <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Title" tabindex="0"  th:field="*{title}">
                         <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
                     <fieldset class="charges">

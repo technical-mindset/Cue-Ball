@@ -9,6 +9,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+
+/**
+ * This Entity hasn't any mapping but the LOGICAL mapping through id's.
+ * */
 @Setter
 @Getter
 @NoArgsConstructor
@@ -42,9 +46,13 @@ public class Booking extends BaseEntity {
     @Column(name = "check_in")
     private Date checkIn;
 
-    @Column(name = "cancel")
+    @Column(name = "is_cancel")
     private boolean cancel;
 
     private double charges;
+
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id", updatable = false, insertable = false)
+//    private Customer customer;
 
 }

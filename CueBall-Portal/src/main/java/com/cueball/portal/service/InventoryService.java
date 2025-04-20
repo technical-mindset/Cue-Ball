@@ -99,15 +99,21 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         /**  Passing Obj and ObjectName for generic filters population while searching  */
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
         mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject(Constants.GENERIC_OBJ1,"variant");
-        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
+        mav.addObject("variants",variants);
+        mav.addObject("variantFilter",true);
         mav.addObject(Constants.EXTRA_FILTERS,true);
-        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
         mav.addObject("totalCount", count[0]);
         mav.addObject(Constants.RA_LIST, DTOs);
+
+        /** Generic things must be on hold */
+//        mav.addObject(Constants.GENERIC_OBJ1,"variant");
+//        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
+//        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
+
+
         return mav;
     }
 

@@ -18,12 +18,17 @@ import java.util.List;
 @Getter
 public class BookingDTO extends CustomerDTO {
 
-    @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
+    @NotBlank(message = "Title " + Constants.RA_EMPTY_MESSAGE)
     @Size(max = 500, message = Constants.RA_LENGTH_STRING_500)
     private String title;
 
+    @Min(value = 1, message = "Room " + Constants.RA_EMPTY_MESSAGE)
     private String roomId;
 
+    // for searching in the list
+    private String roomName;
+
+    // for searching in the list
     private String customerId;
 
     private String checkOut;
@@ -34,7 +39,11 @@ public class BookingDTO extends CustomerDTO {
 
     private double charges;
 
-    private String time;
+    @NotBlank(message = "Time-In " + Constants.RA_EMPTY_MESSAGE)
+    private String timeIn;
+
+    @NotBlank(message = "Time-Out " + Constants.RA_EMPTY_MESSAGE)
+    private String timeOut;
 
 }
 
