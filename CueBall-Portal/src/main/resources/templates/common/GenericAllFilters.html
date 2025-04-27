@@ -1,4 +1,5 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters" class="widget" id="GenericAllFilters">
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters"
+     class="widget row" id="GenericAllFilters">
 <!--    &lt;!&ndash;Getting filter&ndash;&gt;-->
 <!--    <div class="form-group row">-->
 <!--        <div class="col-12">-->
@@ -9,12 +10,61 @@
 <!--            </select>-->
 <!--        </div>-->
 
-        <div class="select">
-            <select th:id="${obj}" th:for="${obj}" th:onchange="|page(${pageNumber},${pageSize})|">
-                <option th:text="${objectName}"  th:selected th:value="0">Select Enable</option>
-                <option th:each="object : ${objectList}" th:value="${object.id}" th:text="${object.name}"></option>
+<!--        <div class="select">-->
+<!--            <select th:id="${obj}" th:for="${obj}" th:onchange="|page(${pageNumber},${pageSize})|">-->
+<!--                <option th:text="${objectName}"  th:selected th:value="0">Select Enable</option>-->
+<!--                <option th:each="object : ${objectList}" th:value="${object.id}" th:text="${object.name}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+
+    <!--Start Date-->
+    <div th:if="${fromDateFilter}" class="col-md-6 mb-20">
+        <label for="startDate" class="col-12 mb-5 body-title">Enter Start Date</label>
+        <fieldset class="name">
+            <input type="datetime-local" name="name" tabindex="2"  aria-required="true" id="startDate"  placeholder="Enter Start Date" th:id="startDate" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|">
+        </fieldset>
+    </div>
+
+        <!--End Date-->
+    <div th:if="${toDateFilter}" class="col-md-6 mb-20">
+        <label for="endDate" class="col-12 mb-5 body-title">Enter End Date</label>
+        <fieldset class="name">
+            <input type="datetime-local" name="name" tabindex="2"  aria-required="true"  placeholder="Enter End Date" th:id="endDate" id="endDate" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|">
+        </fieldset>
+    </div>
+
+
+    <div th:if="${variantFilter}" class="select col-md-6 mb-20">
+            <select th:id="variant" th:for="variant" th:onchange="|page(${pageNumber},${pageSize})|">
+                <option th:selected th:value="0"> Select Variant </option>
+                <option th:each="v : ${variants}" th:value="${v.id}" th:text="${v.name}"></option>
             </select>
         </div>
+
+
+    <div th:if="${restaurantFilter}" class="select col-md-6 mb-20">
+            <select th:id="restaurant" th:for="restaurant" th:onchange="|page(${pageNumber},${pageSize})|">
+                <option th:selected th:value="0"> Select Restaurant </option>
+                <option th:each="r : ${restaurants}" th:value="${r.id}" th:text="${r.title}"></option>
+            </select>
+        </div>
+
+
+    <div th:if="${roomCategoryFilter}" class="select col-md-6 mb-20">
+        <select th:id="roomCategory" th:for="roomCategory" th:onchange="|page(${pageNumber},${pageSize})|">
+            <option th:selected th:value="0"> Select Category </option>
+            <option th:each="rc : ${roomCategories}" th:value="${rc.id}" th:text="${rc.name}"></option>
+        </select>
+    </div>
+
+    <div th:if="${roomFilter}" class="select col-md-6 mb-20">
+            <select th:id="room" th:for="room" th:onchange="|page(${pageNumber},${pageSize})|">
+                <option th:selected th:value="0"> Select Room </option>
+                <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name + ' (' + room.title + ')'}"></option>
+            </select>
+        </div>
+
 
 </div>
 

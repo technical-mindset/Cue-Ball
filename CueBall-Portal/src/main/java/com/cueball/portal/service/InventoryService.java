@@ -26,6 +26,9 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
     private InventoryCategoryRepository categoryRepository;
 
     @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Autowired
     private VariantRepository variantRepository;
 
     public InventoryService(InventoryRepository repository) {
@@ -46,6 +49,19 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         dto.setVariantName(variant.getName());
 
 
+        /** Retrieving Restaurant's name  */
+        if (dto.getRestaurantId() != 0) {
+            Restaurant restaurant = this.restaurantRepository.findById(dto.getRestaurantId()).get();
+            dto.setRestaurantTitle(restaurant.getTitle());
+            dto.setPercent(restaurant.getPercent());
+        }
+        else {
+            dto.setRestaurantTitle("N/A");
+            dto.setPercent(0);
+        }
+
+
+
         dto.setCreatedAt(entity.getCreatedAt().getTime());
         dto.setModifiedAt(entity.getModifiedAt().getTime());
         return dto;
@@ -60,6 +76,10 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         InventoryCategory inventoryCategory = this.categoryRepository.findById(dto.getInventoryCategoryId()).get();
         entity.setInventoryCategory(inventoryCategory);
 
+        /** Calculation of Price with percent */
+        Restaurant restaurant = this.restaurantRepository.findById(dto.getRestaurantId()).get();
+        entity.setActualPrice((dto.getPrice() * restaurant.getPercent()) / 100);
+
 
         if (dto.getId() > 0) {
             entity.setModifiedAt(new Date ( System.currentTimeMillis()));
@@ -72,7 +92,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
     }
 
 
-    public ModelAndView findFindAllView(String search ,Integer enable, Integer variantId, Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView findFindAllView(String search ,Integer enable, Integer variantId, Integer restaurantId, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_VIEW_ALL);
 
         if(pageSize == null || pageSize <= 0 ) {
@@ -83,13 +103,15 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         }
 
         long []count = {0};
-        List<Inventory> lists = repository.findAllByFilters(search, enable, variantId, (pageNumber-1)*pageSize, pageSize, count);
+        List<Inventory> lists = repository.findAllByFilters(search, enable, variantId, restaurantId, (pageNumber-1)*pageSize, pageSize, count);
         List<InventoryDTO> DTOs = lists
                 .stream()
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
+        /** Restaurant and Variant */
         List<Variant> variants = this.variantRepository.findAllByEnableTrue();
+        List<Restaurant> restaurants = this.restaurantRepository.findAllByEnableTrue();
 
 
         if (ajax) {
@@ -99,15 +121,23 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         /**  Passing Obj and ObjectName for generic filters population while searching  */
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
         mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject(Constants.GENERIC_OBJ1,"variant");
-        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
+        mav.addObject("variants",variants);
+        mav.addObject("restaurants",restaurants);
+        mav.addObject("variantFilter",true);
+        mav.addObject("restaurantFilter",true);
         mav.addObject(Constants.EXTRA_FILTERS,true);
-        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
         mav.addObject("totalCount", count[0]);
         mav.addObject(Constants.RA_LIST, DTOs);
+
+        /** Generic things must be on hold */
+//        mav.addObject(Constants.GENERIC_OBJ1,"variant");
+//        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
+//        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
+
+
         return mav;
     }
 
@@ -119,8 +149,11 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
+        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrue();
+
 
         mav.addObject("variants", variantList);
+        mav.addObject("restaurants", restaurantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
@@ -148,7 +181,10 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
+        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrue();
+
         mav.addObject("variants", variantList);
+        mav.addObject("restaurants", restaurantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 

@@ -16,7 +16,7 @@
                     <input type="text" placeholder="Enter Search"  name="name" tabindex="2"  aria-required="true" th:id="search" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|">
                 </fieldset>
             </div>
-            <div th:if="${extraFilters}" class="col-md-6 mb-20">
+            <div th:if="${extraFilters}" class="col-12 mb-20">
                 <div th:replace="common/GenericAllFilters::GenericAllFilters"></div>
             </div>
         </div>

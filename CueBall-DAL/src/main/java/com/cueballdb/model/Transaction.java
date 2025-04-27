@@ -91,8 +91,8 @@ public class Transaction extends BaseEntity {
     private Bank bank;
 
     //bi-directional many-to-one association to SubscriptionProfile
-    @ManyToOne
-    private SubscriptionProfile subscriptionProfile;
+//    @ManyToOne
+//    private SubscriptionProfile subscriptionProfile;
 
 //    @ManyToOne
 //    private DonorProfile donorProfile;

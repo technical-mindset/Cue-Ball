@@ -7,11 +7,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustomRepository{
     Room findByTitleAndName(String title, String name);
+
+    List<Room> findAllByEnableTrue();
 
     long count();
 

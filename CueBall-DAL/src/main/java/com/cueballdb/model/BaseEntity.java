@@ -31,6 +31,4 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "enable")
     private boolean enable;
-
-
 }

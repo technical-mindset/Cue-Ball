@@ -5,28 +5,22 @@
                 <div class="body-title">ID</div>
             </li>
             <li>
-                <div class="body-title">Name</div>
+                <div class="body-title">Title</div>
             </li>
             <li>
-                <div class="body-title">Category</div>
+                <div class="body-title">Customer Name</div>
             </li>
             <li>
-                <div class="body-title">Variant</div>
+                <div class="body-title">Room</div>
             </li>
             <li>
-                <div class="body-title">Restaurant</div>
+                <div class="body-title">Time In</div>
             </li>
             <li>
-                <div class="body-title">Quantity</div>
+                <div class="body-title">Time Out</div>
             </li>
             <li>
-                <div class="body-title">Price</div>
-            </li>
-            <li>
-                <div class="body-title">Percent(%)</div>
-            </li>
-            <li>
-                <div class="body-title">Actual Price</div>
+                <div class="body-title">Charges</div>
             </li>
             <li>
                 <div class="body-title">Created Date</div>
@@ -38,14 +32,12 @@
         <ul class="flex flex-column">
             <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
                 <div class="body-text" th:text="${data.getId()}"></div>
-                <div class="body-text" th:text="${data.name}"></div>
-                <div class="body-text" th:text="${data.inventoryCategoryName}"></div>
-                <div class="body-text" th:text="${data.variantName}"></div>
-                <div class="body-text" th:text="${data.restaurantTitle}"></div>
-                <div class="body-text" th:text="${data.quantity}"></div>
-                <div class="body-text" th:text="${data.price}"></div>
-                <div class="body-text" th:text="${data.percent}"></div>
-                <div class="body-text" th:text="${data.actualPrice}"></div>
+                <div class="body-text" th:text="${data.title}"></div>
+                <div class="body-text" th:text="${data.customerName}"></div>
+                <div class="body-text" th:text="${data.roomName}"></div>
+                <div class="body-text" th:text="${data.timeIn.replace('T', ' ')}"></div>
+                <div class="body-text" th:text="${data.timeOut.replace('T', ' ')}"></div>
+                <div class="body-text" th:text="${data.charges}"></div>
                 <div class="body-text" th:text="${#dates.format(new java.util.Date(data.getCreatedAt()), 'yyyy-MM-dd')}"></div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" >
                     <div class="list-icon-function">

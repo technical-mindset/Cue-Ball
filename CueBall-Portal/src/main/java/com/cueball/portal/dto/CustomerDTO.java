@@ -14,15 +14,15 @@ import java.util.List;
 @Getter
 public class CustomerDTO extends BaseDTO {
 
-    @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
+    @NotBlank(message = "Name " + Constants.RA_EMPTY_MESSAGE)
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String customerName;
 
-    @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
+    @NotBlank(message = "Email " + Constants.RA_EMPTY_MESSAGE)
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String email;
 
-    @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
+    @NotBlank(message = "Contact " + Constants.RA_EMPTY_MESSAGE)
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String contact;
 

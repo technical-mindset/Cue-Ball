@@ -1,6 +1,7 @@
 package com.cueballdb.repository;
 
-import com.cueballdb.model.RoomCategory;
+import com.cueballdb.model.Game;
+import com.cueballdb.model.Restaurant;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,15 +11,15 @@ import java.util.Map;
 
 @Repository
 @Transactional(readOnly = true)
-public class RoomCategoryCustomRepositoryImpl extends AbstractPersistenceManager<RoomCategory> implements RoomCategoryCustomRepository {
+public class RestaurantCustomRepositoryImpl extends AbstractPersistenceManager<Restaurant> implements RestaurantCustomRepository {
 
     @Override
-    public List<RoomCategory> findAllByFilters(String search, Integer enable, Integer pageNumber, Integer pageSize, long[] count) {
+    public List<Restaurant> findAllByFilters(String search, Integer enable, Integer pageNumber, Integer pageSize, long[] count) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         StringBuilder where = new StringBuilder(" WHERE ");
 
         if(search != null && !search.equals("NaN")) {
-            where.append(" (name like :search) AND ");
+            where.append(" (title like :search) AND ");
             parameters.put("search", "%" + search + "%");
         }
 
@@ -36,10 +37,9 @@ public class RoomCategoryCustomRepositoryImpl extends AbstractPersistenceManager
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY id, name ");
-//        String finalQuery = where + " ORDER BY id DESC ";
-        return getMaxResults(where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
-    }
+        where.append(" GROUP BY id");
 
+        return getMaxResults(where+" ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
+    }
 }
 

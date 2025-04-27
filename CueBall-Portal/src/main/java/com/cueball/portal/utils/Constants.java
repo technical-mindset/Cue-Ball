@@ -73,7 +73,7 @@ public interface Constants {
     /**
       Base URL
      */
-    String BASE = "/CentralDonationAdmin";
+    String BASE = "/CueBallPortal";
 
     /**
      * User URLs
@@ -112,14 +112,14 @@ public interface Constants {
     String RA_PAGE_OPERATING_UNIT_VIEW_ALL_DETAIL = "operatingUnit/viewAllDetail";
 
     /**
-      Room Unit URLs
+      Room URLs
      */
     String RA_PAGE_ROOM_ADD_EDIT = "room/addEdit";
     String RA_PAGE_ROOM_VIEW_ALL = "room/viewAll";
     String RA_PAGE_ROOM_VIEW_ALL_DETAIL = "room/viewAllDetail";
 
     /**
-      Room Unit URLs
+      Inventory URLs
      */
     String RA_PAGE_INVENTORY_ADD_EDIT = "inventory/addEdit";
     String RA_PAGE_INVENTORY_VIEW_ALL = "inventory/viewAll";
@@ -146,7 +146,7 @@ public interface Constants {
     String RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL = "roomCategory/viewAllDetail";
 
     /**
-      Room Category URLs
+      Inventory Category URLs
      */
     String RA_PAGE_INVENTORY_CATEGORY_ADD_EDIT = "inventoryCategory/addEdit";
     String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL = "inventoryCategory/viewAll";
@@ -174,6 +174,27 @@ public interface Constants {
     String RA_PAGE_TUCK_SHOP_VIEW_ALL_DETAIL = "tuckShop/viewAllDetail";
 
     /**
+     Restaurant URLs
+     */
+    String RA_PAGE_RESTAURANT_ADD_EDIT = "restaurant/addEdit";
+    String RA_PAGE_RESTAURANT_VIEW_ALL = "restaurant/viewAll";
+    String RA_PAGE_RESTAURANT_VIEW_ALL_DETAIL = "restaurant/viewAllDetail";
+
+    /**
+     Booking URLs
+     */
+    String RA_PAGE_BOOKING_ADD_EDIT = "booking/addEdit";
+    String RA_PAGE_BOOKING_VIEW_ALL = "booking/viewAll";
+    String RA_PAGE_BOOKING_VIEW_ALL_DETAIL = "booking/viewAllDetail";
+
+    /**
+     Booking Customer Check-Out URLs
+     */
+    String RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL = "customer/viewAll";
+    String RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL_DETAIL = "customer/viewAllDetail";
+
+
+    /**
      Localization URLs
      */
     String RA_PAGE_LOCALIZATION_ADD_EDIT = "localization/addEdit";
@@ -191,7 +212,7 @@ public interface Constants {
     String RA_LENGTH_STRING_10="No. of Characters must be less than 10";
     String RA_LENGTH_STRING_20="No. of Characters must be less than 20";
     String RA_LENGTH_STRING_100="must not exceed 100 characters";
-    String RA_LENGTH_STRING_500="No. of Characters must be between 4 to 500";
+    String RA_LENGTH_STRING_500="No. of Characters must be between 3 to 500";
     String RA_LENGTH_STRING_URL="Url must be like https://dawateislami.net/ ";
     String RA_IMAGE_LENGTH_STRING_URL="Url must be like https://example.net/example.webp or .png or .jpg or .jpeg and () {} [] not allowed";
     String RA_REGEX_STRING_URL="Url must be like roman-url or romanurl ";
@@ -238,9 +259,6 @@ public interface Constants {
     };
 
 
-    /**
-     * Variants
-     * */
 
 
 

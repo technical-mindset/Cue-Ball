@@ -1,16 +1,16 @@
 <div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
     <section class="addPage__section">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>Add Game</h3>
+            <h3>Add Restaurant</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
                 <li><i class="icon-chevron-right"></i></li>
-                <li><div class="text-tiny"><a th:href="@{/game/viewAll}">List</a></div></li>
+                <li><div class="text-tiny"><a th:href="@{/restaurant/viewAll}">List</a></div></li>
                 <li><i class="icon-chevron-right"></i></li>
-                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="active" th:href="@{/game/addUpdate}">Add</li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="active" th:href="@{/restaurant/addUpdate}">Add</li>
             </ul>
         </div>
-        <form class="form-add-product" th:object="${dto}" method="post" th:action="@{/game/addUpdate}">
+        <form class="form-add-product" th:object="${dto}" method="post" th:action="@{/restaurant/addUpdate}">
             <div class="wg-box">
                 <input  th:field="*{id}" type="hidden">
                 <div class="gap22 cols">
@@ -20,16 +20,11 @@
                         <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
                     <fieldset class="charges">
-                        <div class="body-title mb-10">Charges <span class="tf-color-1">*</span></div>
-                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" tabindex="0" class="mb-10"  placeholder="Enter Charges"  th:field="*{charges}" />
-                        <div th:each="err : ${#fields.errors('charges')}" th:text="${err}" class="error text-danger"/>
+                        <div class="body-title mb-10">Percent(%) <span class="tf-color-1">*</span></div>
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" tabindex="0" class="mb-10"  placeholder="Enter Percentage"  th:field="*{percent}" />
+                        <div th:each="err : ${#fields.errors('percent')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
                 </div>
-                <fieldset class="maxplayers">
-                    <div class="body-title mb-10">Max Players <span class="tf-color-1">*</span></div>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" tabindex="0" class="mb-10"  placeholder="Enter Max Players "  th:field="*{maxPlayers}" />
-                    <div th:each="err : ${#fields.errors('maxPlayers')}" th:text="${err}" class="error text-danger"/>
-                </fieldset>
                 <fieldset class="enable">
                     <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
                     <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>

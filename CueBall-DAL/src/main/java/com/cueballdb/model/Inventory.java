@@ -21,9 +21,15 @@ public class Inventory extends BaseEntity {
     @Column(name = "variant_id")
     private Integer variantId;
 
+    @Column(name = "restaurant_id")
+    private int restaurantId;
+
     private int quantity;
 
     private double price;
+
+    @Column(name = "actual_price")
+    private double actualPrice;
 
     @ManyToOne
     private InventoryCategory inventoryCategory;

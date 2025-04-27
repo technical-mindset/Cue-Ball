@@ -1,10 +1,10 @@
 package com.cueball.portal.service;
 
 
-import com.cueball.portal.dto.RoomCategoryDTO;
+import com.cueball.portal.dto.RestaurantDTO;
 import com.cueball.portal.utils.Constants;
-import com.cueballdb.model.RoomCategory;
-import com.cueballdb.repository.RoomCategoryRepository;
+import com.cueballdb.model.Restaurant;
+import com.cueballdb.repository.RestaurantRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryDTO, RoomCategoryRepository> {
+public class RestaurantService extends BaseService<Restaurant, RestaurantDTO, RestaurantRepository> {
 
-    public RoomCategoryService(RoomCategoryRepository repository) {
+    public RestaurantService(RestaurantRepository repository) {
         super(repository);
     }
 
     public ModelAndView findFindAllView(String search ,Integer enable,Integer pageSize, Integer pageNumber, boolean ajax) {
-        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_VIEW_ALL);
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_RESTAURANT_VIEW_ALL);
 
 
         if(pageSize == null || pageSize <= 0 ) {
@@ -34,14 +34,14 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
         }
 
         long []count = {0};
-        List<RoomCategory> lists = this.repository.findAllByFilters(search,enable,(pageNumber-1)*pageSize,pageSize,count);
-        List<RoomCategoryDTO> DTOs = lists
+        List<Restaurant> lists = this.repository.findAllByFilters(search,enable,(pageNumber-1)*pageSize,pageSize,count);
+        List<RestaurantDTO> DTOs = lists
                 .stream()
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
         if (ajax) {
-            mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL);
+            mav = new ModelAndView(Constants.RA_PAGE_RESTAURANT_VIEW_ALL_DETAIL);
         }
 
         mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
@@ -56,36 +56,38 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
 
     public ModelAndView getView(Integer id, RedirectAttributes redirectAttributes){
 
-        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_ADD_EDIT);
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_RESTAURANT_ADD_EDIT);
+
         if (id != null && id > 0) {
-            RoomCategoryDTO roomCategoryDTO = this.findById(id);
-            mav.addObject(Constants.RA_DTO, roomCategoryDTO);
+            RestaurantDTO dto = this.findById(id);
+            mav.addObject(Constants.RA_DTO, dto);
         }
         else {
-            RoomCategoryDTO roomCategoryDTO = new RoomCategoryDTO ();
-            mav.addObject(Constants.RA_DTO, roomCategoryDTO);
+            RestaurantDTO dto = new RestaurantDTO ();
+            mav.addObject(Constants.RA_DTO, dto);
         }
+
         return mav;
     }
 
-    public ModelAndView addUpdate(RoomCategoryDTO roomCategoryDTO, BindingResult result, RedirectAttributes redirectAttributes) {
+    public ModelAndView addUpdate(RestaurantDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
 
-        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_ADD_EDIT);
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_RESTAURANT_ADD_EDIT);
 
-        /**  Fetching Room Categories against the addition / updation of room's category if exists then throws an error **/
-        RoomCategory category = repository.findByName(roomCategoryDTO.getName());
-        if(category != null && roomCategoryDTO.getId() != category.getId()){
-            result.rejectValue("name", "name.root", "Category code already exists!");
+        /**  Fetching Restaurant against the addition / updation of Restaurant if exists then throws an error **/
+        Restaurant restaurant = repository.findByTitle(dto.getTitle());
+        if(restaurant != null && dto.getId() != restaurant.getId()){
+            result.rejectValue("title", "title.root", "Restaurant title already exists!");
         }
 
         if (result.hasErrors()) {
             return mav;
         }
 
-        this.save(roomCategoryDTO);
-        String message = confirmBox(roomCategoryDTO);
+        this.save(dto);
+        String message = confirmBox(dto);
         redirectAttributes.addFlashAttribute("message", message);
-        mav = new ModelAndView("redirect:/roomCategory/viewAll");
+        mav = new ModelAndView("redirect:/restaurant/viewAll");
         return mav;
     }
 
@@ -93,8 +95,8 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
 
 
     @Override
-    public RoomCategoryDTO mapEntityToDto(RoomCategory entity) {
-        RoomCategoryDTO dto = new RoomCategoryDTO();
+    public RestaurantDTO mapEntityToDto(Restaurant entity) {
+        RestaurantDTO dto = new RestaurantDTO();
         BeanUtils.copyProperties(entity, dto);
 
         dto.setCreatedAt(entity.getCreatedAt().getTime());
@@ -102,8 +104,8 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
     }
 
     @Override
-    public RoomCategory mapDtoToEntity(RoomCategoryDTO dto) {
-        RoomCategory entity = new RoomCategory();
+    public Restaurant mapDtoToEntity(RestaurantDTO dto) {
+        Restaurant entity = new Restaurant();
         BeanUtils.copyProperties(dto, entity);
 
         if (dto.getId() > 0) {

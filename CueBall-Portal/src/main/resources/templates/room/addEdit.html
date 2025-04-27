@@ -20,7 +20,7 @@
                         <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
                     <fieldset class="name">
-                        <div class="body-title mb-10">Title <span class="tf-color-1">*</span></div>
+                        <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
                         <input class="mb-10" type="text" placeholder="Enter Name" tabindex="0"  th:field="*{name}">
                         <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
@@ -29,29 +29,33 @@
                     <fieldset class="RoomCategory">
                         <div class="body-title mb-10">Room Category <span class="tf-color-1">*</span></div>
                         <div class="select">
-                            <select  th:field="*{roomCategoryId}">
+                            <select  th:field="*{roomCategoryId}" class="mb-10">
                                 <option th:value="0" th:selected="${roomCategoryId == null}">Choose...</option>
                                 <option th:each="roomCategory : ${roomCategoryList}" th:value="${roomCategory.id}" th:text="${roomCategory.name}"></option>
                             </select>
                         </div>
-                        <div th:each="err : ${#fields.errors('roomCategoryId')}" th:text="${err}" class="error text-danger"/>
+                        <div th:each="err : ${#fields.errors('roomCategoryId')}" th:text="${err}" class="mb-10 error text-danger"/>
                     </fieldset>
+
                     <fieldset class="games">
                         <div class="body-title mb-10">Select Games <span class="tf-color-1">*</span></div>
                         <div class="select">
-                            <select id="game" class="js-example-basic-multiple" th:field="*{gameIds}"  multiple="multiple">
+                            <select id="game" class="js-example-basic-multiple mb-10" th:field="*{gameIds}"  multiple="multiple">
                                 <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.title}"></option>
                             </select>
                         </div>
                         <div th:each="err : ${#fields.errors('gameIds')}" th:text="${err}" class="error text-danger"></div>
                     </fieldset>
                 </div>
+
                 <fieldset class="enable">
                     <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
                     <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
                     <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
                 </fieldset>
+
                 <input type="hidden" class="form-control" th:field="*{createdAt}"/>
+
                 <div class="">
                     <button class="tf-button w208" type="submit">Save</button>
                 </div>
