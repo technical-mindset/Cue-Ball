@@ -23,13 +23,13 @@ public class BookingDTO extends CustomerDTO {
     private String title;
 
     @Min(value = 1, message = "Room " + Constants.RA_EMPTY_MESSAGE)
-    private String roomId;
+    private Integer roomId;
 
     // for searching in the list
     private String roomName;
 
     // for searching in the list
-    private String customerId;
+    private Integer customerId;
 
     private String checkOut;
 
@@ -44,6 +44,15 @@ public class BookingDTO extends CustomerDTO {
 
     @NotBlank(message = "Time-Out " + Constants.RA_EMPTY_MESSAGE)
     private String timeOut;
+
+    /** For Customer Check-Out */
+    private double totalCharges;
+
+    private String totalTime;
+
+    private Integer roomCategoryId;
+
+    private String roomCategoryName;
 
 }
 

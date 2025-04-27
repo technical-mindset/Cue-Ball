@@ -180,6 +180,12 @@ public interface Constants {
     String RA_PAGE_BOOKING_VIEW_ALL = "booking/viewAll";
     String RA_PAGE_BOOKING_VIEW_ALL_DETAIL = "booking/viewAllDetail";
 
+    /**
+     Booking Customer Check-Out URLs
+     */
+    String RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL = "customer/viewAll";
+    String RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL_DETAIL = "customer/viewAllDetail";
+
 
     /**
      Localization URLs

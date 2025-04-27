@@ -23,7 +23,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>, Book
             "(:newTimeIn BETWEEN b.timeIn AND b.timeOut) OR " +
             "(:newTimeOut BETWEEN b.timeIn AND b.timeOut) OR " +
             "(b.timeIn BETWEEN :newTimeIn AND :newTimeOut))")
-    List<Booking> findConflictBookings(@Param("bookingId") int bookingId ,@Param("newTimeIn") Date newTimeIn, @Param("newTimeOut") Date newTimeOut, @Param("roomId") String roomId);
+    List<Booking> findConflictBookings(@Param("bookingId") int bookingId ,@Param("newTimeIn") Date newTimeIn, @Param("newTimeOut") Date newTimeOut, @Param("roomId") int roomId);
 
 
 }

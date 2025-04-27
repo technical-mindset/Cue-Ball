@@ -49,12 +49,12 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         dto.setRoomId(entity.getRoomId());
         dto.setCustomerId(entity.getCustomerId());
 
-        Customer customer = this.customerRepository.findById(Integer.parseInt(dto.getCustomerId())).get();
+        Customer customer = this.customerRepository.findById((dto.getCustomerId())).get();
         dto.setCustomerName(customer.getName());
         dto.setContact(customer.getContact());
         dto.setEmail(customer.getEmail());
 
-        Room room = this.roomRepository.findById(Integer.parseInt(entity.getRoomId())).get();
+        Room room = this.roomRepository.findById((entity.getRoomId())).get();
         dto.setRoomName(room.getName());
 
         dto.setCreatedAt(entity.getCreatedAt().getTime());
@@ -106,10 +106,10 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         customer = this.customerRepository.save(customer);
         log.info("Booking Service {}", "Persisting Customer's Bean");
 
-        entity.setCustomerId(String.valueOf(customer.getId()));
+        entity.setCustomerId((customer.getId()));
 
         log.info("Booking Service {}", "Calculation of charges");
-        double charges = this.roomRepository.findById((Integer.parseInt(dto.getRoomId()))).get().getCharges();
+        double charges = this.roomRepository.findById(((dto.getRoomId()))).get().getCharges();
 
         /** handling the charges condition of update case after check-out */
         if (entity.getCheckOut() != null) {

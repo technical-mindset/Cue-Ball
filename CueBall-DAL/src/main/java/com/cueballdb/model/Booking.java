@@ -25,10 +25,10 @@ public class Booking extends BaseEntity {
     private String title;
 
     @Column(name="room_id")
-    private String roomId;
+    private int roomId;
 
     @Column(name="customer_id")
-    private String customerId;
+    private int customerId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "time_in")
@@ -51,8 +51,11 @@ public class Booking extends BaseEntity {
 
     private double charges;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", updatable = false, insertable = false)
-//    private Customer customer;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id", insertable = false, updatable = false)
+    private Room room;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private Customer customer;
 }

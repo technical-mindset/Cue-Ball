@@ -192,6 +192,20 @@
                         </ul>
                     </li>
 
+                    <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
+                            <div class="icon"><i class="icon-user"></i></div>
+                            <div class="text">Customer Check Out</div>
+                        </a>
+                        <ul aria-expanded="false" class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a th:href="@{/customer/viewAll}">
+                                    <div class="text">View</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </div>
