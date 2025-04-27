@@ -167,6 +167,13 @@ public interface Constants {
     String RA_PAGE_GAME_VIEW_ALL_DETAIL = "game/viewAllDetail";
 
     /**
+     Restaurant URLs
+     */
+    String RA_PAGE_RESTAURANT_ADD_EDIT = "restaurant/addEdit";
+    String RA_PAGE_RESTAURANT_VIEW_ALL = "restaurant/viewAll";
+    String RA_PAGE_RESTAURANT_VIEW_ALL_DETAIL = "restaurant/viewAllDetail";
+
+    /**
      Booking URLs
      */
     String RA_PAGE_BOOKING_ADD_EDIT = "booking/addEdit";

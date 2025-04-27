@@ -72,6 +72,46 @@
                         </ul>
                     </li>
 
+                    <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
+                            <div class="icon"><i class="icon-grid"></i></div>
+                            <div class="text">Booking</div>
+                        </a>
+
+                        <ul aria-expanded="false" class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a th:href="@{/booking/addUpdate}">
+                                    <div class="text">Add</div>
+                                </a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a th:href="@{/booking/viewAll}">
+                                    <div class="text">View</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'restaurant') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'restaurant') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
+                            <div class="icon"><i class="icon-grid"></i></div>
+                            <div class="text">Restaurant</div>
+                        </a>
+
+                        <ul aria-expanded="false" class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a th:href="@{/restaurant/addUpdate}">
+                                    <div class="text">Add</div>
+                                </a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a th:href="@{/restaurant/viewAll}">
+                                    <div class="text">View</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-layers"></i></div>
@@ -126,26 +166,6 @@
                             </li>
                             <li class="sub-menu-item">
                                 <a th:href="@{/inventories/viewAll}">
-                                    <div class="text">View</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
-                            <div class="icon"><i class="icon-grid"></i></div>
-                            <div class="text">Booking</div>
-                        </a>
-
-                        <ul aria-expanded="false" class="sub-menu">
-                            <li class="sub-menu-item">
-                                <a th:href="@{/booking/addUpdate}">
-                                    <div class="text">Add</div>
-                                </a>
-                            </li>
-                            <li class="sub-menu-item">
-                                <a th:href="@{/booking/viewAll}">
                                     <div class="text">View</div>
                                 </a>
                             </li>

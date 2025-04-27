@@ -54,6 +54,19 @@
                         </div>
                         <div th:each="err : ${#fields.errors('variantId')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
+                    <fieldset class="Restaurant">
+                        <div class="body-title mb-10">Restaurant <span class="tf-color-1">*</span></div>
+                        <div class="select">
+                            <select  th:field="*{restaurantId}" class="mb-10">
+                                <option th:value="0" th:selected="${restaurantId == null}">Choose...</option>
+                                <option th:each="restaurant : ${restaurants}" th:value="${restaurant.id}" th:text="${restaurant.title}"></option>
+                            </select>
+                        </div>
+                        <div th:each="err : ${#fields.errors('restaurantId')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+
+                <div class="gap22 cols">
                     <fieldset class="enable">
                         <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
                         <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>

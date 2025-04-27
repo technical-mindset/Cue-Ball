@@ -1,5 +1,5 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters"
-     class="widget" id="GenericAllFilters">
+     class="widget row" id="GenericAllFilters">
 <!--    &lt;!&ndash;Getting filter&ndash;&gt;-->
 <!--    <div class="form-group row">-->
 <!--        <div class="col-12">-->
@@ -18,7 +18,7 @@
 <!--        </div>-->
 
 
-    <div th:if="${variantFilter}" class="select">
+    <div th:if="${variantFilter}" class="select col-md-6 mb-20">
             <select th:id="variant" th:for="variant" th:onchange="|page(${pageNumber},${pageSize})|">
                 <option th:selected th:value="0"> Select Variant </option>
                 <option th:each="v : ${variants}" th:value="${v.id}" th:text="${v.name}"></option>
@@ -26,7 +26,15 @@
         </div>
 
 
-    <div th:if="${roomFilter}" class="select">
+    <div th:if="${restaurantFilter}" class="select col-md-6 mb-20">
+            <select th:id="restaurant" th:for="restaurant" th:onchange="|page(${pageNumber},${pageSize})|">
+                <option th:selected th:value="0"> Select Restaurant </option>
+                <option th:each="r : ${restaurants}" th:value="${r.id}" th:text="${r.title}"></option>
+            </select>
+        </div>
+
+
+    <div th:if="${roomFilter}" class="select col-md-6 mb-20">
             <select th:id="room" th:for="room" th:onchange="|page(${pageNumber},${pageSize})|">
                 <option th:selected th:value="0"> Select Room </option>
                 <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name}"></option>
