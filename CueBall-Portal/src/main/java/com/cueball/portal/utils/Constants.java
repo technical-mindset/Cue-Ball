@@ -27,7 +27,7 @@ public interface Constants {
     /**
      * Base URL For Stage
      */
-    String RA_BASE_URL = "http://3.133.116.100:8080";
+    String RA_BASE_URL = "http://3.148.249.83:8080";
     String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
     String PORT = "/CueBallPortal";
 
