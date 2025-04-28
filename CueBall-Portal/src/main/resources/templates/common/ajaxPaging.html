@@ -110,7 +110,7 @@
 
             /**  Create XMLHttpRequest to download the file */
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', reportUrl + '/report/generate', true);
+            xhr.open('POST', reportUrl + '/customer/report', true);
             xhr.responseType = 'blob'; // Important: Ensure the response type is a blob
 
             xhr.onload = function () {
@@ -118,7 +118,7 @@
                     var blob = xhr.response;
                     var link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
-                    link.download = "DonationList.xlsx"; // Set the filename
+                    link.download = "Cue-Ball-Report.xlsx"; // Set the filename
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);

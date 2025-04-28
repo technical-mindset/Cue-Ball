@@ -1,10 +1,6 @@
 package com.cueball.portal.utils;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  *
  */
@@ -25,7 +21,7 @@ public interface Constants {
      */
     String RA_BASE_URL = "http://localhost:8080";
     String RA_COMMON_WEB_PORT = "/commonadmin";
-    String DONATION_PORT = "/CueBallPortal";
+    String PORT = "/CueBallPortal";
 
 
     /**
@@ -47,7 +43,7 @@ public interface Constants {
     /**
      * URL Used In Localization
      */
-    String SERVICE_BASE_URL = RA_BASE_URL + DONATION_PORT;
+    String SERVICE_BASE_URL = RA_BASE_URL + PORT;
 
 
     String RA_BASE_SERVICE_TAG = RA_BASE_URL;
@@ -227,29 +223,23 @@ public interface Constants {
      For Excel Report
      */
     public final static String[] COLUMNS = {
-            "Id",
-            "Created Date",
-            "Name",
-            "Email",
-            "Phone",
-            "Type",
-            "Status",
-            "Order ID",
-            "Bank Name",
-            "Campaign Title",
-            "Operating Unit Title",
-            "Currency",
-            "Country",
-            "Actual Amount",
-            "Converted Amount",
-            "Total Amount",
-            "Marketing Source",
-            "Advertisement",
-            "Bank Transaction Id",
-            "Bank Transaction Status",
-            "Bank Description",
-            "Bank Response Code"
+            "ID",             // ID
+            "Created Date",   // Created Date
+            "Booking",        // Booking
+            "Customer",       // Customer
+            "Email",          // Email
+            "Contact",        // Contact
+            "Category",       // Category
+            "Room",      // Room Name
+            "Time In",        // Time In
+            "Time Out",       // Time Out
+            "Check In",       // Check In
+            "Check Out",      // Check Out
+            "Total time",     // Total time
+            "Room Charges",   // Room Charges
+            "Total Charges"   // Total Charges
     };
+
 
 
 

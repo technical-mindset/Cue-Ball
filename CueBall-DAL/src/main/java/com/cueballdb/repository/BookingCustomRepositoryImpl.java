@@ -50,6 +50,20 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
 
     @Override
     public List<Booking> findAllByFilterReport(String search, Integer enable, Integer roomId, Integer roomCategoryId, String startDate, String endDate, Integer pageNumber, Integer pageSize, long[] count) {
+
+        List<Object> objects = combine(search, enable, roomId, roomCategoryId, startDate, endDate);
+        return getMaxResults( (String) objects.get(0) +  " ORDER BY booking.id DESC ", (Map<String, Object>) objects.get(1), pageNumber, pageSize, count);
+    }
+
+    @Override
+    public List<Booking> findAllByFilterExcel(String search, Integer enable, Integer roomId, Integer roomCategoryId, String startDate, String endDate) {
+
+        List<Object> objects = combine(search, enable, roomId, roomCategoryId, startDate, endDate);
+        return findByCriteria((String) objects.get(0) +  " ORDER BY booking.id DESC ", (Map<String, Object>) objects.get(1));
+    }
+
+    /** Usable Code */
+    private List<Object> combine(String search, Integer enable, Integer roomId, Integer roomCategoryId, String startDate, String endDate){
         Map<String, Object> parameters = new HashMap<>();
         StringBuilder beforeWhere = new StringBuilder();
         StringBuilder where = new StringBuilder(" WHERE ");
@@ -78,7 +92,7 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
         /** For search in booking-title and customer-name */
         if (search != null && !search.equals("NaN")) {
             where.append(" (booking.title LIKE :search OR c.name LIKE :search) AND ");
-            parameters.put("search", "%" + search + "%");
+            parameters.put("search", "%" + search.toLowerCase() + "%");
         }
 
         /** Fetching against the room */
@@ -109,7 +123,8 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
         // ✅ Append GROUP BY clause before passing it to getMaxResults
         where.append(" GROUP BY booking.id, r.id, rc.id, c.name ");
 
-        return getMaxResults( beforeWhere.toString() + where +  " ORDER BY booking.id DESC ", parameters, pageNumber, pageSize, count);
+        return List.of(beforeWhere.toString() + where, parameters);
     }
+
 }
 

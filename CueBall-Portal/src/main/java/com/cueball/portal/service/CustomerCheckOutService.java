@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 
@@ -50,7 +49,6 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
         dto.setTimeOut(dateFormat.format(entity.getTimeOut()));
         dto.setCheckIn(entity.getCheckIn() != null ? dateFormat.format(entity.getCheckIn()) : "N/A");
         dto.setCheckOut(entity.getCheckOut() != null ? dateFormat.format(entity.getCheckOut()) : "N/A");
-        dto.setTotalTime("N/A");
 
         /** Room & Room - Category */
         dto.setRoomId(entity.getRoomId());
@@ -58,7 +56,22 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
         dto.setCharges(entity.getRoom().getCharges());
         dto.setRoomCategoryId(entity.getRoom().getRoomCategory().getId());
         dto.setRoomCategoryName(entity.getRoom().getRoomCategory().getName());
-        dto.setTotalCharges(entity.getCharges());
+
+        /** Calculation of total-time and total-charges */
+        Date in = entity.getTimeIn();
+        Date out = entity.getTimeOut();
+
+        if (entity.getCheckIn() != null && entity.getCheckIn().getTime() > entity.getTimeIn().getTime()) {
+            in = entity.getCheckIn();
+        }
+        if (entity.getCheckOut() != null && entity.getCheckOut().getTime() > entity.getTimeOut().getTime()) {
+            out = entity.getCheckOut();
+        }
+        /** @@Charges conflict Pay Attention on this  */
+//        dto.setTotalCharges(timeCalculation(in, out) * entity.getCharges()); /** Pay attention on this */
+        /** -------------------------------------------------------------------------------------------- */
+        dto.setTotalCharges(Math.ceil(timeCalculation(in, out) * entity.getRoom().getCharges()));
+        dto.setTotalTime(String.valueOf(timeCalculation(in, out)));
 
         /** Customer details */
         dto.setCustomerId(entity.getCustomerId());
@@ -112,6 +125,7 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
         mav.addObject("roomCategoryFilter",true);
         mav.addObject("toDateFilter",true);
         mav.addObject("fromDateFilter",true);
+        mav.addObject("reportUrl", Constants.RA_BASE_URL + Constants.PORT);
         mav.addObject(Constants.EXTRA_FILTERS,true);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
@@ -133,15 +147,6 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
         return result;
 
     }
-
-    private double timeCalculation(Date in, Date out){
-        long diffInMillies = Math.abs(out.getTime() - in.getTime());
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillies);
-        return minutes;
-
-    }
-
-
 }
 
 
