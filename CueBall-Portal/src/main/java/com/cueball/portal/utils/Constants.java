@@ -13,7 +13,7 @@ public interface Constants {
      */
 //	String RA_BASE_URL = "https://server.dawateislami.net";
 //    String RA_COMMON_WEB_PORT = "/commonadmin";
-//    String DONATION_PORT = "/CentralDonationAdmin";
+//    String PORT = "/CentralDonationAdmin";
 
 
     /**
@@ -29,7 +29,7 @@ public interface Constants {
      */
 //    String RA_BASE_URL = "https://aws-stage.dibaadm.com";
 //    String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
-//    String DONATION_PORT = "/Admin-CentralDonationAdmin";
+//    String PORT = "/Admin-CentralDonationAdmin";
 
 
 
