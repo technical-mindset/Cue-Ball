@@ -31,7 +31,7 @@
 
                 <div class="gap22 cols">
                     <fieldset class="email">
-                        <div class="body-title mb-10">Email <span class="tf-color-1">*</span></div>
+                        <div class="body-title mb-10">Email <span class="tf-color-1"></span></div>
                         <input class="mb-10" type="text" placeholder="Enter Email"  th:field="*{email}" />
                         <div th:each="err : ${#fields.errors('email')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
