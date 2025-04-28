@@ -29,7 +29,7 @@ public class BookingDTO extends CustomerDTO {
     private String roomName;
 
     // for searching in the list
-    private Integer customerId;
+    private int customerId;
 
     private String checkOut;
 

@@ -65,6 +65,16 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
     @Override
     public Booking mapDtoToEntity(BookingDTO dto) {
         Booking entity = new Booking();
+        System.out.println("______________________________________________________________________");
+        System.out.println("Time In:"+dto.getTimeIn());
+        System.out.println("Time Out:"+dto.getTimeOut());
+        System.out.println("Contact:"+dto.getContact());
+        System.out.println("Email:"+dto.getEmail());
+        System.out.println("Room:"+dto.getRoomId());
+        System.out.println("Room Category:"+dto.getRoomCategoryId());
+        System.out.println("Check In:"+dto.getCheckIn());
+        System.out.println("Check Out:"+dto.getCheckOut());
+        System.out.println("______________________________________________________________________");
 
         BeanUtils.copyProperties(dto, entity);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH);
@@ -263,15 +273,6 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         return result;
 
     }
-
-    private double timeCalculation(Date in, Date out){
-        long diffInMillies = Math.abs(out.getTime() - in.getTime());
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillies);
-        return minutes;
-
-    }
-
-
 }
 
 

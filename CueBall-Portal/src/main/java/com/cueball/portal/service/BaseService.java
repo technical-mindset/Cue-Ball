@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 
@@ -155,41 +156,11 @@ public abstract class BaseService<E, D extends BaseDTO, R extends JpaRepository<
         return user;
     }
 
-//    public  String  getUserOperatingUnit(){
-//        return this.getUser().getOperatingUnit();
-//    }
+    protected double timeCalculation(Date in, Date out){
+        long diffInMillies = Math.abs(out.getTime() - in.getTime());
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillies);
+        return minutes;
 
-//    public String langFilter(String lang) {
-//
-//        String langCode;
-//        if (lang != null && !lang.equals("NaN")) {
-//            langCode = lang;
-//        }
-//        else {
-//            langCode = getUserOperatingUnit();
-//        }
-//        return langCode;
-//    }
-
-    /**  Fetching the currencies and into a String from list of banks.  */
-    protected String getCurrencyIds(List<Bank> banks){
-        String currencyIds = "";
-
-        for (int i = 0; i < banks.size(); i++) {
-
-            currencyIds += banks.get(i).getCurrencyId();
-
-            if (i < banks.size() - 1 && banks.get(i).getCurrencyId().length() > 0) {
-                currencyIds += ",";
-            }
-        }
-
-        return currencyIds;
-    }
-
-    /**  Bank Vendors  */
-    public List<String> vendors() {
-        return Arrays.asList("Alfalah", "Meezan", "UBL", "Stripe", "PayPal", "master-card", "visa", "american-express", "discover-network");
     }
 
 }

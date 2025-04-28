@@ -1,10 +1,6 @@
 package com.cueball.portal.utils;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  *
  */
@@ -47,7 +43,7 @@ public interface Constants {
     /**
      * URL Used In Localization
      */
-    String SERVICE_BASE_URL = RA_BASE_URL + DONATION_PORT;
+//    String SERVICE_BASE_URL = RA_BASE_URL + PORT;
 
 
     String RA_BASE_SERVICE_TAG = RA_BASE_URL;
@@ -71,7 +67,7 @@ public interface Constants {
 
 
     /**
-      Base URL
+     Base URL
      */
     String BASE = "/CueBallPortal";
 
@@ -92,7 +88,7 @@ public interface Constants {
     String RA_LIST = "dataList";
 
     /**
-      Login URLs
+     Login URLs
      */
     String RA_ROOT_PAGE= "login/login";
     String RA_DASHBOARD="dashboard/dashboard";
@@ -105,28 +101,28 @@ public interface Constants {
     String RA_PAGE_LEGAL_ENTITY_VIEW_ALL_DETAIL = "legalEntity/viewAllDetail";
 
     /**
-      Operating Unit URLs
+     Operating Unit URLs
      */
     String RA_PAGE_OPERATING_UNIT_ADD_EDIT = "operatingUnit/addEdit";
     String RA_PAGE_OPERATING_UNIT_VIEW_ALL = "operatingUnit/viewAll";
     String RA_PAGE_OPERATING_UNIT_VIEW_ALL_DETAIL = "operatingUnit/viewAllDetail";
 
     /**
-      Room URLs
+     Room URLs
      */
     String RA_PAGE_ROOM_ADD_EDIT = "room/addEdit";
     String RA_PAGE_ROOM_VIEW_ALL = "room/viewAll";
     String RA_PAGE_ROOM_VIEW_ALL_DETAIL = "room/viewAllDetail";
 
     /**
-      Inventory URLs
+     Inventory URLs
      */
     String RA_PAGE_INVENTORY_ADD_EDIT = "inventory/addEdit";
     String RA_PAGE_INVENTORY_VIEW_ALL = "inventory/viewAll";
     String RA_PAGE_INVENTORY_VIEW_ALL_DETAIL = "inventory/viewAllDetail";
 
     /**
-      Campaign URLs
+     Campaign URLs
      */
     String RA_PAGE_CAMPAIGN_ADD_EDIT = "campaign/addEdit";
     String RA_PAGE_CAMPAIGN_VIEW_ALL = "campaign/viewAll";
@@ -139,21 +135,21 @@ public interface Constants {
     String RA_PAGE_TRANSACTION_VIEW_ALL_DETAIL = "transaction/viewAllDetail";
 
     /**
-      Room Category URLs
+     Room Category URLs
      */
     String RA_PAGE_ROOM_CATEGORY_ADD_EDIT = "roomCategory/addEdit";
     String RA_PAGE_ROOM_CATEGORY_VIEW_ALL = "roomCategory/viewAll";
     String RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL = "roomCategory/viewAllDetail";
 
     /**
-      Inventory Category URLs
+     Inventory Category URLs
      */
     String RA_PAGE_INVENTORY_CATEGORY_ADD_EDIT = "inventoryCategory/addEdit";
     String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL = "inventoryCategory/viewAll";
     String RA_PAGE_INVENTORY_CATEGORY_VIEW_ALL_DETAIL = "inventoryCategory/viewAllDetail";
 
     /**
-      Variant URLs
+     Variant URLs
      */
     String RA_PAGE_VARIANT_ADD_EDIT = "variant/addEdit";
     String RA_PAGE_VARIANT_VIEW_ALL = "variant/viewAll";
@@ -234,29 +230,23 @@ public interface Constants {
      For Excel Report
      */
     public final static String[] COLUMNS = {
-            "Id",
-            "Created Date",
-            "Name",
-            "Email",
-            "Phone",
-            "Type",
-            "Status",
-            "Order ID",
-            "Bank Name",
-            "Campaign Title",
-            "Operating Unit Title",
-            "Currency",
-            "Country",
-            "Actual Amount",
-            "Converted Amount",
-            "Total Amount",
-            "Marketing Source",
-            "Advertisement",
-            "Bank Transaction Id",
-            "Bank Transaction Status",
-            "Bank Description",
-            "Bank Response Code"
+            "ID",             // ID
+            "Created Date",   // Created Date
+            "Booking",        // Booking
+            "Customer",       // Customer
+            "Email",          // Email
+            "Contact",        // Contact
+            "Category",       // Category
+            "Room",      // Room Name
+            "Time In",        // Time In
+            "Time Out",       // Time Out
+            "Check In",       // Check In
+            "Check Out",      // Check Out
+            "Total time",     // Total time
+            "Room Charges",   // Room Charges
+            "Total Charges"   // Total Charges
     };
+
 
 
 
