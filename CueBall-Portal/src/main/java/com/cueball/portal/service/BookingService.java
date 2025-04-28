@@ -43,6 +43,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         BookingDTO dto = new BookingDTO();
         BeanUtils.copyProperties(entity, dto);
 
+
         dto.setTimeIn(dateFormat.format(entity.getTimeIn()));
         dto.setTimeOut(dateFormat.format(entity.getTimeOut()));
 
@@ -65,16 +66,16 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
     @Override
     public Booking mapDtoToEntity(BookingDTO dto) {
         Booking entity = new Booking();
-        System.out.println("______________________________________________________________________");
-        System.out.println("Time In:"+dto.getTimeIn());
-        System.out.println("Time Out:"+dto.getTimeOut());
-        System.out.println("Contact:"+dto.getContact());
-        System.out.println("Email:"+dto.getEmail());
-        System.out.println("Room:"+dto.getRoomId());
-        System.out.println("Room Category:"+dto.getRoomCategoryId());
-        System.out.println("Check In:"+dto.getCheckIn());
-        System.out.println("Check Out:"+dto.getCheckOut());
-        System.out.println("______________________________________________________________________");
+        System.out.println("====================================== EMAIL ======================");
+        System.out.println("====================================== EMAIL ======================");
+        System.out.println("====================================== EMAIL ======================");
+        System.out.println("====================================== EMAIL ======================");
+        System.out.println("------------------ Email::"+dto.getEmail());
+        System.out.println("------------------ Email::"+dto.getEmail());
+        System.out.println("------------------ Email::"+dto.getEmail());
+        System.out.println("------------------ Email::"+dto.getEmail());
+        System.out.println("------------------ Email::"+dto.getEmail());
+        System.out.println("------------------ Email::"+dto.getEmail());
 
         BeanUtils.copyProperties(dto, entity);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH);
@@ -105,7 +106,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
 
         Customer customer = new Customer();
         customer.setName(dto.getCustomerName());
-        customer.setEmail(dto.getEmail());
+        customer.setEmail(dto.getEmail() != null ? !dto.getEmail().isEmpty() ? dto.getEmail() : "N/A" : "N/A");
         customer.setContact(dto.getContact());
         log.info("Booking Service {}", "Creating Customer's Bean");
         customer.setCreatedAt(new Date(System.currentTimeMillis()));

@@ -18,8 +18,6 @@ public class CustomerDTO extends BaseDTO {
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String customerName;
 
-    @NotBlank(message = "Email " + Constants.RA_EMPTY_MESSAGE)
-    @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String email;
 
     @NotBlank(message = "Contact " + Constants.RA_EMPTY_MESSAGE)
