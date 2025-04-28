@@ -50,7 +50,7 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY id, name ");
+        where.append(" GROUP BY id ");
 
         return getMaxResults(beforeWhere.toString() + where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }
