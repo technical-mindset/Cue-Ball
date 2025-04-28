@@ -13,15 +13,15 @@ public interface Constants {
      */
 //	String RA_BASE_URL = "https://server.dawateislami.net";
 //    String RA_COMMON_WEB_PORT = "/commonadmin";
-//    String DONATION_PORT = "/CentralDonationAdmin";
+//    String PORT = "/CentralDonationAdmin";
 
 
     /**
      * Base URL For Local
      */
-//    String RA_BASE_URL = "http://localhost:8081";
+//    String RA_BASE_URL = "http://localhost:8080";
 //    String RA_COMMON_WEB_PORT = "/commonadmin";
-//    String DONATION_PORT = "/CueBallPortal";
+//    String PORT = "/CueBallPortal";
 
 
     /**
@@ -29,7 +29,7 @@ public interface Constants {
      */
     String RA_BASE_URL = "http://3.133.116.100:8080";
     String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
-    String DONATION_PORT = "/CueBallPortal";
+    String PORT = "/CueBallPortal";
 
 
 
@@ -43,7 +43,7 @@ public interface Constants {
     /**
      * URL Used In Localization
      */
-//    String SERVICE_BASE_URL = RA_BASE_URL + PORT;
+    String SERVICE_BASE_URL = RA_BASE_URL + PORT;
 
 
     String RA_BASE_SERVICE_TAG = RA_BASE_URL;
@@ -162,13 +162,6 @@ public interface Constants {
     String RA_PAGE_GAME_VIEW_ALL = "game/viewAll";
     String RA_PAGE_GAME_VIEW_ALL_DETAIL = "game/viewAllDetail";
 
-
-    /**
-     TUCK SHOP BASE PATHS
-     */
-    String RA_PAGE_TUCK_SHOP_VIEW_ALL = "tuckShop/viewAll";
-    String RA_PAGE_TUCK_SHOP_VIEW_ALL_DETAIL = "tuckShop/viewAllDetail";
-
     /**
      Restaurant URLs
      */
@@ -213,7 +206,7 @@ public interface Constants {
     String RA_IMAGE_LENGTH_STRING_URL="Url must be like https://example.net/example.webp or .png or .jpg or .jpeg and () {} [] not allowed";
     String RA_REGEX_STRING_URL="Url must be like roman-url or romanurl ";
     String RA_LENGTH_STRING_MAX="Maximum Limit is 500";
-    String RA_REGEX_URL="\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;'()]*[-a-zA-Z0-9+&@#/%=~_|'()]$";
+    String RA_REGEX_URL="\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=_|!:,.;'()]*[-a-zA-Z0-9+&@#/%=_|'()]$";
     String RA_IMAGE_REGEX_URL="\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;']*\\.(png|webp|jpg|jpeg)\\b";
     String RA_REGEX_CURRENCY="^[A-Z]{3}$";
     String RA_REGEX_ROMAN_URL="^[a-z-]+$";

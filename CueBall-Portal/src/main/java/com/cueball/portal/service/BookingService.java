@@ -66,16 +66,6 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
     @Override
     public Booking mapDtoToEntity(BookingDTO dto) {
         Booking entity = new Booking();
-        System.out.println("====================================== EMAIL ======================");
-        System.out.println("====================================== EMAIL ======================");
-        System.out.println("====================================== EMAIL ======================");
-        System.out.println("====================================== EMAIL ======================");
-        System.out.println("------------------ Email::"+dto.getEmail());
-        System.out.println("------------------ Email::"+dto.getEmail());
-        System.out.println("------------------ Email::"+dto.getEmail());
-        System.out.println("------------------ Email::"+dto.getEmail());
-        System.out.println("------------------ Email::"+dto.getEmail());
-        System.out.println("------------------ Email::"+dto.getEmail());
 
         BeanUtils.copyProperties(dto, entity);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH);
