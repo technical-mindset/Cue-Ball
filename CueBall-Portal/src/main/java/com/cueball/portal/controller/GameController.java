@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/game")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class GameController {
 
     @Autowired
@@ -29,27 +29,23 @@ public class GameController {
         return this.service.save(dto); }
 
 
-//    @RequestMapping(value = "/all", method = RequestMethod.GET)
-//    public GenericListResponse findTags() {
-//        return service.findAllEnable();
-//    }
-
-
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public GameDTO getById(@PathVariable("id")int id){
         return this.service.findById(id);
     }
-//
-//
+
+
     @Transactional
     @GetMapping(value = "/addUpdate")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return this.service.getView(id, redirectAttributes);
     }
 
     @Transactional
     @PostMapping(value = "/addUpdate")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView addUpdate(@Valid @ModelAttribute("dto") GameDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
 
         return this.service.addUpdate(dto, result, redirectAttributes);

@@ -1,4 +1,5 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="viewAllDetail"  id="viewAllDetail">
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:fragment="viewAllDetail"
+     id="viewAllDetail">
     <div class="wg-table table-all-attribute">
         <ul class="table-title flex gap20 mb-14">
             <li>
@@ -10,7 +11,7 @@
             <li>
                 <div class="body-title">Enable</div>
             </li>
-            <li>
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')">
                 <div class="body-title">Action</div>
             </li>
         </ul>
@@ -19,7 +20,7 @@
                 <div class="body-text" th:text="${data.getId()}"></div>
                 <div class="body-text" th:text="${data.name}"></div>
                 <div class="body-text" th:text="${data.enable}"></div>
-                <div class="body-text">
+                <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="body-text">
                     <div class="list-icon-function">
                         <a th:href="@{|addUpdate/?id=${data.getId()}|}">
                             <div class="item edit">

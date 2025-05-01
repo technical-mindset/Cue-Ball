@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/booking")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class BookingController {
 
     @Autowired

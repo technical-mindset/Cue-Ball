@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/variant")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class VariantController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class VariantController {
 
     @Transactional
     @GetMapping(value = "/addUpdate")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return service.getView(id, redirectAttributes);
     }
@@ -41,7 +42,7 @@ public class VariantController {
 
     @Transactional
     @PostMapping(value = "/addUpdate")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView addUpdate(@ModelAttribute("dto") @Valid VariantDTO variantDTO, BindingResult result, RedirectAttributes redirectAttributes) {
         return service.addUpdate(variantDTO, result, redirectAttributes);
 

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/customer")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class CustomerController {
 
     @Autowired
