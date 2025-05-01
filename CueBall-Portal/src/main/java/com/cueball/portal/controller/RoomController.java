@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/rooms")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class RoomController {
 
     @Autowired
@@ -38,12 +38,14 @@ public class RoomController {
 
     @Transactional
     @GetMapping(value = "/addUpdate")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return this.service.getView(id, redirectAttributes);
     }
 
     @Transactional
     @PostMapping(value = "/addUpdate")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView addUpdate(@Valid @ModelAttribute("dto") RoomDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
 
         return this.service.addUpdate(dto, result, redirectAttributes);

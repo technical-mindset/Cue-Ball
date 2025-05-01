@@ -16,7 +16,7 @@
             <li>
                 <div class="body-title">Created Date</div>
             </li>
-            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')">
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')">
                 <div class="body-title">Action</div>
             </li>
         </ul>
@@ -27,7 +27,7 @@
                 <div class="body-text" th:text="${data.charges}"></div>
                 <div class="body-text" th:text="${data.maxPlayers}"></div>
                 <div class="body-text" th:text="${#dates.format(new java.util.Date(data.getCreatedAt()), 'yyyy-MM-dd')}"></div>
-                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" >
+                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')">
                     <div class="list-icon-function">
                         <a th:href="@{|addUpdate/?id=${data.getId()}|}">
                             <div class="item edit">

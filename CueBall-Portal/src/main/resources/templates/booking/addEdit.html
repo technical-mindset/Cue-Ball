@@ -101,6 +101,13 @@
                         title: 'Oops...',
                         text: 'Time-out should be greater than the Time-in!'
                     });
+                } else if (timeIn <= now) {
+                    event.preventDefault();  // Stop form submission
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Time-in must be in the future!'
+                    });
                 } else if (timeOut <= now) {
                     event.preventDefault();  // Stop form submission
                     Swal.fire({

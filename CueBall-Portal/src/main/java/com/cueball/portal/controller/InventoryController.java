@@ -17,6 +17,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/inventories")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class InventoryController {
 
     @Autowired
@@ -31,7 +32,7 @@ public class InventoryController {
 
     @Transactional
     @GetMapping(value = "/addUpdate")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return service.getView(id, redirectAttributes);
     }
@@ -39,7 +40,7 @@ public class InventoryController {
 
     @Transactional
     @PostMapping(value = "/addUpdate")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView addUpdate(@ModelAttribute("dto") @Valid InventoryDTO inventoryDTO, BindingResult result, RedirectAttributes redirectAttributes) {
         return service.addUpdate(inventoryDTO, result, redirectAttributes);
 

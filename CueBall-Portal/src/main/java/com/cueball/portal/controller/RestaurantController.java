@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/restaurant")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
 public class RestaurantController {
 
     @Autowired
