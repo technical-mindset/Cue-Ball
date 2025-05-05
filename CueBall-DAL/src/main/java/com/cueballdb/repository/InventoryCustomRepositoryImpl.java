@@ -18,9 +18,6 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
         StringBuilder where = new StringBuilder(" WHERE ");
         StringBuilder beforeWhere = new StringBuilder();
 
-//        /**  Adding joins on Variant */
-//        beforeWhere.append(" JOIN inventory.variant AS v ");
-
         if(search != null && !search.equals("NaN")) {
             where.append(" (inventory.name like :search OR inventoryCategory.name LIKE :search) AND ");
             parameters.put("search", "%" + search + "%");
@@ -53,6 +50,23 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
         where.append(" GROUP BY id ");
 
         return getMaxResults(beforeWhere.toString() + where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
+    }
+
+    @Override
+    public List<Inventory> TuckShopSubMenuList(Integer id,Integer pageNumber, Integer pageSize, long[] count) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        StringBuilder where = new StringBuilder(" WHERE ");
+        StringBuilder beforeWhere = new StringBuilder();
+
+        if (id != null && id > 0) {
+            where.append(" inventoryCategory.id = :icId AND ");
+            parameters.put("icId", id);
+        }
+
+        where.append("1=1");
+
+//        return getMaxResults(beforeWhere.toString() + where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
+        return findByCriteria(beforeWhere.toString() + where + " ORDER BY id DESC ", parameters);
     }
 }
 

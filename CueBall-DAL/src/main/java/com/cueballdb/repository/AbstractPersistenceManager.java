@@ -207,9 +207,7 @@ public class AbstractPersistenceManager<F extends Serializable>   {
         }
     }
 
-    public List<F> getMaxResults(String where, Map<String, Object> params,
-                                 int start, int max, long[] count) throws PersistenceException {
-
+    public List<F> getMaxResults(String where, Map<String, Object> params, int start, int max, long[] count) throws PersistenceException {
         count[0] = count(where, params);
         return getMaxResults(where, params, start, max);
     }

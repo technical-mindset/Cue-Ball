@@ -1,0 +1,90 @@
+<div xmlns:th="" th:fragment="ajaxPagingTuckShop">
+
+    <div class="flex items-center justify-between flex-wrap gap10" th:if="${totalPages > 0}">
+        <div class="text-tiny" th:text="'Showing ' + ${pageNumber} +' to '+${totalPages} + ' in ' +${totalPages} + ' records' ">Showing 10 to 16 in 16 records</div>
+
+        <th:block th:with="startPage=${(pageNumber - 2 > 0) ? (pageNumber - 2) : 1}, endPage=${(pageNumber + 2 < totalPages) ? (pageNumber + 2) : totalPages}">
+
+
+            <ul class="wg-pagination">
+
+                <li th:if="${pageNumber == 1}" class="active disabled"><a class="page-link" href="javascript:;" ><i class="icon-chevron-left"></i></a></li>
+                <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(1,' + ${pageSize} + ')'"><i class="icon-chevron-left"></i></a></li>
+<!--                <li th:if="${pageNumber == 1}" class="page-item disabled"><a class="page-link" href="javascript:;">Previous</a></li>-->
+<!--                <li th:unless="${pageNumber == 1}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + (${pageNumber - 1}) + ',' + ${pageSize} + ')'">Previous</a></li>-->
+
+                <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                    <li th:if="${page == pageNumber}" class="active disabled"><a class="page-link" href="javascript:;" th:text="${page}"></a></li>
+                    <li th:unless="${page == pageNumber}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${page}  + ',' + ${pageSize} + ')'" th:text="${page}"></a></li>
+                </th:block>
+
+                <li th:if="${pageNumber >= totalPages}" class="active disabled"><a class="page-link" href="javascript:;" title="Next"><i class="icon-chevron-right"></i></a></li>
+                <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${pageNumber + 1}   + ',' + ${pageSize} + ')'"> <i class="icon-chevron-right"></i></a></li>
+<!--                <li th:if="${pageNumber >= totalPages}" class="page-item disabled"><a class="page-link" href="javascript:;">Last</a></li>-->
+<!--                <li th:unless="${pageNumber >= totalPages}"><a class="page-link" th:href="'javascript:;'" th:onclick="'page(' + ${totalPages}  + ',' + ${pageSize} + ')'">Last</a></li>-->
+
+            </ul>
+
+        </th:block>
+    </div>
+
+
+    <script th:inline="javascript">
+
+
+        $(document).ready(function () {
+            $('#pager-change').change(function() {
+                var $option = $(this).find('option:selected');
+                var value = $option.val();
+                page('1',value)
+            });
+
+            errorMessage();
+        })
+
+        /**  Retrieving the data from fields and insert into Array  */
+        function dataForSerialization(){
+
+            const serializedData = {};
+            return serializedData;
+        }
+
+        /**  Ajax request for filtration */
+        function page(pageNumber, pageSize) {
+
+            /**  Passing the data of fields and adding the additional pageNumber, pageSize and ajax fields */
+            var serializedData = dataForSerialization();
+            serializedData.ps = pageSize;
+            serializedData.pn = pageNumber;
+            serializedData.ajax = true;
+
+            $.ajax({
+                url : '',
+                type : 'GET',
+                data: serializedData,
+                success : function(data) {
+                    $('#viewAllDetailTuckShop').html(data);
+                },
+                error : function() {
+                    alert("Some error there.");
+                }
+            });
+        }
+
+        /** For Popping-up the error message while the Transaction list is empty */
+        function errorMessage(){
+            let errorMessage = /*[[${errorMessage}]]*/ '';
+
+            if (errorMessage == true){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "No Data Found !!."
+                });
+            }
+        }
+
+
+    </script>
+</div>
+

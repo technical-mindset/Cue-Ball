@@ -121,11 +121,18 @@ public interface Constants {
     String RA_PAGE_INVENTORY_VIEW_ALL = "inventory/viewAll";
     String RA_PAGE_INVENTORY_VIEW_ALL_DETAIL = "inventory/viewAllDetail";
 
+
     /**
      TUCK SHOP BASE PATHS
      */
     String RA_PAGE_TUCK_SHOP_VIEW_ALL = "tuckShop/viewAll";
     String RA_PAGE_TUCK_SHOP_VIEW_ALL_DETAIL = "tuckShop/viewAllDetail";
+
+    /**
+     TUCK SHOP BASE PATHS
+     */
+    String RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL = "tuckShop/tuckShopItems";
+    String RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL_DETAIL = "tuckShop/tuckShopItemsDetail";
 
     /**
      Campaign URLs

@@ -16,7 +16,6 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/inventories")
 @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
 public class InventoryController {
 
@@ -24,14 +23,14 @@ public class InventoryController {
     private InventoryService service;
 
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/inventories/{id}", method = RequestMethod.GET)
     public InventoryDTO getById(@PathVariable("id")int id){
         return service.findById(id);
     }
 
 
     @Transactional
-    @GetMapping(value = "/addUpdate")
+    @GetMapping(value = "/inventories/addUpdate")
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
         return service.getView(id, redirectAttributes);
@@ -39,7 +38,7 @@ public class InventoryController {
 
 
     @Transactional
-    @PostMapping(value = "/addUpdate")
+    @PostMapping(value = "/inventories/addUpdate")
     @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView addUpdate(@ModelAttribute("dto") @Valid InventoryDTO inventoryDTO, BindingResult result, RedirectAttributes redirectAttributes) {
         return service.addUpdate(inventoryDTO, result, redirectAttributes);
@@ -47,7 +46,7 @@ public class InventoryController {
     }
 
 
-    @GetMapping(value = "/viewAll")
+    @GetMapping(value = "/inventories/viewAll")
     public ModelAndView findAllView(
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
@@ -57,6 +56,16 @@ public class InventoryController {
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
         return service.findFindAllView(search, enable, variantId, restaurantId, pageSize, pageNumber, ajax);
+    }
+
+
+    @GetMapping(value = "/tuckShop/subMenu")
+    public ModelAndView getSubMenu(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "ps",required = false ) Integer pageSize,
+            @RequestParam(value = "pn",required = false ) Integer pageNumber,
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
+        return service.getSubMenu(id, pageSize, pageNumber, ajax);
     }
 
 }

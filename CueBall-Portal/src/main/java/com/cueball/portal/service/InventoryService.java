@@ -91,7 +91,6 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         return entity;
     }
 
-
     public ModelAndView findFindAllView(String search ,Integer enable, Integer variantId, Integer restaurantId, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_VIEW_ALL);
 
@@ -137,6 +136,42 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 //        mav.addObject(Constants.GENERIC_OBJECT_NAME1," Select Variant");
 //        mav.addObject(Constants.GENERIC_FILTER_LIST,variants);
 
+
+        return mav;
+    }
+
+    public ModelAndView getSubMenu(Integer id, Integer pageSize, Integer pageNumber, boolean ajax) {
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL);
+
+        if(pageSize == null || pageSize <= 0 ) {
+            pageSize = 12;
+        }
+        if(pageNumber == null || pageNumber <= 0) {
+            pageNumber = Constants.DEFAUT_START_PAGENUMBER;
+        }
+
+        long []count = {0};
+
+        List<Inventory> lists = repository.TuckShopSubMenuList(id,(pageNumber-1)*pageSize, pageSize, count);
+        List<InventoryDTO> DTOs = lists
+                .stream()
+                .map(this::mapEntityToDto)
+                .collect(Collectors.toList());
+
+
+        if (ajax) {
+            mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL_DETAIL);
+        }
+
+        /**  Passing Obj and ObjectName for generic filters population while searching  */
+
+        mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
+        mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
+        mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
+        mav.addObject("totalCount", count[0]);
+        mav.addObject(Constants.RA_LIST, DTOs);
+
+        /** Generic things must be on hold */
 
         return mav;
     }

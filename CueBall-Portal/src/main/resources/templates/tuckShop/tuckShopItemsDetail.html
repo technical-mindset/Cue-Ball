@@ -1,0 +1,20 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="tuckShopItemsDetail" id="viewAllDetailTuckShop">
+    <div class="row tuck-items">
+        <div th:each="data : ${dataList}" class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 px-2 my-2">
+            <div class="cat-card">
+                <a th:text="${data.name}" href="javascript:void(0);"  th:onclick="selectItems([[${data.id}]], [[${data.actualPrice}]],[[${data.name}]], this)"></a>
+            </div>
+        </div>
+    </div>
+    <div class="row checkout-final">
+
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 px-2 my-4">
+            <button class="tf-button w208 margin-left"  id="checkout" type="button" style="float: right" th:onclick="CheckOut()">CheckOut</button>
+            <button class="tf-button w208" id="next" type="button" style="float: right" th:onclick="next()">Next</button>
+            <button class="tf-button w208 margin-right" id="back" type="button" style="float: right" th:onclick="back()">Back</button>
+        </div>
+    </div>
+<!--    <div th:replace="common/ajaxPagingTuckShop::ajaxPagingTuckShop"></div>-->
+</div>

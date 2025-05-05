@@ -32,7 +32,7 @@
                         <div th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error text-danger"></div>
                     </fieldset>
                     <fieldset class="games">
-                        <div class="body-title mb-10">Select Games <span class="tf-color-1">*</span></div>
+                        <div class="body-title mb-10">Select Roles <span class="tf-color-1">*</span></div>
                         <div class="select">
                             <select  class="js-example-basic-multiple" th:field="*{roleId}"  multiple="multiple">
                                 <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
