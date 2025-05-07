@@ -21,6 +21,8 @@ public class TucBuying extends BaseEntity {
 
     private String inventoryId;
 
+    private String inventoryName;
+
     private int quantity;
 
     private double price;

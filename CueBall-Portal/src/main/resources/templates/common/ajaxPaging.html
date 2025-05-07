@@ -56,6 +56,7 @@
             var variant = $('#variant').length ? parseInt($('#variant').find(":selected").val()) : null;
             var restaurant = $('#restaurant').length ? parseInt($('#restaurant').find(":selected").val()) : null;
             var room = $('#room').length ? parseInt($('#room').find(":selected").val()) : null;
+            var inventory = $('#inventory').length ? parseInt($('#inventory').find(":selected").val()) : null;
             var roomCategory = $('#roomCategory').length ? parseInt($('#roomCategory').find(":selected").val()) : null;
             var isEnable = parseInt($('#isEnable').find(":selected").val()) || 0;
 
@@ -70,6 +71,7 @@
                 variant: variant,
                 restaurant: restaurant,
                 room: room,
+                inventory:inventory,
                 roomCategory: roomCategory,
                 search: search,
                 enable: isEnable,
@@ -104,13 +106,14 @@
         /**  Exporting the excel  */
         function excelExport() {
             let reportUrl = /*[[${reportUrl}]]*/ '';
+            let reportBasePath = /*[[${reportBasePath}]]*/ '';
 
             /**  Passing the data of fields */
             var serializedData = dataForSerialization();
 
             /**  Create XMLHttpRequest to download the file */
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', reportUrl + '/customer/report', true);
+            xhr.open('POST', reportUrl + reportBasePath, true);
             xhr.responseType = 'blob'; // Important: Ensure the response type is a blob
 
             xhr.onload = function () {
@@ -118,7 +121,7 @@
                     var blob = xhr.response;
                     var link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
-                    link.download = "Cue-Ball-Report.xlsx"; // Set the filename
+                    link.download = "Report.xlsx"; // Set the filename
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);

@@ -197,11 +197,10 @@ public interface Constants {
 
 
     /**
-     Localization URLs
+     REPORTING VIEWS PATHS
      */
-    String RA_PAGE_LOCALIZATION_ADD_EDIT = "localization/addEdit";
-    String RA_PAGE_LOCALIZATION_VIEW_ALL = "localization/viewAll";
-    String RA_PAGE_LOCALIZATION_VIEW_ALL_DETAIL = "localization/viewAllDetail";
+    String RA_PAGE_TUCK_SHOP_REPORT_VIEW_ALL = "reports/tuckBuyingReport/viewAll";
+    String RA_PAGE_TUCK_SHOP_REPORT_VIEW_ALL_DETAIL = "reports/tuckBuyingReport/viewAllDetail";
 
     /**
      For Validation
@@ -252,6 +251,17 @@ public interface Constants {
             "Room Charges",   // Room Charges
             "Total Charges"   // Total Charges
     };
+
+
+    public final static String[] COLUMNS_TUCK_BUYING = {
+            "ID",             // ID
+            "Created Date",   // Created Date
+            "Item Name",        // Item Name
+            "Quantity",       // Quantity
+            "Price",          // Price
+    };
+
+
 
 
 

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -26,9 +28,33 @@ public class tuckBuyingController {
     @ResponseBody
     public GenericResponse submitQurbani(
             @RequestBody List<TuckBuyingMenu> tuckItemJson
-
     ) {
         return service.Checkout(tuckItemJson);
     }
 
+
+    @GetMapping(value = "/tuckShopReport/viewAll")
+    public ModelAndView findAllView(
+            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
+            @RequestParam(value = "endDate",required = false, defaultValue = "NaN") String endDate,
+            @RequestParam(value = "search",required = false )String search,
+            @RequestParam(value = "enable",required = false )Integer enable,
+            @RequestParam(value = "inventory",required = false, defaultValue = "0") Integer inventoryId,
+            @RequestParam(value = "ps",required = false ) Integer pageSize,
+            @RequestParam(value = "pn",required = false ) Integer pageNumber,
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
+        return service.findFindAllView(search, enable, inventoryId, startDate, endDate, pageSize, pageNumber, ajax);
+    }
+
+    @PostMapping("/tuckShop/report")
+    public void generateReport(
+            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
+            @RequestParam(value = "endDate",required = false, defaultValue = "NaN") String endDate,
+            @RequestParam(value = "search",required = false )String search,
+            @RequestParam(value = "enable",required = false )Integer enable,
+            @RequestParam(value = "inventory",required = false, defaultValue = "0") Integer inventoryId,
+            HttpServletRequest request, HttpServletResponse response){
+        System.out.println("In ------------- Generate Report Controller -----------------------");
+        this.service.generateReport(search, enable,inventoryId, startDate, endDate, request, response);
+    }
 }

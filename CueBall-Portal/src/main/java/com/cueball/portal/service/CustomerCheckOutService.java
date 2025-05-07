@@ -126,6 +126,7 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
         mav.addObject("toDateFilter",true);
         mav.addObject("fromDateFilter",true);
         mav.addObject("reportUrl", Constants.RA_BASE_URL + Constants.PORT);
+        mav.addObject("reportBasePath", "/customer/report");
         mav.addObject(Constants.EXTRA_FILTERS,true);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);

@@ -1,21 +1,4 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters"
-     class="widget row" id="GenericAllFilters">
-<!--    &lt;!&ndash;Getting filter&ndash;&gt;-->
-<!--    <div class="form-group row">-->
-<!--        <div class="col-12">-->
-<!--            <label for="example-month-input2" class="col-12 col-form-label" th:text="${objectName}"></label>-->
-<!--            <select class="form-select col-12" id="example-month-input2" th:id="${obj}" th:for="${obj}" th:onchange="|page(${pageNumber},${pageSize})|">-->
-<!--                <option  th:selected th:value="0">Choose...</option>-->
-<!--                <option th:each="object : ${objectList}" th:value="${object.id}" th:text="${object.name}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-<!--        <div class="select">-->
-<!--            <select th:id="${obj}" th:for="${obj}" th:onchange="|page(${pageNumber},${pageSize})|">-->
-<!--                <option th:text="${objectName}"  th:selected th:value="0">Select Enable</option>-->
-<!--                <option th:each="object : ${objectList}" th:value="${object.id}" th:text="${object.name}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters" class="widget row" id="GenericAllFilters">
 
 
     <!--Start Date-->
@@ -48,7 +31,7 @@
                 <option th:selected th:value="0"> Select Restaurant </option>
                 <option th:each="r : ${restaurants}" th:value="${r.id}" th:text="${r.title}"></option>
             </select>
-        </div>
+    </div>
 
 
     <div th:if="${roomCategoryFilter}" class="select col-md-6 mb-20">
@@ -63,32 +46,41 @@
                 <option th:selected th:value="0"> Select Room </option>
                 <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name + ' (' + room.title + ')'}"></option>
             </select>
-        </div>
+    </div>
 
+    <div th:if="${inventoryFilter}" class="select col-md-6 mb-20">
+        <select th:id="inventory" th:for="inventory" th:onchange="|page(${pageNumber},${pageSize})|">
+            <option th:selected th:value="0"> Select Item </option>
+            <option th:each="inventory : ${inventoryList}" th:value="${inventory.id}" th:text="${inventory.name}"></option>
+        </select>
+    </div>
 
-</div>
 
     <script th:inline="javascript">
 
-<!--        $( document ).ready(function() {-->
-<!--            $("#endDate").change(function () { dateCheck(); })-->
-<!--            $("#startDate").change(function () { dateCheck(); })-->
-<!--        });-->
-
-<!--        /**  Confirmation of start/from date must be greater than end/to date  */-->
-<!--        function dateCheck(){-->
-<!--            let startDate = new Date($("#startDate").val());-->
-<!--            let endDate = new Date($("#endDate").val());-->
-
-<!--            if(startDate > endDate) {-->
-<!--                Swal.fire({-->
-<!--                    icon: 'error',-->
-<!--                    title: 'Oops...',-->
-<!--                    text: 'End date need to be bigger then start date!'-->
-<!--                })-->
-<!--            }-->
-<!--        }-->
+//        $(document).ready(function () {
+//            $("#endDate").change(function () {
+//                dateCheck();
+//            })
+//            $("#startDate").change(function () {
+//                dateCheck();
+//            })
+//        });
+//
+//        /**  Confirmation of start/from date must be greater than end/to date  */
+//        function dateCheck() {
+//            let startDate = new Date($("#startDate").val());
+//            let endDate = new Date($("#endDate").val());
+//
+//            if (startDate > endDate) {
+//                Swal.fire({
+//                    icon: 'error',
+//                    title: 'Oops...',
+//                    text: 'End date need to be bigger then start date!'
+//                })
+//            }
+//        }
 
     </script>
 </div>
-</div>
+

@@ -14,5 +14,7 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Integer>, InventoryCustomRepository{
     long count();
+
+    List<Inventory> findAllByEnableTrue();
 }
 

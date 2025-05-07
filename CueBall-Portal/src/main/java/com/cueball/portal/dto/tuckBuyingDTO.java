@@ -19,6 +19,8 @@ public class tuckBuyingDTO extends BaseDTO {
 
     private String inventoryId;
 
+    private String inventoryName;
+
     private int quantity;
 
     private double price;
