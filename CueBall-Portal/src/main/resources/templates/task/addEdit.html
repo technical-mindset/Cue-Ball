@@ -1,0 +1,114 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
+    <section class="addPage__section">
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Add Task</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny"><a th:href="@{/task/viewAll}">List</a></div></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" class="active" th:href="@{/task/addUpdate}">Add</li>
+            </ul>
+        </div>
+        <form class="form-add-product" th:object="${dto}" id="bookingForm" method="post" th:action="@{/task/addUpdate}">
+            <div class="wg-box">
+                <input  th:field="*{id}" type="hidden">
+
+                <div class="gap22 cols">
+                    <fieldset class="description">
+                        <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="text" placeholder="Enter Description" tabindex="0"  th:field="*{description}" />
+                        <div th:each="err : ${#fields.errors('description')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+
+                    <fieldset class="shift">
+                        <div class="body-title mb-10"> Shift <span class="tf-color-1">*</span></div>
+                        <div class="select">
+                            <select  th:field="*{shift}" class="mb-10">
+                                <option th:value="NaN" th:selected="${shift == null}">Choose...</option>
+                                <option th:each="shft : ${shifts}" th:value="${shft}" th:text="${shft}"></option>
+                            </select>
+                        </div>
+                        <div th:each="err : ${#fields.errors('shift')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+
+
+                </div>
+
+
+                <div class="gap22 cols">
+
+                    <fieldset class="taskDate">
+                        <div class="body-title mb-10">Task Date<span class="tf-color-1">*</span></div>
+                        <input class="mb-10" type="date" placeholder="Enter Task Date" tabindex="0" id="taskDate"  th:field=*{taskDate} />
+                        <div th:each="err : ${#fields.errors('taskDate')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+
+                    <fieldset class="user">
+                        <div class="body-title mb-10"> Staff <span class="tf-color-1">*</span></div>
+                        <div class="select">
+                            <select  th:field="*{userId}" class="mb-10">
+                                <option th:value="0" th:selected="${userId == null}">Choose...</option>
+                                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.username}"></option>
+                            </select>
+                        </div>
+                        <div th:each="err : ${#fields.errors('userId')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+
+                </div>
+
+                <div class="gap22 cols">
+                    <fieldset class="enable">
+                       <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
+                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
+                       <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+
+                <input type="hidden" class="form-control" th:field="*{createdAt}"/>
+
+                <div class="">
+                    <button class="tf-button w208" type="submit">Save</button>
+                </div>
+            </div>
+
+        </form>
+
+        <script th:inline="javascript">
+            $("#bookingForm").submit(function (event) {
+
+                /**  For time-in and time-out   */
+                let timeIn = new Date($("#timeIn").val());
+                let timeOut = new Date($("#timeOut").val());
+                let now = new Date();
+
+                if (timeIn >= timeOut) {
+                    event.preventDefault();  // Stop form submission
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Time-out should be greater than the Time-in!'
+                    });
+                } else if (timeIn <= now) {
+                    event.preventDefault();  // Stop form submission
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Time-in must be in the future!'
+                    });
+                } else if (timeOut <= now) {
+                    event.preventDefault();  // Stop form submission
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Time-out must be in the future!'
+                    });
+                } else {
+                    $('#bookingForm')[0].submit();
+                }
+            });
+
+        </script>
+
+    </section>
+</div>

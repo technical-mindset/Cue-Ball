@@ -58,6 +58,20 @@
         </select>
     </div>
 
+    <div th:if="${userFilter}" class="select col-md-6 mb-20">
+        <select th:id="user" th:for="user" th:onchange="|page(${pageNumber},${pageSize})|">
+            <option th:selected th:value="0"> Select Staff </option>
+            <option th:each="u : ${users}" th:value="${u.id}" th:text="${u.username}"></option>
+        </select>
+    </div>
+
+    <div th:if="${shiftFilter}" class="select col-md-6 mb-20">
+        <select th:id="shift" th:for="shift" th:onchange="|page(${pageNumber},${pageSize})|">
+            <option th:selected th:value="NaN"> Select Shift </option>
+            <option th:each="shft : ${shifts}" th:value="${shft}" th:text="${shft}"></option>
+        </select>
+    </div>
+
     <div th:if="${roomFilter}" class="select col-md-6 mb-20">
             <select th:id="room" th:for="room" th:onchange="|page(${pageNumber},${pageSize})|">
                 <option th:selected th:value="0"> Select Room </option>

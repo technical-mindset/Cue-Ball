@@ -1,6 +1,9 @@
 package com.cueball.portal.utils;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  */
@@ -12,15 +15,13 @@ public interface Constants {
      * Base URL For LIVE
      */
 //	String RA_BASE_URL = "https://server.dawateislami.net";
-//    String RA_COMMON_WEB_PORT = "/commonadmin";
 //    String PORT = "/CentralDonationAdmin";
 
 
     /**
      * Base URL For Local
      */
-//    String RA_BASE_URL = "http://localhost:8080";
-//    String RA_COMMON_WEB_PORT = "/commonadmin";
+//    String RA_BASE_URL = "http://localhost:8081";
 //    String PORT = "/CueBallPortal";
 
 
@@ -28,48 +29,18 @@ public interface Constants {
      * Base URL For Stage
      */
     String RA_BASE_URL = "http://3.148.249.83:8080";
-    String RA_COMMON_WEB_PORT = "/Admin-commonAdmin";
     String PORT = "/CueBallPortal";
 
 
 
 
 
-    /**
-     * URL For Retrieving Header
-     */
-    String RA__AJAX_BASE_COMMON_URL = RA_BASE_URL+RA_COMMON_WEB_PORT;
-
-    /**
-     * URL Used In Localization
-     */
-    String SERVICE_BASE_URL = RA_BASE_URL + PORT;
-
-
-    String RA_BASE_SERVICE_TAG = RA_BASE_URL;
 
     /**
      * For Extra Filters Slice
      */
     String EXTRA_FILTERS = "extraFilters";
-    String GENERIC_FILTER_LIST = "objectList";
-    String GENERIC_OBJECT_NAME1 = "objectName";
-    String GENERIC_OBJ1 = "obj";
 
-
-    /**
-     * For Language
-     */
-    String LANGUAGE_SERVICE = "/do/language/all";
-    String USER_LANGUAGE_SERVICE = "/do/userLang/all";
-    String LANGUAGE_SERVICE_URL = RA__AJAX_BASE_COMMON_URL + LANGUAGE_SERVICE;
-    String USER_LANGUAGE_SERVICE_URL = RA__AJAX_BASE_COMMON_URL + USER_LANGUAGE_SERVICE;
-
-
-    /**
-     Base URL
-     */
-    String BASE = "/CueBallPortal";
 
     /**
      * User URLs
@@ -93,19 +64,6 @@ public interface Constants {
     String RA_ROOT_PAGE= "login/login";
     String RA_DASHBOARD="dashboard/dashboard";
 
-    /**
-     Legal Entity URLs
-     */
-    String RA_PAGE_LEGAL_ENTITY_ADD_EDIT = "legalEntity/addEdit";
-    String RA_PAGE_LEGAL_ENTITY_VIEW_ALL = "legalEntity/viewAll";
-    String RA_PAGE_LEGAL_ENTITY_VIEW_ALL_DETAIL = "legalEntity/viewAllDetail";
-
-    /**
-     Operating Unit URLs
-     */
-    String RA_PAGE_OPERATING_UNIT_ADD_EDIT = "operatingUnit/addEdit";
-    String RA_PAGE_OPERATING_UNIT_VIEW_ALL = "operatingUnit/viewAll";
-    String RA_PAGE_OPERATING_UNIT_VIEW_ALL_DETAIL = "operatingUnit/viewAllDetail";
 
     /**
      Room URLs
@@ -134,18 +92,6 @@ public interface Constants {
     String RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL = "tuckShop/tuckShopItems";
     String RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL_DETAIL = "tuckShop/tuckShopItemsDetail";
 
-    /**
-     Campaign URLs
-     */
-    String RA_PAGE_CAMPAIGN_ADD_EDIT = "campaign/addEdit";
-    String RA_PAGE_CAMPAIGN_VIEW_ALL = "campaign/viewAll";
-    String RA_PAGE_CAMPAIGN_VIEW_ALL_DETAIL = "campaign/viewAllDetail";
-
-    /**
-     Transaction URLs
-     */
-    String RA_PAGE_TRANSACTION_VIEW_ALL = "transaction/viewAll";
-    String RA_PAGE_TRANSACTION_VIEW_ALL_DETAIL = "transaction/viewAllDetail";
 
     /**
      Room Category URLs
@@ -197,7 +143,16 @@ public interface Constants {
 
 
     /**
-     REPORTING VIEWS PATHS
+     Tasks URLs
+     */
+    String RA_PAGE_TASK_ADD_EDIT = "task/addEdit";
+    String RA_PAGE_TASK_VIEW_ALL = "task/viewAll";
+    String RA_PAGE_MY_TASK_VIEW_ALL = "task/ViewAll";
+    String RA_PAGE_TASK_VIEW_ALL_DETAIL = "task/viewAllDetail";
+
+
+    /**
+     Localization URLs
      */
     String RA_PAGE_TUCK_SHOP_REPORT_VIEW_ALL = "reports/tuckBuyingReport/viewAll";
     String RA_PAGE_TUCK_SHOP_REPORT_VIEW_ALL_DETAIL = "reports/tuckBuyingReport/viewAllDetail";
@@ -251,6 +206,8 @@ public interface Constants {
             "Room Charges",   // Room Charges
             "Total Charges"   // Total Charges
     };
+
+    List<String> shifts = Arrays.asList("Morning", "Night");
 
 
     public final static String[] COLUMNS_TUCK_BUYING = {

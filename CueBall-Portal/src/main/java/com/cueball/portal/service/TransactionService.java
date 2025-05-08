@@ -80,8 +80,6 @@
 //            mav = new ModelAndView(Constants.RA_PAGE_TRANSACTION_VIEW_ALL_DETAIL);
 //        }
 //
-//        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
-//        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
 //        mav.addObject("operatingUnits", operatingUnits);
 //        mav.addObject("banks", banks);
 //        mav.addObject("campaigns", campaigns);

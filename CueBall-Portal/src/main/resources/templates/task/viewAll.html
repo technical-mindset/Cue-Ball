@@ -2,7 +2,7 @@
 
     <section>
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>Tuck Shop Report</h3>
+            <h3>Check List Task</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
                 <li><i class="icon-chevron-right"></i></li>
@@ -24,11 +24,11 @@
                         </div>
                         <div class="text-tiny">entries</div>
                     </div>
-                    <a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" onclick="excelExport()" class="tf-button style-1 w208"><i class="icon-plus"></i>Report</a>
+                    <a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:href="@{/task/addUpdate}" class="tf-button style-1 w208"><i class="icon-plus"></i>New</a>
                 </div>
                 <div th:replace='common/viewAllFilters::viewAllFilters'></div>
             </div>
-            <div th:replace='reports/tuckBuyingReport/viewAllDetail::viewAllDetail'></div>
+            <div th:replace='task/viewAllDetail::viewAllDetail'></div>
         </div>
         <script th:replace="common/confirmBox::confirmBox"></script>
     </section>

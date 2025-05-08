@@ -44,8 +44,6 @@ public class GameService extends BaseService<Game, GameDTO, GameRepository> {
             mav = new ModelAndView(Constants.RA_PAGE_GAME_VIEW_ALL_DETAIL);
         }
 
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));

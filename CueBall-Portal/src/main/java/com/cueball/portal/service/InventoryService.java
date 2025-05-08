@@ -118,8 +118,6 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         }
 
         /**  Passing Obj and ObjectName for generic filters population while searching  */
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
         mav.addObject("variants",variants);
         mav.addObject("restaurants",restaurants);
         mav.addObject("variantFilter",true);
@@ -190,12 +188,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         mav.addObject("variants", variantList);
         mav.addObject("restaurants", restaurantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
-        //data access permission w.r.t. userLang
-        String userLang= "ur";
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject("userLang",userLang);
 
         if (id != null && id > 0) {
             InventoryDTO inventoryDTO = this.findById(id);
@@ -221,12 +214,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         mav.addObject("variants", variantList);
         mav.addObject("restaurants", restaurantList);
         mav.addObject("inventoryCategoryList", inventoryCategoryList);
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
-        //data access permission w.r.t. userLang
-        String userLang= "ur";
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject("userLang",userLang);
 
         if (result.hasErrors()) {
             result.reject("valid.remove.errors");

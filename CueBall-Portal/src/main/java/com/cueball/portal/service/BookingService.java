@@ -157,8 +157,6 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
             mav = new ModelAndView(Constants.RA_PAGE_BOOKING_VIEW_ALL_DETAIL);
         }
 
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
         mav.addObject("rooms",rooms);
         mav.addObject("roomFilter",true);
         mav.addObject(Constants.EXTRA_FILTERS,true);
@@ -177,12 +175,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         List<Room> roomList = this.roomRepository.findAllByEnableTrue();
 
         mav.addObject("roomList", roomList);
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
-        //data access permission w.r.t. userLang
-        String userLang= "ur";
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject("userLang",userLang);
 
         if (id != null && id > 0) {
             BookingDTO bookingDTO = this.findById(id);
@@ -232,12 +225,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         List<Room> roomList = this.roomRepository.findAllByEnableTrue();
 
         mav.addObject("roomList", roomList);
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
 
-        //data access permission w.r.t. userLang
-        String userLang= "ur";
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
-        mav.addObject("userLang",userLang);
 
         if (result.hasErrors()) {
             result.reject("valid.remove.errors");

@@ -236,6 +236,29 @@
                         </ul>
                     </li>
 
+                    <li class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'task') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'task') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
+                            <div class="icon"><i class="icon-user"></i></div>
+                            <div class="text">Task List</div>
+                        </a>
+
+                        <ul aria-expanded="false" class="sub-menu">
+                            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="sub-menu-item">
+                                <a th:href="@{/task/addUpdate}">
+                                    <div class="text">Add</div>
+                                </a>
+                            </li>
+
+                            <li class="sub-menu-item">
+                                <a th:href="@{/task/viewAll}">
+                                    <div class="text">View</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
                 </ul>
             </div>
         </div>

@@ -117,8 +117,6 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
             mav = new ModelAndView(Constants.RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL_DETAIL);
         }
 
-        mav.addObject("languageUrl",Constants.LANGUAGE_SERVICE_URL);
-        mav.addObject("userLanguageUrl",Constants.USER_LANGUAGE_SERVICE_URL);
         mav.addObject("rooms",rooms);
         mav.addObject("roomCategories",roomCategories);
         mav.addObject("roomFilter",true);
