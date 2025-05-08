@@ -35,8 +35,8 @@ public class tuckBuyingController {
 
     @GetMapping(value = "/tuckShopReport/viewAll")
     public ModelAndView findAllView(
-            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
-            @RequestParam(value = "endDate",required = false, defaultValue = "NaN") String endDate,
+            @RequestParam(value = "onlyStartDate",required = false, defaultValue = "NaN") String startDate,
+            @RequestParam(value = "onlyEndDate",required = false, defaultValue = "NaN") String endDate,
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
             @RequestParam(value = "inventory",required = false, defaultValue = "0") Integer inventoryId,
@@ -48,8 +48,8 @@ public class tuckBuyingController {
 
     @PostMapping("/tuckShop/report")
     public void generateReport(
-            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
-            @RequestParam(value = "endDate",required = false, defaultValue = "NaN") String endDate,
+            @RequestParam(value = "onlyStartDate",required = false, defaultValue = "NaN") String startDate,
+            @RequestParam(value = "onlyEndDate",required = false, defaultValue = "NaN") String endDate,
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
             @RequestParam(value = "inventory",required = false, defaultValue = "0") Integer inventoryId,

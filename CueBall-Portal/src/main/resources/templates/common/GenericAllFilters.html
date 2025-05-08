@@ -1,19 +1,36 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters" class="widget row" id="GenericAllFilters">
 
 
-    <!--Start Date-->
+    <!--Start Date Time-->
     <div th:if="${fromDateFilter}" class="col-md-6 mb-20">
         <label for="startDate" class="col-12 mb-5 body-title">Enter Start Date</label>
         <fieldset class="name">
-            <input type="datetime-local" name="name" tabindex="2"  aria-required="true" id="startDate"  placeholder="Enter Start Date" th:id="startDate" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|">
+            <input type="datetime-local" name="name" tabindex="2"  aria-required="true" id="startDate"  placeholder="Enter Start Date" th:id="startDate" th:onchange="|page(${pageNumber},${pageSize})|">
         </fieldset>
     </div>
 
-        <!--End Date-->
+    <!--End Date Time-->
     <div th:if="${toDateFilter}" class="col-md-6 mb-20">
         <label for="endDate" class="col-12 mb-5 body-title">Enter End Date</label>
         <fieldset class="name">
-            <input type="datetime-local" name="name" tabindex="2"  aria-required="true"  placeholder="Enter End Date" th:id="endDate" id="endDate" th:onkeypress="|javascript: if(event.keyCode == 13) page(${pageNumber},${pageSize});|">
+            <input type="datetime-local" name="name" tabindex="2"  aria-required="true"  placeholder="Enter End Date" th:id="endDate" id="endDate" th:onchange="|page(${pageNumber},${pageSize})|">
+        </fieldset>
+    </div>
+
+
+    <!--Start Date-->
+    <div th:if="${fromOnlyDateFilter}" class="col-md-6 mb-20">
+        <label for="onlyStartDate" class="col-12 mb-5 body-title">Enter Start Date</label>
+        <fieldset class="name">
+            <input type="date" name="name" tabindex="2"  aria-required="true" id="onlyStartDate"  placeholder="Enter Start Date" th:onchange="|page(${pageNumber},${pageSize})|">
+        </fieldset>
+    </div>
+
+    <!--End Date-->
+    <div th:if="${toOnlyDateFilter}" class="col-md-6 mb-20">
+        <label for="onlyEndDate" class="col-12 mb-5 body-title">Enter End Date</label>
+        <fieldset class="name">
+            <input type="date" name="name" tabindex="2"  aria-required="true" id="onlyEndDate"  placeholder="Enter End Date"   th:onchange="|page(${pageNumber},${pageSize})|">
         </fieldset>
     </div>
 

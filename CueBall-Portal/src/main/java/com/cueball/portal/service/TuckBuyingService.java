@@ -130,8 +130,8 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
 
         mav.addObject("inventoryList",inventoryList);
         mav.addObject("inventoryFilter",true);
-        mav.addObject("toDateFilter",true);
-        mav.addObject("fromDateFilter",true);
+        mav.addObject("toOnlyDateFilter",true);
+        mav.addObject("fromOnlyDateFilter",true);
         mav.addObject("reportUrl", Constants.RA_BASE_URL + Constants.PORT);
         mav.addObject("reportBasePath", "/tuckShop/report");
         mav.addObject(Constants.EXTRA_FILTERS,true);

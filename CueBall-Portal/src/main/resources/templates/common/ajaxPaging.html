@@ -47,6 +47,8 @@
         function dataForSerialization(){
             var startDate = $('#startDate').val() != "" ? $('#startDate').val() : "NaN";
             var endDate = $('#endDate').val() != "" ? $('#endDate').val() : "NaN";
+            var onlyStartDate = $('#onlyStartDate').val() != "" ? $('#onlyStartDate').val() : "NaN";
+            var onlyEndDate = $('#onlyEndDate').val() != "" ? $('#onlyEndDate').val() : "NaN";
             var search = $('#search').val() != "" ? $('#search').val() : "NaN";
             var operatingUnit = $('#operatingUnit').length ? parseInt($('#operatingUnit').find(":selected").val()) : null;
             var campaign = $('#campaign').length ? parseInt($('#campaign').find(":selected").val()) : null;
@@ -63,6 +65,8 @@
             var serializedData = {
                 startDate: startDate,
                 endDate: endDate,
+                onlyStartDate: onlyStartDate,
+                onlyEndDate: onlyEndDate,
                 operatingUnit: operatingUnit,
                 campaign: campaign,
                 bank: bank,
