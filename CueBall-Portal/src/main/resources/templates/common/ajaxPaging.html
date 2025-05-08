@@ -48,12 +48,13 @@
             var startDate = $('#startDate').val() != "" ? $('#startDate').val() : "NaN";
             var endDate = $('#endDate').val() != "" ? $('#endDate').val() : "NaN";
             var search = $('#search').val() != "" ? $('#search').val() : "NaN";
+            var shift = $('#shift').val() != "" ? $('#shift').val() : "NaN";
             var operatingUnit = $('#operatingUnit').length ? parseInt($('#operatingUnit').find(":selected").val()) : null;
             var campaign = $('#campaign').length ? parseInt($('#campaign').find(":selected").val()) : null;
-            var bank = $('#bank').length ? parseInt($('#bank').find(":selected").val()) : null;
             var successIndicator = $('#successIndicator').length ? parseInt($('#successIndicator').find(":selected").val()) : 0;
             var advertisement = $('#advertisement').length ? parseInt($('#advertisement').find(":selected").val()) : null;
             var variant = $('#variant').length ? parseInt($('#variant').find(":selected").val()) : null;
+            var user = $('#user').length ? parseInt($('#user').find(":selected").val()) : null;
             var restaurant = $('#restaurant').length ? parseInt($('#restaurant').find(":selected").val()) : null;
             var room = $('#room').length ? parseInt($('#room').find(":selected").val()) : null;
             var roomCategory = $('#roomCategory').length ? parseInt($('#roomCategory').find(":selected").val()) : null;
@@ -64,10 +65,11 @@
                 endDate: endDate,
                 operatingUnit: operatingUnit,
                 campaign: campaign,
-                bank: bank,
                 successIndicator: successIndicator,
                 advertisement: advertisement,
                 variant: variant,
+                shift: shift,
+                user: user,
                 restaurant: restaurant,
                 room: room,
                 roomCategory: roomCategory,

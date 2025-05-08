@@ -1,6 +1,9 @@
 package com.cueball.portal.utils;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  */
@@ -184,6 +187,15 @@ public interface Constants {
 
 
     /**
+     Tasks URLs
+     */
+    String RA_PAGE_TASK_ADD_EDIT = "task/addEdit";
+    String RA_PAGE_TASK_VIEW_ALL = "task/viewAll";
+    String RA_PAGE_MY_TASK_VIEW_ALL = "task/ViewAll";
+    String RA_PAGE_TASK_VIEW_ALL_DETAIL = "task/viewAllDetail";
+
+
+    /**
      Localization URLs
      */
     String RA_PAGE_LOCALIZATION_ADD_EDIT = "localization/addEdit";
@@ -239,6 +251,8 @@ public interface Constants {
             "Room Charges",   // Room Charges
             "Total Charges"   // Total Charges
     };
+
+    List<String> shifts = Arrays.asList("Morning", "Night");
 
 
 
