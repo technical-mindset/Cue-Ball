@@ -25,7 +25,6 @@ public class TaskDTO extends BaseDTO {
     // for searching in the list
     private String userName;
 
-    @Size(min = 3, message = "Shift " + Constants.RA_EDIT_MESSAGE)
     private String shift;
 
     @NotBlank(message = "Task-Date " + Constants.RA_EMPTY_MESSAGE)

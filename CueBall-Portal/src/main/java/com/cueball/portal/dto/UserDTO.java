@@ -25,6 +25,7 @@ public class UserDTO extends BaseDTO{
     @Size(min = Constants.RA_4,max = Constants.RA_255, message = Constants.RA_LENGTH_STRING)
     private String password;
 
+    private String shift;
 
     @NotEmpty(message = "Roles " + Constants.RA_EMPTY_MESSAGE)
     private List<Integer> roleId;

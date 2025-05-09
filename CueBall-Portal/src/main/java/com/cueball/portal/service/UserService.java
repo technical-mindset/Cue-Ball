@@ -47,6 +47,7 @@ public class UserService extends BaseService<User, UserDTO, UserRepository>{
         List<Integer> roleIds =  entity.getRoles().stream()
                 .map(Role ::getId)
                 .collect(Collectors.toList());
+        dto.setShift(entity.getShift() != null ? entity.getShift() : "N/A");
 
 
         dto.setRoleId(roleIds);
@@ -164,12 +165,14 @@ public class UserService extends BaseService<User, UserDTO, UserRepository>{
             UserDTO userDTO = new UserDTO();
             mav.addObject(Constants.RA_DTO, userDTO);
         }
+        mav.addObject("shifts",Constants.shifts);
         return mav;
     }
 
     public ModelAndView addUpdate(UserDTO dto, BindingResult result , RedirectAttributes redirectAttributes) {
 
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_USER_ADD_EDIT);
+        mav.addObject("shifts",Constants.shifts);
 
         /**  for checking duplicate value  */
         List<User> username=repository.findUsersByUsername (dto.getId(),dto.getUsername());

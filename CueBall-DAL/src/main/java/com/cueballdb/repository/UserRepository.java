@@ -25,8 +25,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT b FROM User b where b.enable = true ORDER BY b.id DESC")
     List<User> findAllEnable();
 
-    @Query("SELECT b FROM User b JOIN b.roles r WHERE b.enable = true AND r.name NOT IN ('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER') ORDER BY b.id DESC")
-    List<User> findAllUsersByRoles();
+    @Query("SELECT b FROM User b JOIN b.roles r WHERE b.enable = true AND b.shift LIKE ?1 AND r.name NOT IN ('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER') ORDER BY b.id DESC")
+    List<User> findAllUsersByRoles(String shift);
 
     @Query("SELECT b FROM User b JOIN b.roles r WHERE b.enable = true AND r.name NOT IN ('ROLE_SUPER_ADMIN', 'ROLE_ADMIN') ORDER BY b.id DESC")
     List<User> findAllUsersForAdmin();
