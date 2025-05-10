@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -43,7 +44,9 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         BeanUtils.copyProperties(entity, dto);
 
         dto.setTaskDate(entity.getTaskDate() != null ? this.dateFormat.format(entity.getTaskDate()) : "N/A");
-        dto.setLastAlertSent(entity.getLastAlertSent() != null ? new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(entity.getLastAlertSent()) : "N/A");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH);
+        dto.setLastAlertSent(entity.getLastAlertSent() != null ? entity.getLastAlertSent().format(formatter) : "N/A");
 
         /** @CASE:(User-Empty) :- User Entity would found empty while saving the data because No mapping establish with User Table
         //        dto.setUserName(entity.getUser().getUsername());
@@ -97,6 +100,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
     public ModelAndView findFindAllView(String search ,Integer enable, Integer complete, Integer userId, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TASK_VIEW_ALL);
 
+        mav.addObject ( "userid", this.getUserId());
 
         if(pageSize == null || pageSize <= 0 ) {
             pageSize = Constants.MAX_PER_PAGE;

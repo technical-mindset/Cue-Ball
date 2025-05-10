@@ -38,7 +38,7 @@
                 <div class="body-text" th:text="${data.shift}"></div>
                 <div class="body-text" th:text="${data.taskDate}"></div>
                 <div class="body-text" th:text="${data.complete}"></div>
-                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" th:text="${data.lastAlertSent != 'N/A' ? #dates.format(data.lastAlertSent, 'HH:mm:ss') : 'N/A'}"></div>
+                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" th:text="${data.lastAlertSent}"></div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" >
                     <div class="list-icon-function">
                         <a th:href="@{|addUpdate/?id=${data.getId()}|}">
