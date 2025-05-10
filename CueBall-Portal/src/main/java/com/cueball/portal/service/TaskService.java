@@ -67,6 +67,9 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH);
         log.info("Task Service {}", "Mapping DTO to Entity");
 
+        User user = this.userRepository.findById(dto.getUserId()).get();
+        entity.setShift(user.getShift());
+
         Date taskDate = null;
 
         try {
@@ -111,7 +114,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
             users = this.userRepository.findAllUsersForAdmin();
         }
         else {
-            users = this.userRepository.findAllUsersByRoles();
+            users = this.userRepository.findAllUsersByRoles(this.getUser().getShift());
         }
 
         if (ajax) {
@@ -122,16 +125,19 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         List<String> targetRoles = List.of("ROLE_TOILET_CLEANER", "ROLE_CLEANER", "ROLE_USER");
 
         if (this.getUser().getRoles().stream().anyMatch(role -> targetRoles.contains(role.getName()))) {
-            lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  (pageNumber-1)*pageSize, pageSize, count);
+            lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
         }
         else if (this.getUser().getRoles().stream().anyMatch(role -> "ROLE_MANAGER".contains(role.getName()))) {
-            lists = repository.findAllByFilters(search, enable, complete, userId, "NaN",  (pageNumber-1)*pageSize, pageSize, count);
+
+            int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
+            lists = repository.findAllByFilters(search, enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
+
             mav.addObject("users", users);
             mav.addObject("userFilter",true);
             mav.addObject(Constants.EXTRA_FILTERS,true);
         }
         else {
-            lists = repository.findAllByFilters(search, enable, complete, userId, shift,  (pageNumber-1)*pageSize, pageSize, count);
+            lists = repository.findAllByFilters(search, enable, complete, userId, shift, false, (pageNumber-1)*pageSize, pageSize, count);
             mav.addObject("users", users);
             mav.addObject("shifts", Constants.shifts);
             mav.addObject("userFilter",true);
@@ -162,7 +168,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
             userList = this.userRepository.findAllUsersForAdmin();
         }
         else {
-            userList = this.userRepository.findAllUsersByRoles();
+            userList = this.userRepository.findAllUsersByRoles(this.getUser().getShift());
         }
 
 
@@ -191,7 +197,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
             userList = this.userRepository.findAllUsersForAdmin();
         }
         else {
-            userList = this.userRepository.findAllUsersByRoles();
+            userList = this.userRepository.findAllUsersByRoles(this.getUser().getShift());
         }
 
 

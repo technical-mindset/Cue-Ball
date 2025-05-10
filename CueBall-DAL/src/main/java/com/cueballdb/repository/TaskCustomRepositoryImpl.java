@@ -1,10 +1,11 @@
 package com.cueballdb.repository;
 
-import com.cueballdb.model.Room;
 import com.cueballdb.model.Task;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class TaskCustomRepositoryImpl extends AbstractPersistenceManager<Task> implements TaskCustomRepository {
 
     @Override
-    public List<Task> findAllByFilters(String search, Integer enable, Integer complete, Integer userId, String shift, Integer pageNumber, Integer pageSize, long[] count) {
+    public List<Task> findAllByFilters(String search, Integer enable, Integer complete, Integer userId, String shift, boolean isTaskDateEnable, Integer pageNumber, Integer pageSize, long[] count) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         StringBuilder where = new StringBuilder(" WHERE ");
 
@@ -58,6 +59,15 @@ public class TaskCustomRepositoryImpl extends AbstractPersistenceManager<Task> i
                 parameters.put("complete", false);
             }
         }
+
+        /** Fetching against task-date is current-date */
+        if (isTaskDateEnable) {
+            where.append(" CAST(task.taskDate AS date) = :date AND ");
+            LocalDate localDate = LocalDate.now();
+            Date date = java.sql.Date.valueOf(localDate); // 👈 convert LocalDate to java.util.Date
+            parameters.put("date", date);
+        }
+
 
         where.append("1=1");
 
