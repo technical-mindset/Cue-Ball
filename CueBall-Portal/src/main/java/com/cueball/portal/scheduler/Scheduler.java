@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -28,16 +29,41 @@ public class Scheduler {
     public void sendAlerts() {
         System.out.println(" ---------------------- >>>> Starting The Scheduler <<<<<<<<<<<< ----------------------------");
 
-        // Convert LocalDateTime to java.util.Date for taskDate (which is of type Date)
+//        // Convert LocalDateTime to java.util.Date for taskDate (which is of type Date)
+//        LocalDateTime twoHoursAgoLDT = LocalDateTime.now().minusHours(2);
+//        Date twoHoursAgo = Date.from(twoHoursAgoLDT.atZone(ZoneId.systemDefault()).toInstant());
+//
+//        // Keep LocalDateTime for lastAlertSent (which is of type LocalDateTime)
+//        LocalDateTime alertCutoff = LocalDateTime.now().minusHours(2);
+//
+//        List<Task> tasksToAlert = repository.findUncompletedTasksOlderThan2Hours(twoHoursAgo, alertCutoff);
+
+        // Convert LocalDateTime to java.util.Date for taskDate
         LocalDateTime twoHoursAgoLDT = LocalDateTime.now().minusHours(2);
         Date twoHoursAgo = Date.from(twoHoursAgoLDT.atZone(ZoneId.systemDefault()).toInstant());
 
-        // Keep LocalDateTime for lastAlertSent (which is of type LocalDateTime)
+// For current date boundary
+        LocalDateTime startOfDay = LocalDateTime.now().with(LocalTime.MIN);
+        Date startOfDayDate = Date.from(startOfDay.atZone(ZoneId.systemDefault()).toInstant());
+
+// Keep LocalDateTime for lastAlertSent
         LocalDateTime alertCutoff = LocalDateTime.now().minusHours(2);
 
-        List<Task> tasksToAlert = repository.findUncompletedTasksOlderThan2Hours(twoHoursAgo, alertCutoff);
+        System.out.println(":::::::::::::::: twoHoursAgo :::::::::::::" +twoHoursAgo);
+        System.out.println(":::::::::::::::: startOfDayDate :::::::::::::" +startOfDayDate);
+        System.out.println(":::::::::::::::: alertCutoff :::::::::::::" +alertCutoff);
 
-        System.out.println(" ---------------------- >>>> Retrieving The Data <<<<<<<<<<<< ----------------------------");
+        List<Task> tasksToAlert = repository.findUncompletedTasksOlderThan2HoursForToday(
+                twoHoursAgo,
+                startOfDayDate,
+                alertCutoff
+        );
+
+        System.out.println(" ---------------------- >>>> Retrieving The Data <<<<<<<<<<<< ----------------------------" + tasksToAlert);
+
+
+//        String destination = "/topic/alerts/staff-" + 4;
+//        messagingTemplate.convertAndSend(destination, "⚠ You have a pending task: " + "Test two");
 
         for (Task task : tasksToAlert) {
             System.out.println(" ---------------------- >>>> Setting Up For Sending Alert <<<<<<<<<<<< ----------------------------");

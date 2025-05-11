@@ -211,3 +211,12 @@ button.completed:disabled {
     cursor: not-allowed;
     pointer-events: none;
 }
+
+.swal2-warning {
+    border-color: #ff9335 !important;
+    color: #f5aa69 !important;
+}
+
+.swal2-title {
+    color: #363535 !important;
+}

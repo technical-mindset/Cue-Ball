@@ -24,11 +24,20 @@ public interface TaskRepository extends JpaRepository<Task, Integer>, TaskCustom
     long count();
 
 
-    @Query("SELECT t FROM Task t WHERE t.complete = false AND t.createdAt <= :twoHoursAgo AND " +
-            "(t.lastAlertSent IS NULL OR t.lastAlertSent <= :alertCutoff)")
-    List<Task> findUncompletedTasksOlderThan2Hours(@Param("twoHoursAgo") Date twoHoursAgo,
-                                                   @Param("alertCutoff") LocalDateTime alertCutoff);
+//    @Query("SELECT t FROM Task t WHERE t.complete = false AND t.createdAt <= :twoHoursAgo AND " +
+//            "(t.lastAlertSent IS NULL OR t.lastAlertSent <= :alertCutoff)")
+//    List<Task> findUncompletedTasksOlderThan2Hours(@Param("twoHoursAgo") Date twoHoursAgo,
+//                                                   @Param("alertCutoff") LocalDateTime alertCutoff);
 
+    @Query("SELECT t FROM Task t WHERE t.complete = false " +
+            "AND t.createdAt <= :twoHoursAgo " +
+            "AND t.createdAt >= :startOfDay " +
+            "AND (t.lastAlertSent IS NULL OR t.lastAlertSent <= :alertCutoff)")
+    List<Task> findUncompletedTasksOlderThan2HoursForToday(
+            @Param("twoHoursAgo") Date twoHoursAgo,
+            @Param("startOfDay") Date startOfDay,
+            @Param("alertCutoff") LocalDateTime alertCutoff
+    );
 
     @Modifying
     @Query("UPDATE Task n SET n.complete = ?2, n.modifiedAt = current_timestamp WHERE id = ?1")

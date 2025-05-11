@@ -381,7 +381,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton3" >
                         <li>
-                            <a  th:href="@{/logout}" class="user-item">
+                            <a  th:href="@{/logout}" th:onclick="deleteCookie('cbusr');"  class="user-item">
                                 <div class="icon">
                                     <i class="icon-log-out"></i>
                                 </div>
