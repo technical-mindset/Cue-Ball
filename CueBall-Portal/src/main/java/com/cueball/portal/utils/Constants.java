@@ -186,6 +186,9 @@ public interface Constants {
     int MAX_PER_PAGE = 10;
     int DEFAUT_START_PAGENUMBER = 1;
 
+    String RA_SWEET_ALERT_SUCCESS = "The status has been updated successfully.";
+    String RA_SWEET_ALERT_FAILED = "An error occurred while updating the status.";
+
     /**
      For Excel Report
      */

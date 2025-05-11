@@ -30,15 +30,20 @@
             </li>
         </ul>
         <ul class="flex flex-column">
-            <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
+            <li class="attribute-item flex items-center justify-between gap20" th:classappend="${data.complete == true} ? 'row-success' : ''" th:each="data : ${dataList}">
                 <div class="body-text" th:text="${data.getId()}"></div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_CLEANER', 'ROLE_TOILET_CLEANER', 'ROLE_USER')" th:text="${data.description}"></div>
                 <div class="body-text" th:text="${data.userName}"></div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" th:text="${data.roleName}"></div>
                 <div class="body-text" th:text="${data.shift}"></div>
-                <div class="body-text" th:text="${data.taskDate}"></div>
-                <div class="body-text" th:text="${data.complete}"></div>
-                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" th:text="${data.lastAlertSent != 'N/A' ? #dates.format(data.lastAlertSent, 'HH:mm:ss') : 'N/A'}"></div>
+                <div class="body-text" th:text="${UserId}"></div>
+                <div class="body-text" th:if="${data.userId == UserId}">
+                    <button th:onclick="updateTaskStatus([[${data.getId()}]] , true)" th:disabled="${data.complete == true}" th:classappend="${data.complete == true} ? 'completed' : 'warning'" th:text="${data.complete == true ? 'Completed' : 'Pending'}" >Task Complete</button>
+                </div>
+                <div class="body-text" th:if="${data.userId != UserId}" th:text="${data.complete}">
+
+                </div>
+                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" th:text="${data.lastAlertSent}"></div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" >
                     <div class="list-icon-function">
                         <a th:href="@{|addUpdate/?id=${data.getId()}|}">
@@ -53,4 +58,63 @@
     </div>
     <div class="divider"></div>
     <div th:replace="common/ajaxPaging::ajaxPaging"></div>
+
+    <script th:inline="javascript">
+        /** Function For Sending Notification */
+        function updateTaskStatus(id , complete) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You want to mark your Task completed!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    updateTaskStatusAjax(id ,complete);
+                }
+            });
+        };
+
+        /** Ajax to send notification */
+        function updateTaskStatusAjax(id , complete){
+            $.ajax({
+                url: 'updateTaskStatus',
+                type: 'POST',
+                data: {
+                    id: id,
+                    complete : complete
+                },
+                success: function(response) {
+                    sweetAlertPopupUpdateTaskStatus(response.success > 0, response.message);
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    const message = 'An error occurred while sending notification';
+                    sweetAlertPopupUpdateTaskStatus(false, message);
+                }
+            });
+
+        }
+
+        function sweetAlertPopupUpdateTaskStatus(flag, text) {
+            if (flag) {
+                Swal.fire({
+                    title: 'Sent!',
+                    text: text,
+                    icon: 'success',
+                    timer: 1500
+                });
+            }
+            else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: text,
+                    icon: 'error'
+                });
+            }
+        }
+    </script>
+
 </div>

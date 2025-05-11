@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/task")
@@ -64,6 +65,15 @@ public class TaskController {
             @RequestParam(value = "pn",required = false) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
         return service.findFindAllView(search, enable, complete, userId, shift, pageSize, pageNumber, ajax);
+    }
+
+    @Transactional
+    @PostMapping(value = "/updateTaskStatus")
+    public Map<String, Object> sendNotification(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "complete", required = false) boolean complete
+    ) {
+        return this.service.sendNotification(id , complete);
     }
 }
 

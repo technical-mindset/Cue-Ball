@@ -173,3 +173,41 @@ button:disabled {
 .table tbody tr:hover {
     background-color: #f9f9f9;
 }
+
+.warning{
+    text-transform: uppercase;
+    background-color: #ffff00;
+    color: #000;
+}
+
+.row-warning {
+    background-color: #ffed78d1 !important;
+}
+#viewAllDetail .wg-table.table-all-attribute .row-warning {
+    background-color: #ffed78d1 !important;
+}
+
+.row-success {
+    background-color: #7ce9ffb0 !important;
+}
+#viewAllDetail .wg-table.table-all-attribute .row-success {
+    background-color: #7ce9ffb0 !important;
+}
+
+.row-warning .body-text,
+.row-success .body-text{
+    color: #000 !important;
+}
+
+
+.completed{
+    text-transform: uppercase;
+    background-color: #0dcaf0 !important;
+    color: #000;
+}
+
+button.completed:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    pointer-events: none;
+}

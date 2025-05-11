@@ -80,6 +80,7 @@ UserRepository userRepository;
 //        mav.addObject ( "operatingUnitCount", operatingUnitCount);
 //        mav.addObject ( "bankCount", bankCount);
         mav.addObject ( "userName", user.getFullname());
+        mav.addObject ( "userid", user.getId());
         return mav;
     }
 

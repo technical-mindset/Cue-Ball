@@ -20,9 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -43,7 +42,9 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         BeanUtils.copyProperties(entity, dto);
 
         dto.setTaskDate(entity.getTaskDate() != null ? this.dateFormat.format(entity.getTaskDate()) : "N/A");
-        dto.setLastAlertSent(entity.getLastAlertSent() != null ? new SimpleDateFormat("HH:mm", Locale.ENGLISH).format(entity.getLastAlertSent()) : "N/A");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH);
+        dto.setLastAlertSent(entity.getLastAlertSent() != null ? entity.getLastAlertSent().format(formatter) : "N/A");
 
         /** @CASE:(User-Empty) :- User Entity would found empty while saving the data because No mapping establish with User Table
         //        dto.setUserName(entity.getUser().getUsername());
@@ -97,6 +98,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
     public ModelAndView findFindAllView(String search ,Integer enable, Integer complete, Integer userId, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TASK_VIEW_ALL);
 
+        mav.addObject ( "userid", this.getUserId());
 
         if(pageSize == null || pageSize <= 0 ) {
             pageSize = Constants.MAX_PER_PAGE;
@@ -123,14 +125,26 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
 
 
         List<String> targetRoles = List.of("ROLE_TOILET_CLEANER", "ROLE_CLEANER", "ROLE_USER");
+        int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
 
         if (this.getUser().getRoles().stream().anyMatch(role -> targetRoles.contains(role.getName()))) {
             lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
         }
         else if (this.getUser().getRoles().stream().anyMatch(role -> "ROLE_MANAGER".contains(role.getName()))) {
 
-            int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+
             lists = repository.findAllByFilters(search, enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
+
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::::::::::::::::::::::::");
 
             mav.addObject("users", users);
             mav.addObject("userFilter",true);
@@ -150,6 +164,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
+        mav.addObject("UserId" , USER_ID);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
@@ -216,6 +231,27 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
 
         mav = new ModelAndView("redirect:/task/viewAll");
         return mav;
+    }
+
+    /** SENDING NOTIFICATION */
+    public Map<String, Object> sendNotification(int id , boolean complete) {
+        int rowsAffected = this.repository.updateTaskStatus(id, complete);
+        Map<String, Object> response = new HashMap<>();
+
+        /** passing the error cade for handling the error & success in ajax success case */
+        String message;
+        Integer successCode = 0;
+        if (rowsAffected > 0) {
+            message = Constants.RA_SWEET_ALERT_SUCCESS;
+            successCode = 1;
+        } else {
+            message = Constants.RA_SWEET_ALERT_FAILED;
+        }
+
+        response.put("message", message);
+        response.put("success", successCode);
+
+        return response;
     }
 
 }
