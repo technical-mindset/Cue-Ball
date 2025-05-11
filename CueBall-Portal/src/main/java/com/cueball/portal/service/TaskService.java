@@ -125,7 +125,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
 
 
         List<String> targetRoles = List.of("ROLE_TOILET_CLEANER", "ROLE_CLEANER", "ROLE_USER");
-        int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
+
 
         if (this.getUser().getRoles().stream().anyMatch(role -> targetRoles.contains(role.getName()))) {
             lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
@@ -137,7 +137,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
             System.out.println("::::::::::::::::::::::::::::::::::::");
             System.out.println("::::::::::::::::::::::::::::::::::::");
             System.out.println("::::::::::::::::::::::::::::::::::::");
-
+            int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
             lists = repository.findAllByFilters(search, enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
 
             System.out.println("::::::::::::::::::::::::::::::::::::");
@@ -164,7 +164,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
-        mav.addObject("UserId" , USER_ID);
+        mav.addObject("UserId" , this.getUserId());
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
