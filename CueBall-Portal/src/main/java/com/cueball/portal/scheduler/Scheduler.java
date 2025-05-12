@@ -25,7 +25,7 @@ public class Scheduler {
         this.messagingTemplate = messagingTemplate;
     }
 
-    @Scheduled(fixedRate = 1 * 60 * 1000) // every 1 minutes
+    @Scheduled(fixedRate = 30 * 60 * 1000) // every 1 minutes
     public void sendAlerts() {
         System.out.println(" ---------------------- >>>> Starting The Scheduler <<<<<<<<<<<< ----------------------------");
 
