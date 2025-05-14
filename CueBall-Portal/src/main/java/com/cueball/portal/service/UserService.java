@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -97,8 +99,7 @@ public class UserService extends BaseService<User, UserDTO, UserRepository>{
 
     }
 
-
-    public ModelAndView findFindAllView(Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView findFindAllView(String search,Integer pageSize, Integer pageNumber, boolean ajax) {
 
         ModelAndView mav = new ModelAndView( Constants.RA_PAGE_USER_VIEW_ALL);
 
@@ -211,6 +212,27 @@ public class UserService extends BaseService<User, UserDTO, UserRepository>{
         mav = new ModelAndView("redirect:/users/viewAll");
         return mav;
 
+    }
+
+    public Map<String, Object> deleteUser(int id) {
+        int rowsAffected = this.repository.softDeleteUser(id, false);
+        // Return a success message
+        Map<String, Object> response = new HashMap<>();
+
+        /** passing the error cade for handling the error & success in ajax success case */
+        String message;
+        Integer successCode = 0;
+        if (rowsAffected > 0) {
+            message = Constants.RA_SWEET_ALERT_DELETE_SUCCESS;
+            successCode = 1;
+        } else {
+            message = Constants.RA_SWEET_ALERT_DELETE_FAILED;
+        }
+
+        response.put("message", message);
+        response.put("success", successCode);
+
+        return response;
     }
 
     public GenericListResponse findAllEnable() {

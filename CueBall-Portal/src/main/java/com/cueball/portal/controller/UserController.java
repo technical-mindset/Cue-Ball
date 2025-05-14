@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -53,12 +54,22 @@ public class UserController {
         return service.addUpdate(userDTO, result ,redirectAttributes);
     }
 
+    @Transactional
+    @PostMapping(value = "/deleteUser")
+    public Map<String, Object> deleteUser(
+            @RequestParam(value = "id", required = false) Integer id
+    ) {
+        return this.service.deleteUser(id);
+    }
+
+
     @GetMapping(value = "/viewAll")
     public ModelAndView findAllView(
+            @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "ps",required = false ) Integer pageSize,
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax
     ) {
-        return service.findFindAllView(pageSize,pageNumber,ajax);
+        return service.findFindAllView(search,pageSize,pageNumber,ajax);
     }
 }

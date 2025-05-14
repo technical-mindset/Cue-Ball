@@ -87,7 +87,15 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
                     tucBuying.setCreatedBy(1);
                     tucBuying.setModifyBy(1);
                     this.repository.save(tucBuying);
+
+                    Inventory inventory = inventoryRepository.findById(tuckItemJson.get(i).getId()).get();
+                    if(inventory.getQuantity()  > 0){
+                        inventory.setQuantity(inventory.getQuantity() - 1);
+                        inventoryRepository.save(inventory);
+                    }
+
                 }
+
 
             }
 

@@ -189,6 +189,9 @@ public interface Constants {
     String RA_SWEET_ALERT_SUCCESS = "The status has been updated successfully.";
     String RA_SWEET_ALERT_FAILED = "An error occurred while updating the status.";
 
+    String RA_SWEET_ALERT_DELETE_SUCCESS = "Deleted successfully.";
+    String RA_SWEET_ALERT_DELETE_FAILED = "An error occurred while Deleting.";
+
     /**
      For Excel Report
      */

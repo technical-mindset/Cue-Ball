@@ -150,17 +150,17 @@
     }
   }
 
-  var icon_function = function () {
-    if ($('div').hasClass("list-icon-function")) {
-      $(".list-icon-function .trash").on("click", function (e) {
-        $(this).parents(".product-item").remove();
-        $(this).parents(".attribute-item").remove();
-        $(this).parents(".countries-item").remove();
-        $(this).parents(".user-item").remove();
-        $(this).parents(".roles-item").remove();
-      })
-    }
-  }
+  // var icon_function = function () {
+  //   if ($('div').hasClass("list-icon-function")) {
+  //     $(".list-icon-function .trash").on("click", function (e) {
+  //       $(this).parents(".product-item").remove();
+  //       $(this).parents(".attribute-item").remove();
+  //       $(this).parents(".countries-item").remove();
+  //       $(this).parents(".user-item").remove();
+  //       $(this).parents(".roles-item").remove();
+  //     })
+  //   }
+  // }
 
   var box_search=function(){
         
@@ -261,7 +261,7 @@ var btnQuantity = function () {
     gallery();
     coppy();
     select_colors_theme();
-    icon_function();
+    // icon_function();
     box_search();
     retinaLogos();
     variant_picker();
