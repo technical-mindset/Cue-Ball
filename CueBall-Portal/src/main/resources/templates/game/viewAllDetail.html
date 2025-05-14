@@ -5,17 +5,37 @@
                 <div class="body-title">ID</div>
             </li>
             <li>
-                <div class="body-title">Item Name</div>
+                <div class="body-title">Title</div>
             </li>
             <li>
-                <div class="body-title">Price</div>
+                <div class="body-title">Charges</div>
+            </li>
+            <li>
+                <div class="body-title">Max Players</div>
+            </li>
+            <li>
+                <div class="body-title">Enable</div>
+            </li>
+            <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')">
+                <div class="body-title">Action</div>
             </li>
         </ul>
         <ul class="flex flex-column">
-            <li class="attribute-item flex items-center justify-between gap20">
-                <div class="body-text">1</div>
-                <div class="body-text">Buns</div>
-                <div class="body-text">2</div>
+            <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
+                <div class="body-text" th:text="${data.getId()}"></div>
+                <div class="body-text" th:text="${data.title}"></div>
+                <div class="body-text" th:text="${data.charges}"></div>
+                <div class="body-text" th:text="${data.maxPlayers}"></div>
+                <div class="body-text" th:text="${data.enable}"></div>
+                <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" >
+                    <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="list-icon-function">
+                        <a th:href="@{|addUpdate/?id=${data.getId()}|}">
+                            <div class="item edit">
+                                <i class="icon-edit-3"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
