@@ -42,8 +42,8 @@ public class Dashboard {
     @Autowired
     private GameRepository gameRepository;
 
-        @Autowired
-UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
 
     @RequestMapping(method = RequestMethod.GET)

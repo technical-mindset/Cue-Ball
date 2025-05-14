@@ -55,6 +55,8 @@ public class TaskController {
 
     @GetMapping(value = "/viewAll")
     public ModelAndView findAllView(
+            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
+            @RequestParam(value = "endDate",required = false, defaultValue = "NaN") String endDate,
             @RequestParam(value = "search",required = false) String search,
             @RequestParam(value = "enable",required = false) Integer enable,
             @RequestParam(value = "complete",required = false) Integer complete,
@@ -63,7 +65,7 @@ public class TaskController {
             @RequestParam(value = "ps",required = false) Integer pageSize,
             @RequestParam(value = "pn",required = false) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
-        return service.findFindAllView(search, enable, complete, userId, shift, pageSize, pageNumber, ajax);
+        return service.findFindAllView(search, startDate, endDate, enable, complete, userId, shift, pageSize, pageNumber, ajax);
     }
 }
 

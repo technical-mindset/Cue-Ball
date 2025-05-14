@@ -97,7 +97,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
 
 
 
-    public ModelAndView findFindAllView(String search ,Integer enable, Integer complete, Integer userId, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView findFindAllView(String search, String startDate, String endDate, Integer enable, Integer complete, Integer userId, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TASK_VIEW_ALL);
 
         mav.addObject ( "userid", this.getUserId());
@@ -132,20 +132,22 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         List<String> targetRoles = List.of("ROLE_TOILET_CLEANER", "ROLE_CLEANER", "ROLE_USER");
 
         if (this.getUser().getRoles().stream().anyMatch(role -> targetRoles.contains(role.getName()))) {
-            lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
+            lists = repository.findAllByFilters(search, "NaN", "NaN", enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
         }
         else if (this.getUser().getRoles().stream().anyMatch(role -> "ROLE_MANAGER".contains(role.getName()))) {
 
             int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
-            lists = repository.findAllByFilters(search, enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
+            lists = repository.findAllByFilters(search, "NaN", "NaN", enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
 
             mav.addObject("users", users);
             mav.addObject("userFilter",true);
             mav.addObject(Constants.EXTRA_FILTERS,true);
         }
         else {
-            lists = repository.findAllByFilters(search, enable, complete, userId, shift, false, (pageNumber-1)*pageSize, pageSize, count);
+            lists = repository.findAllByFilters(search, startDate, endDate, enable, complete, userId, shift, false, (pageNumber-1)*pageSize, pageSize, count);
             mav.addObject("users", users);
+            mav.addObject("fromDateFilter", true);
+            mav.addObject("toDateFilter", true);
             mav.addObject("shifts", Constants.shifts);
             mav.addObject("userFilter",true);
             mav.addObject("shiftFilter",true);

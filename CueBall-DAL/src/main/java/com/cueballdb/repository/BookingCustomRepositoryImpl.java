@@ -91,7 +91,7 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
 
         /** For search in booking-title and customer-name */
         if (search != null && !search.equals("NaN")) {
-            where.append(" (booking.title LIKE :search OR c.name LIKE :search) AND ");
+            where.append(" (booking.title LIKE :search) AND ");
             parameters.put("search", "%" + search.toLowerCase() + "%");
         }
 
@@ -121,7 +121,7 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY booking.id, r.id, rc.id, c.name ");
+        where.append(" GROUP BY booking.id, r.id, rc.id");
 
         return List.of(beforeWhere.toString() + where, parameters);
     }
