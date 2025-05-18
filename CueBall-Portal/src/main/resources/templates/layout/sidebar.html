@@ -12,7 +12,7 @@
             <div class="center-item">
                 <ul class="menu-list">
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-github"></i></div>
                             <div class="text">Games</div>
@@ -32,7 +32,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'roomCategory') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-layers"></i></div>
                             <div class="text">Room Category</div>
@@ -52,7 +52,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'rooms') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'rooms') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'rooms') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-users"></i></div>
                             <div class="text">Room</div>
@@ -72,7 +72,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'booking') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">Booking</div>
@@ -112,7 +112,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventoryCategory') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-layers"></i></div>
                             <div class="text">Inventory Category</div>
@@ -132,7 +132,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventories') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventories') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'inventories') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-noti-3"></i></div>
                             <div class="text">Inventory</div>
@@ -152,7 +152,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'variant') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">Variant</div>
@@ -172,7 +172,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">TuckShop</div>
@@ -187,7 +187,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-user"></i></div>
                             <div class="text">Customer Check Out</div>
@@ -201,7 +201,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">Reports</div>
@@ -256,8 +256,6 @@
                             </li>
                         </ul>
                     </li>
-
-
 
                 </ul>
             </div>

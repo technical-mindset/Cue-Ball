@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')")
 public class InventoryController {
 
     @Autowired

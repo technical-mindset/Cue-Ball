@@ -25,6 +25,15 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>, Book
             "(b.timeIn BETWEEN :newTimeIn AND :newTimeOut))")
     List<Booking> findConflictBookings(@Param("bookingId") int bookingId ,@Param("newTimeIn") Date newTimeIn, @Param("newTimeOut") Date newTimeOut, @Param("roomId") int roomId);
 
-
+//    @Query("SELECT COUNT(*) FROM booking b " +
+//            "RIGHT JOIN room r ON r.id = b.room_id " +
+//            "AND NOT " +
+//            "( " +
+//            " GREATEST(b.time_out, b.check_out) <= CURRENT_TIMESTAMP " +
+//            "OR " +
+//            "LEAST(b.time_in, b.check_in) >= CURRENT_TIMESTAMP " +
+//            ") " +
+//            "WHERE b.room_id IS NULL")
+//    long findAvailableRoomsCount();
 }
 

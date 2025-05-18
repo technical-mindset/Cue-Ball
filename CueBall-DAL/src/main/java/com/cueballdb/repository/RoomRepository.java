@@ -3,6 +3,7 @@ package com.cueballdb.repository;
 import com.cueballdb.model.Game;
 import com.cueballdb.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,17 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
     List<Room> findAllByEnableTrue();
 
     long count();
+
+    @Query(value = "SELECT COUNT(*) FROM room r " +
+            "LEFT JOIN booking b ON r.id = b.room_id " +
+            "AND NOT " +
+            "( " +
+            " GREATEST(b.time_out, b.check_out) <= CURRENT_TIMESTAMP " +
+            "OR " +
+            "LEAST(b.time_in, b.check_in) >= CURRENT_TIMESTAMP " +
+            ") " +
+            "WHERE b.room_id IS NULL", nativeQuery = true)
+    long findAvailableRoomsCount();
 
 }
 

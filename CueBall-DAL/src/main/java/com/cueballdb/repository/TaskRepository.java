@@ -21,7 +21,11 @@ public interface TaskRepository extends JpaRepository<Task, Integer>, TaskCustom
 
     List<Task> findAllByEnableTrue();
 
-    long count();
+    @Query("SELECT COUNT(t) FROM Task t WHERE t.taskDate = CURRENT_DATE AND t.shift LIKE :shift AND (:completed IS NULL OR t.complete = :completed) AND (:userId IS NULL OR t.userId = :userId)")
+    long countTasksByShiftToday(@Param("shift") String shift, Boolean completed, Integer userId);
+
+    @Query("SELECT COUNT(t) FROM Task t WHERE t.taskDate = CURRENT_DATE AND (:completed IS NULL OR t.complete = :completed)")
+    long countTasksByShiftTodayForAdmin(Boolean completed);
 
 
 //    @Query("SELECT t FROM Task t WHERE t.complete = false AND t.createdAt <= :twoHoursAgo AND " +

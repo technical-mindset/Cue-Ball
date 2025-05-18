@@ -21,15 +21,15 @@ public interface Constants {
     /**
      * Base URL For Local
      */
-//    String RA_BASE_URL = "http://localhost:8081";
-//    String PORT = "/CueBallPortal";
+    String RA_BASE_URL = "http://localhost:8081";
+    String PORT = "/CueBallPortal";
 
 
     /**
      * Base URL For Stage
      */
-    String RA_BASE_URL = "http://3.145.74.161:8080";
-    String PORT = "/CueBallPortal";
+//    String RA_BASE_URL = "http://3.145.74.161:8080";
+//    String PORT = "/CueBallPortal";
 
 
 
@@ -203,12 +203,12 @@ public interface Constants {
             "Email",          // Email
             "Contact",        // Contact
             "Category",       // Category
-            "Room",      // Room Name
+            "Room",           // Room Name
             "Time In",        // Time In
             "Time Out",       // Time Out
             "Check In",       // Check In
             "Check Out",      // Check Out
-            "Total time",     // Total time
+            "Total time (Minutes)",     // Total time
             "Room Charges",   // Room Charges
             "Total Charges"   // Total Charges
     };

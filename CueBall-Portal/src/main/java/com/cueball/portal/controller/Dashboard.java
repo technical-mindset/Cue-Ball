@@ -4,10 +4,7 @@ package com.cueball.portal.controller;
 import com.cueball.portal.utils.Constants;
 import javax.servlet.http.Cookie;
 import com.cueballdb.model.User;
-import com.cueballdb.repository.GameRepository;
-import com.cueballdb.repository.InventoryRepository;
-import com.cueballdb.repository.RoomRepository;
-import com.cueballdb.repository.UserRepository;
+import com.cueballdb.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,24 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 @RestController
 @RequestMapping(value = "/dashboard")
 public class Dashboard {
 
-//        @Autowired
-//        TransactionRepository transactionRepository;
-//        @Autowired
-//        BankRepository bankRepository;
-//        @Autowired
-//        CurrencyRepository currencyRepository;
-//        @Autowired
-//        CampaignRepository campaignRepository;
-//        @Autowired
-//        OperatingUnitRepository operatingUnitRepository;
-//        @Autowired
-//        LegalEntityRepository legalEntityRepository;
     @Autowired
     private RoomRepository roomRepository;
 
@@ -45,8 +31,11 @@ public class Dashboard {
     @Autowired
     private GameRepository gameRepository;
 
-        @Autowired
-UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    TaskRepository taskRepository;
 
 
     @RequestMapping(method = RequestMethod.GET)
@@ -86,20 +75,35 @@ UserRepository userRepository;
         }
 
 
-        Long gameCount;
-        Long roomCount;
-        Long inventoryCount;
+        Long gameCount = gameRepository.count();
+        Long roomCount = roomRepository.count();
+        Long inventoryCount = inventoryRepository.count();
+        Long availableRoomCount = roomRepository.findAvailableRoomsCount();
+        Long taskShiftCount = 0L;
+        Long taskCompletedShiftCount = 0L;
 
-            gameCount = gameRepository.count();
-            roomCount = roomRepository.count();
-            inventoryCount = inventoryRepository.count();
+        if (this.getUser().getRoles().stream().anyMatch(x -> List.of("ROLE_SUPER_ADMIN", "ROLE_ADMIN").contains(x.getName()))) {
+            taskShiftCount = taskRepository.countTasksByShiftTodayForAdmin(null);
+            taskCompletedShiftCount = taskRepository.countTasksByShiftTodayForAdmin(true);
+        }
+        else if (this.getUser().getRoles().stream().anyMatch(x -> "ROLE_MANAGER".contains(x.getName()))) {
+            taskShiftCount = taskRepository.countTasksByShiftToday(this.getUser().getShift(), null, null);
+            taskCompletedShiftCount = taskRepository.countTasksByShiftToday(this.getUser().getShift(), true, null);
+        }
+        else {
+            taskShiftCount = taskRepository.countTasksByShiftToday(this.getUser().getShift(), null, this.getUser().getId());
+            taskCompletedShiftCount = taskRepository.countTasksByShiftToday(this.getUser().getShift(), true, this.getUser().getId());
+        }
 
 
-        mav.addObject ( "gameCount", gameCount);
-        mav.addObject ( "roomCount", roomCount);
-        mav.addObject ( "inventoryCount", inventoryCount);
-        mav.addObject ( "userName", user.getFullname());
-        mav.addObject ( "userid", user.getId());
+        mav.addObject("gameCount", gameCount);
+        mav.addObject("roomCount", roomCount);
+        mav.addObject("availableRoomCount", availableRoomCount);
+        mav.addObject("inventoryCount", inventoryCount);
+        mav.addObject("taskShiftCount", taskShiftCount);
+        mav.addObject("taskCompletedShiftCount", taskCompletedShiftCount);
+        mav.addObject("userName", user.getFullname());
+        mav.addObject("userid", user.getId());
         return mav;
     }
 
