@@ -134,6 +134,7 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
                 .collect(Collectors.toList());
 
         mav.addObject(Constants.RA_LIST, DTOs);
+        mav.addObject("route", Constants.RA_BASE_URL + Constants.PORT + "/booking/addUpdate");
         return mav;
     }
 
