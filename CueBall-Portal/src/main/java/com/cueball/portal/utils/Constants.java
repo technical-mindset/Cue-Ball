@@ -21,7 +21,7 @@ public interface Constants {
     /**
      * Base URL For Local
      */
-    String RA_BASE_URL = "http://localhost:8081";
+    String RA_BASE_URL = "http://localhost:8080";
     String PORT = "/CueBallPortal";
 
 
@@ -70,6 +70,7 @@ public interface Constants {
      */
     String RA_PAGE_ROOM_ADD_EDIT = "room/addEdit";
     String RA_PAGE_ROOM_VIEW_ALL = "room/viewAll";
+    String RA_PAGE_ROOM_ALL = "room/roomCatView";
     String RA_PAGE_ROOM_VIEW_ALL_DETAIL = "room/viewAllDetail";
 
     /**
@@ -98,6 +99,7 @@ public interface Constants {
      */
     String RA_PAGE_ROOM_CATEGORY_ADD_EDIT = "roomCategory/addEdit";
     String RA_PAGE_ROOM_CATEGORY_VIEW_ALL = "roomCategory/viewAll";
+    String RA_PAGE_ROOM_CATEGORY_ALL = "roomCategory/categories";
     String RA_PAGE_ROOM_CATEGORY_VIEW_ALL_DETAIL = "roomCategory/viewAllDetail";
 
     /**

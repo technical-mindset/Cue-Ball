@@ -1,9 +1,11 @@
 package com.cueball.portal.service;
 
 
+import com.cueball.portal.dto.InventoryCategoryDTO;
 import com.cueball.portal.dto.RoomDTO;
 import com.cueball.portal.utils.Constants;
 import com.cueballdb.model.Game;
+import com.cueballdb.model.InventoryCategory;
 import com.cueballdb.model.Room;
 import com.cueballdb.model.RoomCategory;
 import com.cueballdb.repository.GameRepository;
@@ -116,6 +118,21 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
         mav.addObject("totalCount", count[0]);
+        mav.addObject(Constants.RA_LIST, DTOs);
+        return mav;
+    }
+
+
+    public ModelAndView findRoomByCategroryId(Integer roomCategory) {
+        ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_ALL);
+
+        List<Room> lists = this.repository.findAllByRoomCategory(roomCategory);
+        lists.forEach(System.out::println);
+        List<RoomDTO> DTOs = lists
+                .stream()
+                .map(this::mapEntityToDto)
+                .collect(Collectors.toList());
+
         mav.addObject(Constants.RA_LIST, DTOs);
         return mav;
     }

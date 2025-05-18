@@ -57,4 +57,15 @@ public class RoomCategoryController {
         return service.findFindAllView(search,enable,pageSize,pageNumber,ajax);
     }
 
+
+    @GetMapping(value = "/categories")
+    public ModelAndView tuckShopMenu(
+            @RequestParam(value = "search",required = false )String search,
+            @RequestParam(value = "enable",required = false )Integer enable,
+            @RequestParam(value = "ps",required = false ) Integer pageSize,
+            @RequestParam(value = "pn",required = false ) Integer pageNumber,
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
+        return service.allCategories();
+    }
+
 }

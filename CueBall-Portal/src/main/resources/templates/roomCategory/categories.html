@@ -1,0 +1,24 @@
+<div xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml" th:replace="layout/layout::layout(~{::section})">
+    <section>
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Room Types</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li><a th:href="@{/dashboard}"><div class="text-tiny">Dashboard</div></a></li>
+                <li><i class="icon-chevron-right"></i></li>
+                <li><div class="text-tiny">Room Category</div></li>
+            </ul>
+        </div>
+        <div class="wg-box">
+            <div class="row">
+                <div th:each="data : ${dataList}" class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 px-2 my-2">
+                    <div class="cat-card">
+                        <a th:href="${route + data.getId()}" th:text="${data.name}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

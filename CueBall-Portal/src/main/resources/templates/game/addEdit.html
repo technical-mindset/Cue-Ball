@@ -25,16 +25,20 @@
                         <div th:each="err : ${#fields.errors('charges')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
                 </div>
-                <fieldset class="maxplayers">
-                    <div class="body-title mb-10">Max Players <span class="tf-color-1">*</span></div>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" tabindex="0" class="mb-10"  placeholder="Enter Max Players "  th:field="*{maxPlayers}" />
-                    <div th:each="err : ${#fields.errors('maxPlayers')}" th:text="${err}" class="error text-danger"/>
-                </fieldset>
-                <fieldset class="enable">
-                    <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
-                    <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
-                    <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
-                </fieldset>
+
+                <div class="gap22 cols">
+                    <fieldset class="maxplayers">
+                        <div class="body-title mb-10">Max Players <span class="tf-color-1">*</span></div>
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" tabindex="0" class="mb-10"  placeholder="Enter Max Players "  th:field="*{maxPlayers}" />
+                        <div th:each="err : ${#fields.errors('maxPlayers')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                    <fieldset class="enable">
+                        <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
+                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
+                        <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
+                    </fieldset>
+                </div>
+
                 <input type="hidden" class="form-control" th:field="*{createdAt}"/>
                 <div class="">
                     <button class="tf-button w208" type="submit">Save</button>

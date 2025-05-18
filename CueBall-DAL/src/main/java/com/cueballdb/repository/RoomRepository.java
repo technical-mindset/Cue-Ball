@@ -17,6 +17,10 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
 
     List<Room> findAllByEnableTrue();
 
+    @Query("SELECT r FROM Room r WHERE r.roomCategory.id = :roomCategoryId")
+    List<Room> findAllByRoomCategory(@Param("roomCategoryId") Integer roomCategoryId);
+
+
     long count();
 
     @Query(value = "SELECT COUNT(*) FROM room r " +

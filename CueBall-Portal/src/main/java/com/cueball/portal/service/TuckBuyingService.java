@@ -104,7 +104,7 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
 
         }
         catch(Exception e){
-            System.out.println("Qurbani::HomeController::PostCall:: Error" + e);
+            System.out.println("Tuck::HomeController::PostCall:: Error" + e);
             tuckBuyingResponse.setStatus(500);
             tuckBuyingResponse.setMessage("something went wrong !");
         }
