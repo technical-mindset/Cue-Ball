@@ -126,15 +126,22 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
     public ModelAndView findRoomByCategroryId(Integer roomCategory) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_ALL);
 
-        List<Room> lists = this.repository.findAllByRoomCategory(roomCategory);
-        lists.forEach(System.out::println);
+        List<Room> lists = this.repository.findAvailableRoomsByCategory(roomCategory);
         List<RoomDTO> DTOs = lists
+                .stream()
+                .map(this::mapEntityToDto)
+                .collect(Collectors.toList());
+        mav.addObject(Constants.RA_LIST, DTOs);
+
+        List<Room> list = this.repository.findNotAvailableRoomsByCategory(roomCategory);
+        List<RoomDTO> DTO = list
                 .stream()
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
         mav.addObject(Constants.RA_LIST, DTOs);
-        mav.addObject("route", Constants.RA_BASE_URL + Constants.PORT + "/booking/addUpdate");
+        mav.addObject(Constants.RA_LISTS, DTO);
+        mav.addObject("route", Constants.RA_BASE_URL + Constants.PORT + "/booking/addUpdate?rm=");
         return mav;
     }
 

@@ -34,5 +34,29 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
             "WHERE b.room_id IS NULL", nativeQuery = true)
     long findAvailableRoomsCount();
 
+
+    @Query(value = "SELECT r.* FROM room r " +
+            "LEFT JOIN booking b ON r.id = b.room_id " +
+            "AND NOT " +
+            "( " +
+            " GREATEST(b.time_out, b.check_out) <= CURRENT_TIMESTAMP " +
+            "OR " +
+            "LEAST(b.time_in, b.check_in) >= CURRENT_TIMESTAMP " +
+            ") " +
+            "WHERE b.room_id IS NULL AND r.room_category_id = :roomCategoryId", nativeQuery = true)
+    List<Room> findAvailableRoomsByCategory(@Param("roomCategoryId") Integer roomCategoryId);
+
+
+    @Query(value = "SELECT r.* FROM room r " +
+            "LEFT JOIN booking b ON r.id = b.room_id " +
+            "AND NOT " +
+            "( " +
+            " GREATEST(b.time_out, b.check_out) <= CURRENT_TIMESTAMP " +
+            "OR " +
+            "LEAST(b.time_in, b.check_in) >= CURRENT_TIMESTAMP " +
+            ") " +
+            "WHERE b.room_id IS NOT NULL AND r.room_category_id = :roomCategoryId", nativeQuery = true)
+    List<Room> findNotAvailableRoomsByCategory(@Param("roomCategoryId") Integer roomCategoryId);
+
 }
 

@@ -37,8 +37,8 @@ public class BookingController {
 
     @Transactional
     @GetMapping(value = "/addUpdate")
-    public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, RedirectAttributes redirectAttributes ) {
-        return this.service.getView(id, redirectAttributes);
+    public ModelAndView getView(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "rm", required = false) Integer roomId, RedirectAttributes redirectAttributes ) {
+        return this.service.getView(id, roomId, redirectAttributes);
     }
 
     @Transactional

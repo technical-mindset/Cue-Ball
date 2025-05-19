@@ -57,6 +57,7 @@ public interface Constants {
 
     String RA_DTO = "dto";
     String RA_LIST = "dataList";
+    String RA_LISTS = "dataLists";
 
     /**
      Login URLs

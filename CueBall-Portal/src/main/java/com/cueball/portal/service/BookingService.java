@@ -167,7 +167,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         return mav;
     }
 
-    public ModelAndView getView(Integer id, RedirectAttributes redirectAttributes){
+    public ModelAndView getView(Integer id, Integer roomId, RedirectAttributes redirectAttributes){
 
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_BOOKING_ADD_EDIT);
 
@@ -176,13 +176,18 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         mav.addObject("roomList", roomList);
 
 
+        BookingDTO bookingDTO;
         if (id != null && id > 0) {
-            BookingDTO bookingDTO = this.findById(id);
+            bookingDTO = this.findById(id);
             mav.addObject(Constants.RA_DTO, bookingDTO);
         }
         else {
-            BookingDTO bookingDTO = new BookingDTO();
+            bookingDTO = new BookingDTO();
             mav.addObject(Constants.RA_DTO, bookingDTO);
+        }
+
+        if (roomId != null && roomId > 0) {
+            bookingDTO.setRoomId(roomId);
         }
 
         return mav;
