@@ -32,6 +32,9 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
     @Autowired
     private InventoryRepository inventoryRepository;
 
+    @Autowired
+    private  BookingRepository bookingRepository;
+
     public TuckBuyingService(TuckBuyingRepository repository) {
         super(repository);
     }
@@ -67,7 +70,7 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL);
         try{
 
-
+            Booking booking = bookingRepository.findById(tuckItemJson.get(0).getBookingId()).get();
 
             Integer menuItemsEntries = tuckItemJson.size();
 
@@ -76,7 +79,7 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
 
                     TucBuying tucBuying = new TucBuying();
 
-                    tucBuying.setCustomerId("0");
+                    tucBuying.setCustomerId(String.valueOf(booking.getCustomerId()));
                     tucBuying.setInventoryId(tuckItemJson.get(i).getId().toString());
                     tucBuying.setInventoryName(tuckItemJson.get(i).getName());
                     tucBuying.setPrice(tuckItemJson.get(i).getActualPrice());
