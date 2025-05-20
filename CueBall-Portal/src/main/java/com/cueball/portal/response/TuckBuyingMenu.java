@@ -11,4 +11,6 @@ public class TuckBuyingMenu {
     private  Integer id;
     private double actualPrice;
     private  String name;
+    private  Integer bookingId;
+    private  Integer quantity;
 }

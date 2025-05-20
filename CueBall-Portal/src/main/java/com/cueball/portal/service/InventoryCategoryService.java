@@ -88,7 +88,7 @@ public class InventoryCategoryService extends BaseService<InventoryCategory, Inv
     }
 
 
-    public ModelAndView tuckShopMenu() {
+    public ModelAndView tuckShopMenu(Integer bookingId) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_VIEW_ALL);
 
         List<InventoryCategory> lists = this.repository.findAllByEnableTrue();
@@ -98,6 +98,7 @@ public class InventoryCategoryService extends BaseService<InventoryCategory, Inv
                 .collect(Collectors.toList());
 
         mav.addObject(Constants.RA_LIST, DTOs);
+        mav.addObject("bookingId" , bookingId);
         return mav;
     }
 

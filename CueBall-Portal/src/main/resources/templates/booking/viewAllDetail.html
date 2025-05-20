@@ -28,6 +28,9 @@
             <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')">
                 <div class="body-title">Action</div>
             </li>
+            <li>
+                <div class="body-title">Tuck Shop</div>
+            </li>
         </ul>
         <ul class="flex flex-column">
             <li class="attribute-item flex items-center justify-between gap20" th:each="data : ${dataList}">
@@ -47,6 +50,9 @@
                             </div>
                         </a>
                     </div>
+                </div>
+                <div class="body-text">
+                    <a class="tf-button" th:href="${route + data.getId()}" >Tuck Shop</a>
                 </div>
             </li>
         </ul>

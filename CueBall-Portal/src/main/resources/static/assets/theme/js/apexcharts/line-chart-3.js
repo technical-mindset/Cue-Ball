@@ -10,7 +10,7 @@
                 data: [20, 50, 7, 100, 30, 80, 100],
               },
             ],
-            colors: ["#CBD5E1"],
+            colors: ["#ff5200"],
             chart: {
               type: "area",
               maxWidth: 96,

@@ -24,7 +24,7 @@
                         </div>
                         <div class="text-tiny">entries</div>
                     </div>
-                    <a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:href="@{/booking/addUpdate}" class="tf-button style-1 w208"><i class="icon-plus"></i>New</a>
+                    <a sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN')" th:href="@{/roomCategory/categories}" class="tf-button style-1 w208"><i class="icon-plus"></i>New</a>
                 </div>
                 <div th:replace='common/viewAllFilters::viewAllFilters'></div>
             </div>

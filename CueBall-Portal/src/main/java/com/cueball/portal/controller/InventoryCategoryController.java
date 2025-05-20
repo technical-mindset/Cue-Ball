@@ -64,8 +64,9 @@ public class InventoryCategoryController {
             @RequestParam(value = "enable",required = false )Integer enable,
             @RequestParam(value = "ps",required = false ) Integer pageSize,
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
-            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
-        return service.tuckShopMenu();
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax,
+            @RequestParam(value = "bkId",required = false) Integer bookingId) {
+        return service.tuckShopMenu(bookingId);
     }
 
 }

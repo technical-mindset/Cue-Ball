@@ -46,7 +46,7 @@
 <!--                    </div>-->
                 </div>
                 <div class="wrap-chart">
-                    <div th:id="line-chart-4"></div>
+                    <div th:id="line-chart-2"></div>
                 </div>
             </div>
             <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="wg-chart-default">
@@ -70,7 +70,7 @@
 <!--                    </div>-->
                 </div>
                 <div class="wrap-chart">
-                    <div id="line-chart-2"></div>
+                    <div id="line-chart-3"></div>
                 </div>
             </div>
             <div sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="wg-chart-default">
@@ -107,7 +107,7 @@
 <!--                            </svg>-->
 <!--                            <i class="icon-github"></i>-->
 
-                            <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/dashboard-icons/game-controller.gif'">
+                            <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/dashboard-icons/td-task.gif'">
                         </div>
                         <div>
                             <div class="body-text mb-2">Today Tasks</div>
@@ -120,7 +120,7 @@
 <!--                    </div>-->
                 </div>
                 <div class="wrap-chart">
-                    <div id="line-chart-10"></div>
+                    <div id="line-chart-23"></div>
                 </div>
             </div>
             <div class="wg-chart-default">
@@ -132,7 +132,7 @@
 <!--                            </svg>-->
 <!--                            <i class="icon-github"></i>-->
 
-                            <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/dashboard-icons/game-controller.gif'">
+                            <img th:src="${@cdnConfig.getCdnBasePath()}+'/assets/theme/images/dashboard-icons/complete-task.gif'">
                         </div>
                         <div>
                             <div class="body-text mb-2">Completed Tasks</div>
@@ -145,7 +145,7 @@
 <!--                    </div>-->
                 </div>
                 <div class="wrap-chart">
-                    <div id="line-chart-9"></div>
+                    <div id="line-chart-24"></div>
                 </div>
             </div>
         </div>

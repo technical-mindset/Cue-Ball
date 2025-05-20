@@ -23,7 +23,7 @@
             // Array to store selected items
             let selectedItems = [];
 
-            function selectItems(id, price , name, element) {
+            function selectItems(id, price , name,quantity,bookingId, element) {
                 // Check if item is already selected
                 const itemIndex = selectedItems.findIndex(item => item.id === id);
 
@@ -33,7 +33,7 @@
                     element.classList.remove('selected');
                 } else {
                     // Add new item to array
-                    selectedItems.push({ id: id, actualPrice: price , name : name});
+                    selectedItems.push({ id: id, actualPrice: price , name : name , bookingId : bookingId , quantity: quantity});
                     element.classList.add('selected');
                 }
 

@@ -164,6 +164,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
         mav.addObject("totalCount", count[0]);
         mav.addObject(Constants.RA_LIST, DTOs);
+        mav.addObject("route", Constants.RA_BASE_URL + Constants.PORT + "/tuckShop/menu?bkId=");
         return mav;
     }
 

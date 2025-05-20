@@ -64,8 +64,9 @@ public class InventoryController {
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "ps",required = false ) Integer pageSize,
             @RequestParam(value = "pn",required = false ) Integer pageNumber,
-            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
-        return service.getSubMenu(id, pageSize, pageNumber, ajax);
+            @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax,
+            @RequestParam(value = "bkId",required = false) Integer bookingId) {
+        return service.getSubMenu(id, pageSize, pageNumber, ajax , bookingId);
     }
 
 }

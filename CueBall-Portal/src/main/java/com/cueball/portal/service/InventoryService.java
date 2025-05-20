@@ -138,7 +138,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         return mav;
     }
 
-    public ModelAndView getSubMenu(Integer id, Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView getSubMenu(Integer id, Integer pageSize, Integer pageNumber, boolean ajax , Integer bookingId) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_SUB_MENU_VIEW_ALL);
 
         if(pageSize == null || pageSize <= 0 ) {
@@ -168,6 +168,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));
         mav.addObject("totalCount", count[0]);
         mav.addObject(Constants.RA_LIST, DTOs);
+        mav.addObject("bookingId" , bookingId);
 
         /** Generic things must be on hold */
 

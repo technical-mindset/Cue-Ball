@@ -2,7 +2,7 @@
     <div class="row tuck-items">
         <div th:each="data : ${dataList}" class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 px-2 my-2">
             <div class="cat-card">
-                <a th:text="${data.name}" href="javascript:void(0);"  th:onclick="selectItems([[${data.id}]], [[${data.actualPrice}]],[[${data.name}]], this)"></a>
+                <a th:text="${data.name}" href="javascript:void(0);"  th:onclick="selectItems([[${data.id}]], [[${data.actualPrice}]],[[${data.name}]],[[${data.quantity}]],[[${bookingId}]], this)"></a>
             </div>
         </div>
     </div>

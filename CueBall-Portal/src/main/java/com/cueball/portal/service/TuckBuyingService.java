@@ -80,7 +80,7 @@ public class TuckBuyingService extends BaseService<TucBuying, tuckBuyingDTO, Tuc
                     tucBuying.setInventoryId(tuckItemJson.get(i).getId().toString());
                     tucBuying.setInventoryName(tuckItemJson.get(i).getName());
                     tucBuying.setPrice(tuckItemJson.get(i).getActualPrice());
-                    tucBuying.setQuantity(1);
+                    tucBuying.setQuantity(tuckItemJson.get(i).getQuantity());
                     tucBuying.setCreatedAt(new Date ( System.currentTimeMillis()));
                     tucBuying.setModifiedAt(new Date ( System.currentTimeMillis()));
                     tucBuying.setEnable(true);
