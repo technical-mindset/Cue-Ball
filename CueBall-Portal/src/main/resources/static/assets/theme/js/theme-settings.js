@@ -9,7 +9,7 @@
     // ---------------------------------
     // dark_light
     var dark_light = function () {
-        $("body").toggleClass(localStorage.toggled);
+        // $("body").toggleClass(localStorage.toggled);
         var toggle = $(".button-dark-light");
         toggle.on("click", function () {
             if (localStorage.toggled != "dark-theme") {
@@ -133,7 +133,7 @@
         $(".form-theme-style .button-clear-select").on("click", function () {
             $("body").removeClass("dark-theme");
             $(".theme-dark-light").find(".light").find("input").prop("checked", true);
-            localStorage.toggled = "light-theme";   
+            localStorage.toggled = "light-theme";
             $(".layout-wrap").removeClass("menu-style-icon");
             $(".layout-wrap").removeClass("menu-style-icon-default");
             $(".menu-style").find(".menu-click").prop("checked", true);
@@ -264,6 +264,8 @@
 
   // Dom Ready
   $(function () {
+      localStorage.toggled = "dark-theme";
+      $("body").addClass("dark-theme");
     dark_light();
     menu_style();
     layout_width();

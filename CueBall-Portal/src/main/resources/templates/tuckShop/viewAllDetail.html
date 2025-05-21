@@ -2,8 +2,19 @@
     <div class="row">
         <div th:each="data : ${dataList}" class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 px-2 my-2">
             <div class="cat-card">
-                <a th:href="@{|subMenu/?id=${data.getId()}&bkId=${bookingId}|}" th:text="${data.name}">
-                </a>
+<!--                <a th:href="@{|subMenu/?id=${data.getId()}&bkId=${bookingId}|}" th:text="${data.name}">-->
+<!--                </a>-->
+
+                <!-- If bookingId is not null -->
+                <a th:if="${bookingId != null}"
+                   th:href="@{|subMenu/?id=${data.getId()}&bkId=${bookingId}|}"
+                   th:text="${data.name}">Link</a>
+
+                <!-- If bookingId is null -->
+                <a th:unless="${bookingId != null}"
+                   th:href="@{|subMenu/?id=${data.getId()}|}"
+                   th:text="${data.name}">Link</a>
+
             </div>
         </div>
     </div>
