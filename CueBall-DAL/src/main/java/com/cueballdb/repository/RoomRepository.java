@@ -42,7 +42,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
             " OR " +
             " LEAST(COALESCE(b.time_in, '9999-12-31'), COALESCE(b.check_in, '9999-12-31')) >= CURRENT_TIMESTAMP " +
             ") " +
-            "WHERE b.room_id IS NULL AND r.room_category_id = :roomCategoryId", nativeQuery = true)
+            "WHERE b.room_id IS NULL AND r.room_category_id = :roomCategoryId AND r.enable = true ", nativeQuery = true)
     List<Room> findAvailableRoomsByCategory(@Param("roomCategoryId") Integer roomCategoryId);
 
 
