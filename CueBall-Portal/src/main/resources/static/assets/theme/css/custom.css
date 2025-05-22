@@ -140,6 +140,13 @@ select#advertisement {
     background: linear-gradient(to right, #1e7e34, #28a745);
 }
 
+.booked-rooms a {
+    background: #dc3545;
+    background: -webkit-linear-gradient(to right, #dc3545, #ff6e7c) !important;
+    background: linear-gradient(to right, #dc3545, #ff6e7c) !important;
+    pointer-events: none !important;
+}
+
 button:disabled {
     background-color: #e0e0e0 !important;
     color: #555 !important;
