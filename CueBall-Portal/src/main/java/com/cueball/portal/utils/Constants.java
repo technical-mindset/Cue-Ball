@@ -21,15 +21,15 @@ public interface Constants {
     /**
      * Base URL For Local
      */
-//    String RA_BASE_URL = "http://localhost:8081";
-//    String PORT = "/CueBallPortal";
+    String RA_BASE_URL = "http://localhost:8081";
+    String PORT = "/CueBallPortal";
 
 
     /**
      * Base URL For Stage
      */
-    String RA_BASE_URL = "http://3.147.42.225:8080";
-    String PORT = "/CueBallPortal";
+//    String RA_BASE_URL = "http://3.147.42.225:8080";
+//    String PORT = "/CueBallPortal";
 
 
 
