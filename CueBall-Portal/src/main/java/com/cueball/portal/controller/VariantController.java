@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/variant")
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')")
+@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
 public class VariantController {
 
     @Autowired

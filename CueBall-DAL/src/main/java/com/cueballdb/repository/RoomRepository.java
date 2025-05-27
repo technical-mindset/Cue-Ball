@@ -15,6 +15,7 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustomRepository{
     Room findByTitleAndName(String title, String name);
 
+    @Query("SELECT r FROM Room r WHERE r.enable = true ORDER BY r.id DESC")
     List<Room> findAllByEnableTrue();
 
     @Query("SELECT r FROM Room r WHERE r.roomCategory.id = :roomCategoryId AND r.enable = true")

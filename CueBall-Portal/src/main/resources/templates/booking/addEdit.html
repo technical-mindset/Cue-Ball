@@ -12,7 +12,7 @@
         </div>
         <form class="form-add-product" th:object="${dto}" id="bookingForm" method="post" th:action="@{/booking/addUpdate}">
             <div class="wg-box">
-                <input  th:field="*{id}" type="hidden">
+                <input  th:field="*{id}" id="data-id" type="hidden">
 
                 <div class="gap22 cols">
                     <fieldset class="title">
@@ -59,10 +59,10 @@
                 </div>
 
                 <div class="gap22 cols">
-                                        <fieldset class="">
+                                        <fieldset class="" >
                                             <div class="body-title mb-10">Room <span class="tf-color-1">*</span></div>
                                             <div class="select">
-                                                <select  th:field="*{roomId}" class="mb-10">
+                                                <select id="room-dropdown" th:field="*{roomId}" class="mb-10">
                                                     <option th:value="0" th:selected="${roomId == null}">Choose...</option>
                                                     <option th:each="room : ${roomList}" th:value="${room.id}" th:text="${room.name}"></option>
                                                 </select>
@@ -87,6 +87,19 @@
         </form>
 
         <script th:inline="javascript">
+            $( document ).ready(function() {
+            var id = $("#data-id").val();
+            var roomDropDown = $("#room-dropdown");
+
+            if(parseInt(id) > 0){
+            roomDropDown.prop("disabled", false);
+            }
+            else {
+            roomDropDown.prop("disabled", true);
+            }
+
+        });
+
             $("#bookingForm").submit(function (event) {
 
                 /**  For time-in and time-out   */
@@ -119,6 +132,8 @@
                     $('#bookingForm')[0].submit();
                 }
             });
+
+
 
         </script>
 
