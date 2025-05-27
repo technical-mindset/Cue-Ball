@@ -72,51 +72,87 @@
                 $(".checkout-final").hide();
             }
 
+            // Function to update the checkout table
             function updateCheckoutTable() {
                 const checkoutDiv = document.querySelector('.checkout-final');
 
-                // Calculate total amount
-                const totalAmount = selectedItems.reduce((sum, item) => sum + item.actualPrice, 0);
+                // Calculate total amount considering quantity
+                const totalAmount = selectedItems.reduce((sum, item) => sum + (item.actualPrice * item.quantity), 0);
 
                 // Generate table body rows
                 const rows = selectedItems.length > 0
                     ? selectedItems.map((item, index) => `
-            <li class="attribute-item flex items-center justify-between gap20">
-                <div class="body-text">${index + 1}</div>
-                <div class="body-text">${item.name}</div>
-                <div class="body-text">$${item.actualPrice.toFixed(2)}</div>
-            </li>
+          <li class="attribute-item flex items-center justify-between gap20">
+            <div class="body-text">${index + 1}</div>
+            <div class="body-text">${item.name}</div>
+            <div class="body-text">$${item.actualPrice.toFixed(2)}</div>
+            <div class="body-text">
+                <div class="quantity-field" data-id="${item.id}">
+                    <button class="value-button decrease-button" onclick="decreaseValue(${item.id})" title="Azalt">-</button>
+                    <div class="number">${item.quantity}</div>
+                    <button class="value-button increase-button" onclick="increaseValue(${item.id})" title="Arrtır">+</button>
+              </div>
+
+            </div>
+          </li>
         `).join('')
-                    : '';
+                    : '<li class="attribute-item"><div class="body-text">No items available</div></li>';
 
                 // Create footer row for total
                 const footerRow = selectedItems.length > 0
                     ? `
-            <li class="attribute-item flex items-center justify-between gap20">
-                <div class="body-text"></div>
-                <div class="body-text"><strong>Total</strong></div>
-                <div class="body-text"><strong>$${totalAmount.toFixed(2)}</strong></div>
-            </li>
+          <li class="attribute-item flex items-center justify-between gap20">
+            <div class="body-text"></div>
+            <div class="body-text"></div>
+            <div class="body-text"><strong>Total</strong></div>
+            <div class="body-text"></div>
+            <div class="body-text"><strong>$${totalAmount.toFixed(2)}</strong></div>
+          </li>
         `
                     : '';
 
                 // Create the complete HTML structure
                 const tableHtml = `
-                    <div class="wg-table table-all-attribute">
-                        <ul class="table-title flex gap20 mb-14">
-                            <li><div class="body-title">S no.</div></li>
-                            <li><div class="body-title">Item Name</div></li>
-                            <li><div class="body-title">Price</div></li>
-                        </ul>
-                        <ul class="flex flex-column">
-                            ${rows}
-                            ${footerRow}
-                        </ul>
-                    </div>
-                `;
+        <div class="wg-table table-all-attribute">
+          <ul class="table-title flex gap20 mb-14">
+            <li><div class="body-title">S no.</div></li>
+            <li><div class="body-title">Item Name</div></li>
+            <li><div class="body-title">Price</div></li>
+            <li><div class="body-title">Quantity</div></li>
+          </ul>
+          <ul class="flex flex-column">
+            ${rows}
+            ${footerRow}
+          </ul>
+        </div>
+      `;
 
                 // Update the div content in a single operation
                 checkoutDiv.innerHTML = tableHtml;
+            }
+
+            // Function to increase quantity using id
+            function increaseValue(id) {
+                const item = selectedItems.find(item => item.id === id);
+                if (item) {
+                    item.quantity += 1;
+                    updateCheckoutTable(); // Refresh the table
+                }
+            }
+
+            // Function to decrease quantity using id and remove item if quantity becomes 0
+            function decreaseValue(id) {
+                const itemIndex = selectedItems.findIndex(item => item.id === id);
+                if (itemIndex !== -1) {
+                    if (selectedItems[itemIndex].quantity > 1) {
+                        selectedItems[itemIndex].quantity -= 1;
+                    }
+                    // else {
+                    //     // Remove the item if quantity becomes 0
+                    //     selectedItems.splice(itemIndex, 1);
+                    // }
+                    updateCheckoutTable(); // Refresh the table
+                }
             }
 
             function CheckOut() {
