@@ -12,6 +12,13 @@
             <div class="center-item">
                 <ul class="menu-list">
 
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'dashboard') == true} ? 'active' : ''">
+                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'dashboard') == true} ? 'active' : ''" class="menu-item-button" th:href="@{/dashboard}" aria-expanded="false">
+                            <div class="icon"><i class="icon-grid"></i></div>
+                            <div class="text">Dashboard</div>
+                        </a>
+                    </li>
+
                     <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'game') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-github"></i></div>
