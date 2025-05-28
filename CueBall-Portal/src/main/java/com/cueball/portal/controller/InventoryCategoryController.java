@@ -18,7 +18,6 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
-@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
 public class InventoryCategoryController {
 
     @Autowired
@@ -26,6 +25,7 @@ public class InventoryCategoryController {
 
 
     @RequestMapping(value="/inventoryCategory/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public InventoryCategoryDTO getById(@PathVariable("id")int id){
         return service.findById(id);
     }
@@ -49,6 +49,7 @@ public class InventoryCategoryController {
 
 
     @GetMapping(value = "/inventoryCategory/viewAll")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
     public ModelAndView findAllView(
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,
@@ -59,6 +60,7 @@ public class InventoryCategoryController {
     }
 
     @GetMapping(value = "/tuckShop/menu")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN' , 'ROLE_MANAGER')")
     public ModelAndView tuckShopMenu(
             @RequestParam(value = "search",required = false )String search,
             @RequestParam(value = "enable",required = false )Integer enable,

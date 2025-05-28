@@ -172,20 +172,20 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''">
-                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
-                            <div class="icon"><i class="icon-grid"></i></div>
-                            <div class="text">TuckShop</div>
-                        </a>
+<!--                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''">-->
+<!--                        <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'tuckShop') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">-->
+<!--                            <div class="icon"><i class="icon-grid"></i></div>-->
+<!--                            <div class="text">TuckShop</div>-->
+<!--                        </a>-->
 
-                        <ul aria-expanded="false" class="sub-menu">
-                            <li class="sub-menu-item">
-                                <a th:href="@{/tuckShop/menu}">
-                                    <div class="text">View</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+<!--                        <ul aria-expanded="false" class="sub-menu">-->
+<!--                            <li class="sub-menu-item">-->
+<!--                                <a th:href="@{/tuckShop/menu}">-->
+<!--                                    <div class="text">View</div>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
 
                     <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'customer') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
@@ -201,7 +201,7 @@
                         </ul>
                     </li>
 
-                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''">
+                    <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" class="menu-item has-children" th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''">
                         <a th:classappend="${#strings.contains(#httpServletRequest.requestURI, 'Report') == true} ? 'active' : ''" class="menu-item-button" href="javascript:void(0)" aria-expanded="false">
                             <div class="icon"><i class="icon-grid"></i></div>
                             <div class="text">Reports</div>
