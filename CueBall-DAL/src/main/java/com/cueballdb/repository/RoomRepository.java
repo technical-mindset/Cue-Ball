@@ -48,7 +48,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
 
 
 
-    @Query(value = "SELECT r.* FROM room r " +
+    @Query(value = "SELECT r.*, b.time_in, b.time_out FROM room r " +
             "LEFT JOIN booking b ON r.id = b.room_id " +
             "AND NOT ( " +
             " GREATEST(COALESCE(b.time_out, '1970-01-01'), COALESCE(b.check_out, '1970-01-01')) <= CURRENT_TIMESTAMP " +

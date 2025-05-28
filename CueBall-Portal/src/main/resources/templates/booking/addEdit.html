@@ -87,51 +87,54 @@
         </form>
 
         <script th:inline="javascript">
-            $( document ).ready(function() {
-            var id = $("#data-id").val();
-            var roomDropDown = $("#room-dropdown");
+            $(document).ready(function() {
+                var id = $("#data-id").val();
+                var roomDropDown = $("#room-dropdown");
 
-            if(parseInt(id) > 0){
-            roomDropDown.prop("disabled", false);
-            }
-            else {
-            roomDropDown.prop("disabled", true);
-            }
-
-        });
-
-            $("#bookingForm").submit(function (event) {
-
-                /**  For time-in and time-out   */
-                let timeIn = new Date($("#timeIn").val());
-                let timeOut = new Date($("#timeOut").val());
-                let now = new Date();
-
-                if (timeIn >= timeOut) {
-                    event.preventDefault();  // Stop form submission
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Time-out should be greater than the Time-in!'
-                    });
-                } else if (timeIn <= now) {
-                    event.preventDefault();  // Stop form submission
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Time-in must be in the future!'
-                    });
-                } else if (timeOut <= now) {
-                    event.preventDefault();  // Stop form submission
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Time-out must be in the future!'
+                if (parseInt(id) > 0) {
+                    roomDropDown.css({
+                        "pointer-events": "auto", // Allow interaction
+                        "background-color": "" // Reset any read-only styling
                     });
                 } else {
-                    $('#bookingForm')[0].submit();
+                    roomDropDown.css({
+                        "pointer-events": "none", // Prevent interaction
+                    });
                 }
             });
+
+                        $("#bookingForm").submit(function (event) {
+
+                            /**  For time-in and time-out   */
+                            let timeIn = new Date($("#timeIn").val());
+                            let timeOut = new Date($("#timeOut").val());
+                            let now = new Date();
+
+                            if (timeIn >= timeOut) {
+                                event.preventDefault();  // Stop form submission
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Time-out should be greater than the Time-in!'
+                                });
+                            } else if (timeIn <= now) {
+                                event.preventDefault();  // Stop form submission
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Time-in must be in the future!'
+                                });
+                            } else if (timeOut <= now) {
+                                event.preventDefault();  // Stop form submission
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Time-out must be in the future!'
+                                });
+                            } else {
+                                $('#bookingForm')[0].submit();
+                            }
+                        });
 
 
 
