@@ -127,10 +127,10 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
             entity.setCreatedAt(new Date ( System.currentTimeMillis()));
             entity.setModifiedAt(new Date ( System.currentTimeMillis()));
         }
+
+        entity.setEnable(true);
         return entity;
     }
-
-
 
     public ModelAndView findFindAllView(String search ,Integer enable, Integer roomId, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_BOOKING_VIEW_ALL);
@@ -244,7 +244,6 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
         mav = new ModelAndView("redirect:/booking/viewAll");
         return mav;
     }
-
 
     private double chargesCalculation(Double ... gameCharges){
         double result = 1.0;

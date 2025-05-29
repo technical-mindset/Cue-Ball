@@ -70,11 +70,11 @@
                                             <div th:each="err : ${#fields.errors('roomId')}" th:text="${err}" class="error text-danger"/>
                                         </fieldset>
 
-                                        <fieldset class="enable">
-                                            <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
-                                            <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
-                                            <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>
-                                        </fieldset>
+<!--                                        <fieldset class="enable">-->
+<!--                                            <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>-->
+<!--                                            <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>-->
+<!--                                            <div style="list-style: none" th:each="err : ${#fields.errors('enable')}" th:text="${err}" class="error text-danger"/>-->
+<!--                                        </fieldset>-->
                 </div>
 
                 <input type="hidden" class="form-control" th:field="*{createdAt}"/>
