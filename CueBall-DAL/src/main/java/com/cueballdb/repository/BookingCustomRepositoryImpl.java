@@ -121,7 +121,7 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY booking.id, r.id, rc.id, c.name ");
+//        where.append(" GROUP BY booking.id, r.id, rc.id, c.name ");
 
         return List.of(beforeWhere.toString() + where, parameters);
     }
