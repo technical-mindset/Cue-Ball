@@ -1,6 +1,5 @@
 package com.cueballdb.repository;
 
-import com.cueballdb.model.Room;
 import com.cueballdb.model.Task;
 
 import java.util.List;

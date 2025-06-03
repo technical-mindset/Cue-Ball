@@ -37,7 +37,7 @@ public class InventoryCategoryCustomRepositoryImpl extends AbstractPersistenceMa
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY id ");
+//        where.append(" GROUP BY id ");
 //        String finalQuery = where + " ORDER BY id DESC ";
         return getMaxResults(where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }

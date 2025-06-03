@@ -72,7 +72,7 @@ public class TaskCustomRepositoryImpl extends AbstractPersistenceManager<Task> i
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-        where.append(" GROUP BY task.id ");
+//        where.append(" GROUP BY task.id ");
 
         return getMaxResults( where + " ORDER BY task.id DESC ", parameters,pageNumber,pageSize,count);
     }
