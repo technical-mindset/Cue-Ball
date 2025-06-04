@@ -165,6 +165,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
                 .collect(Collectors.toList());
 
         mav.addObject("UserId" , this.getUserId());
+        mav.addObject("taskFilter",true);
         mav.addObject(Constants.RA_PAGE_NUMBER, pageNumber);
         mav.addObject(Constants.RA_PAGE_SIZE, pageSize);
         mav.addObject(Constants.RA_TOTAL_PAGES, totalPages(count,pageSize));

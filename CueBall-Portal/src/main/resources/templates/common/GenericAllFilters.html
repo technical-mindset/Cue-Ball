@@ -1,5 +1,12 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="GenericAllFilters" class="widget row" id="GenericAllFilters">
 
+    <div th:if="${taskFilter}" class="select col-md-6 mb-20">
+        <select th:id="isCompleted" th:for="isCompleted" th:onchange="|page(${pageNumber},${pageSize})|">
+            <option  th:selected th:value="0">Select Task Status</option>
+            <option  th:value="1">Complete</option>
+            <option  th:value="2">Pending</option>
+        </select>
+    </div>
 
     <!--Start Date Time-->
     <div th:if="${fromDateFilter}" class="col-md-6 mb-20">
