@@ -199,6 +199,7 @@ button:disabled {
 }
 #viewAllDetail .wg-table.table-all-attribute .row-success {
     background-color: #7ce9ffb0 !important;
+    margin: 10px 0 10px 0;
 }
 
 .row-warning .body-text,
