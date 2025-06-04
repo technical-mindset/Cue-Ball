@@ -287,5 +287,5 @@ button.completed:disabled {
     background: none;
 }
 .row-success .list-icon-function .item {
-    color: #2f5a3f;
+    color: #2f5a3f !important;
 }
