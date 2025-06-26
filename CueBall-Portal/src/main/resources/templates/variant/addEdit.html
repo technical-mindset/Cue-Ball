@@ -14,16 +14,20 @@
             <div class="wg-box">
                 <input  th:field="*{id}" type="hidden">
                 <div class="row">
+
                     <fieldset class="variantName col-md-6">
                         <div class="body-title mb-10">Name <span class="tf-color-1">*</span></div>
                         <input class="mb-10" type="text" placeholder="Enter Name"  th:field="*{name}" />
                         <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error text-danger"/>
                     </fieldset>
-                    <fieldset class="variantDelete col-md-3">
-                        <div class="body-title mb-10">Delete</div>
-                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{delete}" checked>
-<!--                        <div style="list-style: none" th:each="err : ${#fields.errors('delete')}" th:text="${err}" class="error text-danger"/>-->
-                    </fieldset>
+
+<!--                    <fieldset class="variantDelete col-md-3">-->
+<!--                        <div class="body-title mb-10">Delete</div>-->
+<!--                        <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{delete}" checked>-->
+<!--&lt;!&ndash;                        <div style="list-style: none" th:each="err : ${#fields.errors('delete')}" th:text="${err}" class="error text-danger"/>&ndash;&gt;-->
+<!--                    </fieldset>-->
+
+
                     <fieldset class="variantEnable col-md-3">
                         <div class="body-title mb-10">Enable<span class="tf-color-1">*</span></div>
                         <input class="mb-10 js-switch" tabindex="0" type="checkbox" data-color="#26c6da" data-secondary-color="#f62d51" th:field="*{enable}" checked>
