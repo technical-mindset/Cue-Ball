@@ -1,6 +1,5 @@
 package com.cueballdb.repository;
 
-import com.cueballdb.model.Game;
 import com.cueballdb.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,13 +14,13 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustomRepository{
     Room findByTitleAndName(String title, String name);
 
-    @Query("SELECT r FROM Room r WHERE r.enable = true ORDER BY r.id DESC")
-    List<Room> findAllByEnableTrue();
+    @Query("SELECT r FROM Room r WHERE r.enable = true AND r.delete = false ORDER BY r.id DESC")
+    List<Room> findAllByEnableTrueAndDeleteFalse();
 
     @Query("SELECT r FROM Room r WHERE r.roomCategory.id = :roomCategoryId AND r.enable = true")
     List<Room> findAllByRoomCategory(@Param("roomCategoryId") Integer roomCategoryId);
 
-
+    @Query("SELECT COUNT(*) FROM Room r where r.delete = false")
     long count();
 
     @Query(value = "SELECT COUNT(*) FROM room r " +
@@ -31,7 +30,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
             " OR " +
             " LEAST(COALESCE(b.time_in, '9999-12-31'), COALESCE(b.check_in, '9999-12-31')) >= CURRENT_TIMESTAMP " +
             ") " +
-            "WHERE b.room_id IS NULL", nativeQuery = true)
+            "WHERE b.room_id IS NULL AND r.delete = false", nativeQuery = true)
     long findAvailableRoomsCount();
 
 
@@ -43,7 +42,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer>, RoomCustom
             " OR " +
             " LEAST(COALESCE(b.time_in, '9999-12-31'), COALESCE(b.check_in, '9999-12-31')) >= CURRENT_TIMESTAMP " +
             ") " +
-            "WHERE b.room_id IS NULL AND r.room_category_id = :roomCategoryId AND r.enable = true ", nativeQuery = true)
+            "WHERE b.room_id IS NULL AND r.room_category_id = :roomCategoryId AND r.enable = true AND r.delete = false ", nativeQuery = true)
     List<Room> findAvailableRoomsByCategory(@Param("roomCategoryId") Integer roomCategoryId);
 
 

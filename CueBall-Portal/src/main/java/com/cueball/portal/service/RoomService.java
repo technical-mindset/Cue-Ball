@@ -1,11 +1,9 @@
 package com.cueball.portal.service;
 
 
-import com.cueball.portal.dto.InventoryCategoryDTO;
 import com.cueball.portal.dto.RoomDTO;
 import com.cueball.portal.utils.Constants;
 import com.cueballdb.model.Game;
-import com.cueballdb.model.InventoryCategory;
 import com.cueballdb.model.Room;
 import com.cueballdb.model.RoomCategory;
 import com.cueballdb.repository.GameRepository;
@@ -149,8 +147,8 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
 
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_ADD_EDIT);
 
-        List<RoomCategory> roomCategoryList = this.roomCategoryRepository.findAllByEnableTrue();
-        List<Game> gameList = this.gameRepository.findAllByEnableTrue();
+        List<RoomCategory> roomCategoryList = this.roomCategoryRepository.findAllByEnableTrueAndDeleteFalse();
+        List<Game> gameList = this.gameRepository.findAllByEnableTrueAndDeleteFalse();
 
 
         mav.addObject("games", gameList);
@@ -172,8 +170,8 @@ public class RoomService extends BaseService<Room, RoomDTO, RoomRepository> {
     public ModelAndView addUpdate(RoomDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_ADD_EDIT);
 
-        List<RoomCategory> roomCategoryList = this.roomCategoryRepository.findAllByEnableTrue();
-        List<Game> gameList = this.gameRepository.findAllByEnableTrue();
+        List<RoomCategory> roomCategoryList = this.roomCategoryRepository.findAllByEnableTrueAndDeleteFalse();
+        List<Game> gameList = this.gameRepository.findAllByEnableTrueAndDeleteFalse();
 
         mav.addObject("games", gameList);
         mav.addObject("roomCategoryList", roomCategoryList);

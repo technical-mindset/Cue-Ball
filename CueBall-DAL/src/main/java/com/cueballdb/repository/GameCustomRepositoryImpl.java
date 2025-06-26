@@ -33,6 +33,8 @@ public class GameCustomRepositoryImpl extends AbstractPersistenceManager<Game> i
             }
         }
 
+        where.append(" game.delete = false AND ");
+
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults

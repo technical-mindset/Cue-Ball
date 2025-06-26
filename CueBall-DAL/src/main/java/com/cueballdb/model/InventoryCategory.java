@@ -22,6 +22,9 @@ public class InventoryCategory extends BaseEntity {
 
     private String name;
 
+    @Column(name = "delete")
+    private boolean delete;
+
     @OneToMany(mappedBy = "inventoryCategory")
     private List<Inventory> inventories;
 

@@ -70,7 +70,7 @@ public class VariantCustomRepositoryImpl extends AbstractPersistenceManager<Vari
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-//        where.append(" GROUP BY id ");
+        where.append(" GROUP BY id ");
         return getMaxResults(where + " ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }
 

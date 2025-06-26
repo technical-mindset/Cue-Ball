@@ -22,6 +22,9 @@ public class RoomCategory extends BaseEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "delete")
+    private boolean delete;
+
     @OneToMany(mappedBy = "roomCategory")
     private List<Room> room;
 

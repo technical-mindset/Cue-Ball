@@ -23,4 +23,6 @@ public class RestaurantDTO extends BaseDTO {
     @NotNull(message = "Percent " + Constants.RA_EMPTY_MESSAGE)
     @Min(value = 1, message = "Percent must be at least 1")
     private Double percent;
+
+    private boolean delete;
 }

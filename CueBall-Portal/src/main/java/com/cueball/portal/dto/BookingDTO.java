@@ -39,6 +39,8 @@ public class BookingDTO extends CustomerDTO {
 
     private double charges;
 
+    private boolean delete;
+
     @NotBlank(message = "Time-In " + Constants.RA_EMPTY_MESSAGE)
     private String timeIn;
 

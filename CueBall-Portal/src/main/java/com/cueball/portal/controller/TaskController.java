@@ -59,12 +59,13 @@ public class TaskController {
             @RequestParam(value = "search",required = false) String search,
             @RequestParam(value = "enable",required = false) Integer enable,
             @RequestParam(value = "complete",required = false) Integer complete,
+            @RequestParam(value = "startDate",required = false, defaultValue = "NaN") String startDate,
             @RequestParam(value = "user",required = false) Integer userId,
             @RequestParam(value = "shift",required = false) String shift,
             @RequestParam(value = "ps",required = false) Integer pageSize,
             @RequestParam(value = "pn",required = false) Integer pageNumber,
             @RequestParam(value = "ajax",required = false, defaultValue = "false") boolean ajax) {
-        return service.findFindAllView(search, enable, complete, userId, shift, pageSize, pageNumber, ajax);
+        return service.findFindAllView(search, enable, complete, userId, startDate, shift, pageSize, pageNumber, ajax);
     }
 
     @Transactional

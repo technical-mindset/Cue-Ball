@@ -2,9 +2,7 @@ package com.cueball.portal.service;
 
 
 import com.cueball.portal.dto.RoomCategoryDTO;
-import com.cueball.portal.dto.RoomDTO;
 import com.cueball.portal.utils.Constants;
-import com.cueballdb.model.Room;
 import com.cueballdb.model.RoomCategory;
 import com.cueballdb.repository.RoomCategoryRepository;
 import org.springframework.beans.BeanUtils;
@@ -92,7 +90,7 @@ public class RoomCategoryService extends BaseService<RoomCategory, RoomCategoryD
     public ModelAndView allCategories() {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_ROOM_CATEGORY_ALL);
 
-        List<RoomCategory> lists = this.repository.findAllByEnableTrue();
+        List<RoomCategory> lists = this.repository.findAllByEnableTrueAndDeleteFalse();
         List<RoomCategoryDTO> DTOs = lists
                 .stream()
                 .map(this::mapEntityToDto)

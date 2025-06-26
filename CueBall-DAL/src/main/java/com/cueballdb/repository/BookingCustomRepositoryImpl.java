@@ -40,10 +40,12 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
             parameters.put("roomId", (roomId));
         }
 
+        where.append(" booking.delete = false AND ");
+
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
-//        where.append(" GROUP BY id");
+        where.append(" GROUP BY id");
 
         return getMaxResults(where+" ORDER BY id DESC ", parameters,pageNumber,pageSize,count);
     }
@@ -116,6 +118,8 @@ public class BookingCustomRepositoryImpl extends AbstractPersistenceManager<Book
                 parameters.put("enable", false);
             }
         }
+
+        where.append(" booking.delete = false AND ");
 
 
         where.append("1=1");

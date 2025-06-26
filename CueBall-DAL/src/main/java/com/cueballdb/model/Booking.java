@@ -49,6 +49,9 @@ public class Booking extends BaseEntity {
     @Column(name = "is_cancel")
     private boolean cancel;
 
+    @Column(name = "delete")
+    private boolean delete;
+
     private double charges;
 
     @ManyToOne(fetch = FetchType.EAGER)

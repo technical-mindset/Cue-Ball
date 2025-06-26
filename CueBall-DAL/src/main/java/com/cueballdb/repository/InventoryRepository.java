@@ -13,6 +13,7 @@ import java.util.List;
 @Transactional
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Integer>, InventoryCustomRepository{
+    @Query("SELECT COUNT(*) FROM Inventory i where i.delete = false")
     long count();
 
     List<Inventory> findAllByEnableTrue();

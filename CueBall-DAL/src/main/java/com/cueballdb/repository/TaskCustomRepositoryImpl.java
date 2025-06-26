@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.Map;
 public class TaskCustomRepositoryImpl extends AbstractPersistenceManager<Task> implements TaskCustomRepository {
 
     @Override
-    public List<Task> findAllByFilters(String search, Integer enable, Integer complete, Integer userId, String shift, boolean isTaskDateEnable, Integer pageNumber, Integer pageSize, long[] count) {
+    public List<Task> findAllByFilters(String search, Integer enable, Integer complete, Integer userId, String taskDate, String shift, boolean isTaskDateEnable, Integer pageNumber, Integer pageSize, long[] count) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         StringBuilder where = new StringBuilder(" WHERE ");
 
@@ -66,6 +68,15 @@ public class TaskCustomRepositoryImpl extends AbstractPersistenceManager<Task> i
             LocalDate localDate = LocalDate.now();
             Date date = java.sql.Date.valueOf(localDate); // 👈 convert LocalDate to java.util.Date
             parameters.put("date", date);
+        }
+
+        /** Fetching against selected task-date */
+        if (!taskDate.equals("NaN")){
+            where.append(" CAST(task.taskDate AS date) = :taskDate AND ");
+            LocalDateTime localDateTime = LocalDateTime.parse(taskDate); // taskDate = "2025-06-26T18:09"
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+            Date date = Date.from(localDateTime.atZone(defaultZoneId).toInstant());
+            parameters.put("taskDate", date);
         }
 
 

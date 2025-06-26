@@ -22,6 +22,9 @@ public class Game extends BaseEntity{
     @Column(name = "price")
     private double charges;
 
+    @Column(name = "delete")
+    private boolean delete;
+
     @Column(name = "max_players")
     private int maxPlayers;
 

@@ -16,7 +16,7 @@ public class InventoryCategoryCustomRepositoryImpl extends AbstractPersistenceMa
     @Override
     public List<InventoryCategory> findAllByFilters(String search, Integer enable, Integer pageNumber, Integer pageSize, long[] count) {
         Map<String, Object> parameters = new HashMap<String, Object>();
-        StringBuilder where = new StringBuilder(" WHERE ");
+        StringBuilder where = new StringBuilder("WHERE ");
 
         if(search != null && !search.equals("NaN")) {
             where.append(" (name like :search) AND ");
@@ -33,6 +33,8 @@ public class InventoryCategoryCustomRepositoryImpl extends AbstractPersistenceMa
                 parameters.put("enable", false);
             }
         }
+
+        where.append(" inventorycategory.delete = false AND ");
 
         where.append("1=1");
 

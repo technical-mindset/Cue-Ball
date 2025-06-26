@@ -31,6 +31,9 @@ public class Inventory extends BaseEntity {
     @Column(name = "actual_price")
     private double actualPrice;
 
+    @Column(name = "delete")
+    private boolean delete;
+
     @ManyToOne
     private InventoryCategory inventoryCategory;
 

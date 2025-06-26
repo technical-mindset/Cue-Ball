@@ -110,7 +110,7 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         /** Restaurant and Variant */
         List<Variant> variants = this.variantRepository.findAllByEnableTrue();
-        List<Restaurant> restaurants = this.restaurantRepository.findAllByEnableTrue();
+        List<Restaurant> restaurants = this.restaurantRepository.findAllByEnableTrueAndDelete();
 
 
         if (ajax) {
@@ -179,11 +179,11 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
 
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_ADD_EDIT);
 
-        List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrue();
+        List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrueAndDeleteFalse();
 
         List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
-        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrue();
+        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrueAndDelete();
 
 
         mav.addObject("variants", variantList);
@@ -206,11 +206,11 @@ public class InventoryService extends BaseService<Inventory, InventoryDTO, Inven
     public ModelAndView addUpdate(InventoryDTO dto, BindingResult result, RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_INVENTORY_ADD_EDIT);
 
-        List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrue();
+        List<InventoryCategory> inventoryCategoryList = this.categoryRepository.findAllByEnableTrueAndDeleteFalse();
 
         List<Variant> variantList = this.variantRepository.findAllByEnableTrue();
 
-        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrue();
+        List<Restaurant> restaurantList = this.restaurantRepository.findAllByEnableTrueAndDelete();
 
         mav.addObject("variants", variantList);
         mav.addObject("restaurants", restaurantList);

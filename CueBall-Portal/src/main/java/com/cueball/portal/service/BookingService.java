@@ -150,7 +150,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
-        List<Room> rooms = this.roomRepository.findAllByEnableTrue();
+        List<Room> rooms = this.roomRepository.findAllByEnableTrueAndDeleteFalse();
 
         if (ajax) {
             mav = new ModelAndView(Constants.RA_PAGE_BOOKING_VIEW_ALL_DETAIL);
@@ -172,7 +172,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
 
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_BOOKING_ADD_EDIT);
 
-        List<Room> roomList = this.roomRepository.findAllByEnableTrue();
+        List<Room> roomList = this.roomRepository.findAllByEnableTrueAndDeleteFalse();
 
         mav.addObject("roomList", roomList);
 
@@ -227,7 +227,7 @@ public class BookingService extends BaseService<Booking, BookingDTO, BookingRepo
 
 
 
-        List<Room> roomList = this.roomRepository.findAllByEnableTrue();
+        List<Room> roomList = this.roomRepository.findAllByEnableTrueAndDeleteFalse();
 
         mav.addObject("roomList", roomList);
 

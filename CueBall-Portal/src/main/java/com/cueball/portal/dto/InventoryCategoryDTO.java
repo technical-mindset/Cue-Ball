@@ -17,6 +17,8 @@ public class InventoryCategoryDTO extends BaseDTO {
     @NotBlank(message = Constants.RA_EMPTY_MESSAGE)
     @Size(max = 100, message = Constants.RA_LENGTH_STRING_100)
     private String name;
+
+    public boolean delete;
 }
 
 

@@ -91,7 +91,7 @@ public class InventoryCategoryService extends BaseService<InventoryCategory, Inv
     public ModelAndView tuckShopMenu(Integer bookingId) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TUCK_SHOP_VIEW_ALL);
 
-        List<InventoryCategory> lists = this.repository.findAllByEnableTrue();
+        List<InventoryCategory> lists = this.repository.findAllByEnableTrueAndDeleteFalse();
         List<InventoryCategoryDTO> DTOs = lists
                 .stream()
                 .map(this::mapEntityToDto)
@@ -114,6 +114,7 @@ public class InventoryCategoryService extends BaseService<InventoryCategory, Inv
     @Override
     public InventoryCategory mapDtoToEntity(InventoryCategoryDTO dto) {
         InventoryCategory entity = new InventoryCategory();
+        System.out.println("::::::::::::: DTO :::::::::::: " + dto.delete);
         BeanUtils.copyProperties(dto, entity);
 
         if (dto.getId() > 0) {

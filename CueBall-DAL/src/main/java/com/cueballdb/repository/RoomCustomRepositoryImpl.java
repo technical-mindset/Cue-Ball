@@ -34,6 +34,8 @@ public class RoomCustomRepositoryImpl extends AbstractPersistenceManager<Room> i
             }
         }
 
+        where.append(" room.delete = false AND ");
+
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults

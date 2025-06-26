@@ -20,7 +20,7 @@
                 <div class="body-title">Date</div>
             </li>
             <li>
-                <div class="body-title">Completed</div>
+                <div class="body-title">State</div>
             </li>
             <li sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')">
                 <div class="body-title">Last Alert</div>
@@ -40,7 +40,7 @@
                 <div class="body-text" th:if="${data.userId == UserId}">
                     <button th:onclick="updateTaskStatus([[${data.getId()}]] , true)" th:disabled="${data.complete == true}" th:classappend="${data.complete == true} ? 'completed' : 'warning'" th:text="${data.complete == true ? 'Completed' : 'Pending'}" >Task Complete</button>
                 </div>
-                <div class="body-text" th:if="${data.userId != UserId}" th:text="${data.complete}">
+                <div class="body-text" th:if="${data.userId != UserId}" th:text="${data.complete == true ? 'Complete' : 'Pending'}">
 
                 </div>
                 <div class="body-text" sec:authorize="hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')" th:text="${data.lastAlertSent}"></div>

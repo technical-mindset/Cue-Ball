@@ -44,6 +44,8 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
             parameters.put("restaurantId", restaurantId);
         }
 
+        where.append(" inventory.delete = false AND ");
+
         where.append("1=1");
 
         // ✅ Append GROUP BY clause before passing it to getMaxResults
@@ -62,6 +64,8 @@ public class InventoryCustomRepositoryImpl extends AbstractPersistenceManager<In
             where.append(" inventoryCategory.id = :icId AND ");
             parameters.put("icId", id);
         }
+
+        where.append(" inventory.delete = false AND inventoryCategory.delete = false AND ");
 
         where.append("1=1");
 

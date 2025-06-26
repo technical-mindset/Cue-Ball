@@ -23,4 +23,7 @@ public class Restaurant extends BaseEntity {
 
     @Column(name = "percent")
     private double percent;
+
+    @Column(name = "delete")
+    private boolean delete;
 }

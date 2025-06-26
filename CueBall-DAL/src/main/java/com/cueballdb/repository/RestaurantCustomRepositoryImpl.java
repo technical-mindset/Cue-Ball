@@ -33,6 +33,7 @@ public class RestaurantCustomRepositoryImpl extends AbstractPersistenceManager<R
                 parameters.put("enable", false);
             }
         }
+        where.append(" restaurant.delete = false AND ");
 
         where.append("1=1");
 

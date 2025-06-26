@@ -95,7 +95,7 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
 
 
 
-    public ModelAndView findFindAllView(String search ,Integer enable, Integer complete, Integer userId, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
+    public ModelAndView findFindAllView(String search ,Integer enable, Integer complete, Integer userId, String startDate, String shift, Integer pageSize, Integer pageNumber, boolean ajax) {
         ModelAndView mav = new ModelAndView(Constants.RA_PAGE_TASK_VIEW_ALL);
 
         mav.addObject ( "userid", this.getUserId());
@@ -111,49 +111,44 @@ public class TaskService extends BaseService<Task, TaskDTO, TaskRepository> {
         List<Task> lists = null;
 
         List<String> adminRoles = List.of("ROLE_SUPER_ADMIN", "ROLE_ADMIN");
+
         List<User> users = null;
+
         if (this.getUser().getRoles().stream().anyMatch(role -> adminRoles.contains(role.getName()))) {
             users = this.userRepository.findAllUsersForAdmin();
         }
         else {
             users = this.userRepository.findAllUsersByRoles(this.getUser().getShift());
+            /** Adding manual Manager as user for staff filter drop-down selection */
+            users.add(this.getUser());
         }
 
         if (ajax) {
             mav = new ModelAndView(Constants.RA_PAGE_TASK_VIEW_ALL_DETAIL);
         }
 
-
         List<String> targetRoles = List.of("ROLE_TOILET_CLEANER", "ROLE_CLEANER", "ROLE_USER");
 
-
         if (this.getUser().getRoles().stream().anyMatch(role -> targetRoles.contains(role.getName()))) {
-            lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
+            System.out.println("::::::::::::::: In User Section :::::::::::::::::::::");
+            lists = repository.findAllByFilters(search, enable, complete, this.getUserId(), "NaN", "NaN",  true,(pageNumber-1)*pageSize, pageSize, count);
         }
         else if (this.getUser().getRoles().stream().anyMatch(role -> "ROLE_MANAGER".contains(role.getName()))) {
 
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
-            lists = repository.findAllByFilters(search, enable, complete, USER_ID, this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
-
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
-            System.out.println("::::::::::::::::::::::::::::::::::::");
+            System.out.println("::::::::::::::: In Manager Section :::::::::::::::::::::");
+//            int USER_ID = userId != null ? (userId != 0 ? userId : this.getUserId()) : this.getUserId();
+            lists = repository.findAllByFilters(search, enable, complete, userId, "NaN", this.getUser().getShift(),  true, (pageNumber-1)*pageSize, pageSize, count);
 
             mav.addObject("users", users);
             mav.addObject("userFilter",true);
             mav.addObject(Constants.EXTRA_FILTERS,true);
         }
         else {
-            lists = repository.findAllByFilters(search, enable, complete, userId, shift, false, (pageNumber-1)*pageSize, pageSize, count);
+            System.out.println("::::::::::::::: In Admin Section :::::::::::::::::::::");
+            lists = repository.findAllByFilters(search, enable, complete, userId, startDate, shift, false, (pageNumber-1)*pageSize, pageSize, count);
             mav.addObject("users", users);
             mav.addObject("shifts", Constants.shifts);
+            mav.addObject("fromDateFilter",true);
             mav.addObject("userFilter",true);
             mav.addObject("shiftFilter",true);
             mav.addObject(Constants.EXTRA_FILTERS,true);

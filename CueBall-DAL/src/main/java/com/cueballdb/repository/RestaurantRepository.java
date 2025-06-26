@@ -1,10 +1,8 @@
 package com.cueballdb.repository;
 
-import com.cueballdb.model.Game;
 import com.cueballdb.model.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -16,8 +14,8 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     Restaurant findByTitle(String title);
 
-    @Query("SELECT r FROM Restaurant r where r.enable=true ORDER BY r.id DESC")
-    List<Restaurant> findAllByEnableTrue();
+    @Query("SELECT r FROM Restaurant r where r.enable = true AND r.delete = false ORDER BY r.id DESC")
+    List<Restaurant> findAllByEnableTrueAndDelete();
 
     long count();
 

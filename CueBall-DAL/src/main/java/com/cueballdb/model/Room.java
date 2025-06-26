@@ -27,6 +27,8 @@ public class Room extends BaseEntity {
     @Column(name = "game_id")
     private String games;
 
+    @Column(name = "delete")
+    private boolean delete;
 
     // bi-directional many-to-one association to RoomCategory
     @ManyToOne

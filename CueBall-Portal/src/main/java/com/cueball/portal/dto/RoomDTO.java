@@ -31,6 +31,8 @@ public class RoomDTO extends BaseDTO {
 
     private String roomCategoryName;
 
+    private boolean delete;
+
     @Size(min = 1, message = "At least one Game must be provided")
     private List<Integer> gameIds;
 

@@ -39,6 +39,8 @@ public class InventoryDTO extends BaseDTO {
 
     private double percent;
 
+    private boolean delete;
+
     // For searching and displaying in the table
     private String variantName;
 

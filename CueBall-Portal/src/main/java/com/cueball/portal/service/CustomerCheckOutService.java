@@ -109,9 +109,9 @@ public class CustomerCheckOutService extends BaseService<Booking, BookingDTO, Bo
                 .map(this::mapEntityToDto)
                 .collect(Collectors.toList());
 
-        List<Room> rooms = this.roomRepository.findAllByEnableTrue();
+        List<Room> rooms = this.roomRepository.findAllByEnableTrueAndDeleteFalse();
 
-        List<RoomCategory> roomCategories = this.categoryRepository.findAllByEnableTrue();
+        List<RoomCategory> roomCategories = this.categoryRepository.findAllByEnableTrueAndDeleteFalse();
 
         if (ajax) {
             mav = new ModelAndView(Constants.RA_PAGE_CUSTOMER_CHECKOUT_VIEW_ALL_DETAIL);
